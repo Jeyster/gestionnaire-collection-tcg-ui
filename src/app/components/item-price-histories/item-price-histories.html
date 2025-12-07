@@ -1,0 +1,10 @@
+Historique des prix
+<div *ngIf="priceHistories$ | async as priceHistoryList">
+    <div *ngFor="let priceHistory of priceHistoryList">
+        {{priceHistory.averagePrice}}
+    </div>
+</div>
+
+<div>
+    <button (click)="retour()">Retour</button>
+</div>

@@ -7,7 +7,7 @@ import { Item } from '../../../interfaces/item';
 @Component({
   selector: 'app-item-card',
   standalone: true,
-  imports: [MatCardModule, MatButtonModule],
+  imports: [MatCardModule, MatButtonModule, RouterLink],
   templateUrl: './item-card.html',
   styleUrls: ['./item-card.css']
 })

@@ -7,6 +7,7 @@
   </mat-card-content>
   <mat-card-actions>
     <a matButton="elevated" href="{{item.url}}" target="_blank">Voir page CM</a>
+    <button mat-button [routerLink]="['/games', item.game.id, 'item-types', item.itemType.id, 'items', item.id, 'price-histories']">Historique des prix CM</button>
   </mat-card-actions>
 </mat-card>
 
