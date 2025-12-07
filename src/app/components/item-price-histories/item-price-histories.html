@@ -1,6 +1,10 @@
-Historique des prix
-<div *ngIf="priceHistories$ | async as priceHistoryList">
-    <div *ngFor="let priceHistory of priceHistoryList">
+<h2>Historique des prix</h2>
+<div *ngIf="item$ | async as item">
+    {{item.game.name}} - {{item.itemType.name}} {{item.expansion.name}}
+    {{item.complement}} ({{item.locale.name}})
+</div>
+<div *ngIf="priceHistories$ | async as priceHistories">
+    <div *ngFor="let priceHistory of priceHistories">
         {{priceHistory.averagePrice}}
     </div>
 </div>

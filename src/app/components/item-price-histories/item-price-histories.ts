@@ -1,5 +1,5 @@
 import { Component, inject, Input } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable, tap } from 'rxjs';
 import { CommonModule } from '@angular/common';
 import { ItemService } from '../../services/item-service';
 import { PriceHistory } from '../../interfaces/price-history';
@@ -21,20 +21,18 @@ export default class ItemPriceHistories {
   protected priceHistories$: Observable<PriceHistory[]>;
 
   protected itemId!: string;
+  protected item$: Observable<Item>;
   protected item!: Item;
   
   constructor(private itemService: ItemService) {
     this.itemId = this.route.snapshot.paramMap.get('item-id')!;
     this.priceHistories$ = this.itemService.getPriceHistories(this.itemId);
-  }
-
-  ngOnInit() {
-    this.itemService.getItem(this.itemId)
-    .subscribe({
-      next: (item: Item) => {
-        this.item = item;
-      }
-    });
+    this.item$ = this.itemService.getItem(this.itemId)
+    .pipe(
+      tap(item => {
+        this.item = item;    //item dans une variable du composant pour utilisation dans TS
+      })
+    );
   }
 
   retour() {

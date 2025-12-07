@@ -1,5 +1,5 @@
-<div *ngIf="itemTypes$ | async as itemTypeList">
-    <div *ngFor="let itemType of itemTypeList">
+<div *ngIf="itemTypes$ | async as itemTypes">
+    <div *ngFor="let itemType of itemTypes">
         <app-item-type-card [itemType]="itemType"></app-item-type-card>
     </div>
 </div>

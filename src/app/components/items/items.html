@@ -1,5 +1,5 @@
-<div *ngIf="items$ | async as itemList">
-    <div *ngFor="let item of itemList">
+<div *ngIf="items$ | async as items">
+    <div *ngFor="let item of items">
         <app-item-card [item]="item"></app-item-card>
         <!--{{ item.url }}-->
     </div>
