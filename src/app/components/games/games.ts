@@ -1,9 +1,9 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { GameService } from '../services/game-service';
+import { GameService } from '../../services/game-service';
 import { GameCard } from './game-card/game-card';
 import { Observable } from 'rxjs';
-import { Game } from '../interfaces/game';
+import { Game } from '../../interfaces/game';
 
 @Component({
   selector: 'app-games',

@@ -1,0 +1,9 @@
+<div *ngIf="itemTypes$ | async as itemTypeList">
+    <div *ngFor="let itemType of itemTypeList">
+        <app-item-type-card [itemType]="itemType"></app-item-type-card>
+    </div>
+</div>
+
+<div>
+    <button (click)="retour()">Retour</button>
+</div>
