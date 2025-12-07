@@ -1,12 +1,12 @@
 import { Component, inject, Input } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, RouterLink } from '@angular/router';
 import { ItemType } from '../../../interfaces/item-type';
 
 @Component({
   selector: 'app-item-type-card',
-  imports: [MatCardModule, MatButtonModule],
+  imports: [MatCardModule, MatButtonModule, RouterLink],
   templateUrl: './item-type-card.html',
   styleUrls: ['./item-type-card.css'],
 })

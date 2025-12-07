@@ -1,0 +1,9 @@
+<div *ngIf="items$ | async as itemList">
+    <div *ngFor="let item of itemList">
+        {{ item.url }}
+    </div>
+</div>
+
+<div>
+    <button (click)="retour()">Retour</button>
+</div>

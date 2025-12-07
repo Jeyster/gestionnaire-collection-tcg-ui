@@ -6,7 +6,7 @@ import { Locale } from "./locale";
 export interface Item {
     id: number,
     url: string,
-    gameD: Game,
+    game: Game,
     itemType: ItemType,
     locale: Locale,
     expansion: Expansion,
