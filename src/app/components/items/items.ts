@@ -4,10 +4,11 @@ import { Observable } from 'rxjs';
 import { CommonModule } from '@angular/common';
 import { Item } from '../../interfaces/item';
 import { ItemService } from '../../services/item-service';
+import { ItemCard } from './item-card/item-card';
 
 @Component({
   selector: 'app-items',
-  imports: [CommonModule],
+  imports: [CommonModule, ItemCard],
   templateUrl: './items.html',
   styleUrls: ['./items.css'],
   standalone: true
