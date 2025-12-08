@@ -13,4 +13,8 @@ export class GameService {
     return this.http.get<Game[]>('/gestionnaire-collection-tcg/v1/games');
   }
 
+  getGame(id: string) {
+    return this.http.get<Game>('/gestionnaire-collection-tcg/v1/games/' + id);
+  }
+
 }

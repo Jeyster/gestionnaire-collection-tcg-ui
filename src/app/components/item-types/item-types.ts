@@ -5,6 +5,8 @@ import { ItemTypeService } from '../../services/item-type-service';
 import { Observable } from 'rxjs';
 import { ItemTypeCard } from './item-type-card/item-type-card';
 import { CommonModule } from '@angular/common';
+import { Game } from '../../interfaces/game';
+import { GameService } from '../../services/game-service';
 
 @Component({
   selector: 'app-item-types',
@@ -19,10 +21,15 @@ export default class ItemTypes {
   private route = inject(ActivatedRoute);
 
   protected gameId!: string;
+  protected game$: Observable<Game>;
   protected itemTypes$: Observable<ItemType[]>;
   
-  constructor(private itemTypeService: ItemTypeService) {
+  constructor(
+    private itemTypeService: ItemTypeService,
+    private gameService: GameService
+  ) {
     this.gameId = this.route.snapshot.paramMap.get('game-id')!;
+    this.game$ = this.gameService.getGame(this.gameId);
     this.itemTypes$ = this.itemTypeService.getItemTypesByGameId(this.gameId);
   }
 

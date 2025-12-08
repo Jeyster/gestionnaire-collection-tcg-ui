@@ -3,11 +3,6 @@
     <mat-card-title>{{game.name}}</mat-card-title>
   </mat-card-header>
   <img mat-card-image src="/{{game.name}}.jpg">
-  <mat-card-content>
-    <p>
-      Un TCG pas comme les autres
-    </p>
-  </mat-card-content>
   <mat-card-actions>
     <button mat-button [routerLink]="['/games', game.id, 'item-types']">Voir types d'item</button>
   </mat-card-actions>

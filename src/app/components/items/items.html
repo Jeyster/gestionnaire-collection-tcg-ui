@@ -1,7 +1,11 @@
+<div *ngIf="itemType$ | async as itemType">
+    <div *ngIf="game$ | async as game">
+        <h2>{{itemType.name}} {{game.name}}</h2>
+    </div>
+</div>
 <div *ngIf="items$ | async as items">
     <div *ngFor="let item of items">
         <app-item-card [item]="item"></app-item-card>
-        <!--{{ item.url }}-->
     </div>
 </div>
 

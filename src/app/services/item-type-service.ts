@@ -13,6 +13,10 @@ export class ItemTypeService {
     return this.http.get<ItemType[]>('/gestionnaire-collection-tcg/v1/item-types');
   }
 
+  getItemType(itemTypeId: string) {
+    return this.http.get<ItemType>('/gestionnaire-collection-tcg/v1/item-types/' + itemTypeId);
+  }
+
   getItemTypesByGameId(gameId: string) {
     return this.http.get<ItemType[]>('/gestionnaire-collection-tcg/v1/games/' + gameId + '/item-types');
   }

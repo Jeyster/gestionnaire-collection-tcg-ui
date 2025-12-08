@@ -5,6 +5,10 @@ import { CommonModule } from '@angular/common';
 import { Item } from '../../interfaces/item';
 import { ItemService } from '../../services/item-service';
 import { ItemCard } from './item-card/item-card';
+import { Game } from '../../interfaces/game';
+import { GameService } from '../../services/game-service';
+import { ItemType } from '../../interfaces/item-type';
+import { ItemTypeService } from '../../services/item-type-service';
 
 @Component({
   selector: 'app-items',
@@ -22,10 +26,18 @@ export default class Items {
 
   protected gameId!: string;
   protected itemTypeId!: string;
+  protected game$: Observable<Game>;
+  protected itemType$: Observable<ItemType>;
   
-  constructor(private itemService: ItemService) {
+  constructor(
+    private itemService: ItemService,
+    private gameService: GameService,
+    private itemTypeService: ItemTypeService
+  ) {
     this.gameId = this.route.snapshot.paramMap.get('game-id')!;
     this.itemTypeId = this.route.snapshot.paramMap.get('item-type-id')!;
+    this.game$ = this.gameService.getGame(this.gameId);
+    this.itemType$ = this.itemTypeService.getItemType(this.itemTypeId);
     this.items$ = this.itemService.getItemByGameIdAndItemTypeId(this.gameId, this.itemTypeId);
   }
 

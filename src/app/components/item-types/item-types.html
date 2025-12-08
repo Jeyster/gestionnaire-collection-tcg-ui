@@ -1,3 +1,6 @@
+<div *ngIf="game$ | async as game">
+    <h2>Types d'Item {{game.name}}</h2>
+</div>
 <div *ngIf="itemTypes$ | async as itemTypes">
     <div *ngFor="let itemType of itemTypes">
         <app-item-type-card [itemType]="itemType"></app-item-type-card>
