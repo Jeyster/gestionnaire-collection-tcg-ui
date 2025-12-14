@@ -1,0 +1,15 @@
+<h2>Mes Items</h2>
+
+<div *ngIf="item$ | async as item">
+    {{item.game.name}} - {{item.itemType.name}} {{item.expansion.name}}
+    {{item.complement}} ({{item.locale.name}})
+</div>
+<div *ngIf="userItems$ | async as userItems">
+    <div *ngFor="let userItem of userItems">
+        <app-user-item-card [userItem]="userItem"></app-user-item-card>
+    </div>
+</div>
+
+<div>
+    <button (click)="retour()">Retour</button>
+</div>

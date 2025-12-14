@@ -38,7 +38,7 @@ export default class Items {
     this.itemTypeId = this.route.snapshot.paramMap.get('item-type-id')!;
     this.game$ = this.gameService.getGame(this.gameId);
     this.itemType$ = this.itemTypeService.getItemType(this.itemTypeId);
-    this.items$ = this.itemService.getItemByGameIdAndItemTypeId(this.gameId, this.itemTypeId);
+    this.items$ = this.itemService.getItemsByGameIdAndItemTypeId(this.gameId, this.itemTypeId);
   }
 
   retour() {

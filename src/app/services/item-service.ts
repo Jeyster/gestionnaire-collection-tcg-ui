@@ -14,7 +14,7 @@ export class ItemService {
     return this.http.get<Item>('/gestionnaire-collection-tcg/v1/items/' + itemId);
   }
 
-  getItemByGameIdAndItemTypeId(gameId: string, itemTypeId: string) {
+  getItemsByGameIdAndItemTypeId(gameId: string, itemTypeId: string) {
     return this.http.get<Item[]>(
       '/gestionnaire-collection-tcg/v1/items?game-id=' + gameId +
       '&item-type-id=' + itemTypeId
