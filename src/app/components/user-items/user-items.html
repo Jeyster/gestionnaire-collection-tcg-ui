@@ -5,12 +5,6 @@
   {{item.complement}} ({{item.locale.name}})
 </div>
 
-<button mat-raised-button color="primary" (click)="openCreateDialog()">
-  Ajouter un item
-</button>
-
-<hr>
-
 <div *ngIf="userItems$ | async as userItems">
   <div *ngFor="let userItem of userItems">
     <app-user-item-card [userItem]="userItem" (delete)="onDelete($event)"></app-user-item-card>
@@ -18,5 +12,8 @@
 </div>
 
 <div>
+  <button mat-raised-button color="primary" (click)="openCreateDialog()">
+    Ajouter un item
+  </button>
   <button (click)="retour()">Retour</button>
 </div>
