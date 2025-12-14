@@ -1,5 +1,10 @@
 <h2 mat-dialog-title>Vendre cet item</h2>
 
+<div>
+  <p>Prix d'achat : {{ data.userItem.purchasePrice }} €</p>
+  <p>Date d'achat : {{ data.userItem.purchaseDate | date:'dd/MM/yyyy' }}</p>
+</div>
+
 <form [formGroup]="form" (ngSubmit)="submit()">
   <mat-dialog-content>
 

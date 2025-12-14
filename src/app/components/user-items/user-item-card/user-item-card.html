@@ -5,18 +5,18 @@
   </mat-card-header>
   <mat-card-content>
     <div>Prix d'achat : {{userItem.purchasePrice}}</div>
-    <div>Date d'achat : {{userItem.purchaseDate}}</div>
+    <div>Date d'achat : {{userItem.purchaseDate | date:'dd/MM/yyyy'}}</div>
 
     @if (userItem.sellingPrice) {
       <div>
         Prix de vente : {{userItem.sellingPrice}}
       </div>
       <div>
-        Date de la vente : {{userItem.sellingOrOpeningDate}}
+        Date de la vente : {{userItem.sellingOrOpeningDate | date:'dd/MM/yyyy'}}
       </div>
     } @else if (userItem.sellingOrOpeningDate) {
       <div>
-        Date d'ouverture : {{userItem.sellingOrOpeningDate}}
+        Date d'ouverture : {{userItem.sellingOrOpeningDate | date:'dd/MM/yyyy'}}
       </div>
     }
 
