@@ -23,6 +23,8 @@
     <div *ngIf="userItem.comment">{{userItem.comment}}</div>
   </mat-card-content>
   <mat-card-actions>
+    <button *ngIf="!userItem.sellingOrOpeningDate" (click)="onSell()">Vendre</button>
+    <button *ngIf="!userItem.sellingOrOpeningDate" (click)="onOpen()">Ouvrir</button>
     <button (click)="onDelete()">Supprimer</button>
   </mat-card-actions>
 </mat-card>

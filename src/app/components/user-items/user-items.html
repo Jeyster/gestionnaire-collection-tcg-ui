@@ -7,7 +7,10 @@
 
 <div *ngIf="userItems$ | async as userItems">
   <div *ngFor="let userItem of userItems">
-    <app-user-item-card [userItem]="userItem" (delete)="onDelete($event)"></app-user-item-card>
+    <app-user-item-card 
+    [userItem]="userItem" 
+    (sell)="onSell($event.userItemId, $event.sellUserItem)"
+    (delete)="onDelete($event)"/>
   </div>
 </div>
 
