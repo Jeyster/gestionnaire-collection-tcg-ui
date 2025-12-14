@@ -5,15 +5,9 @@
   {{item.complement}} ({{item.locale.name}})
 </div>
 
-<button (click)="showAddForm = true">➕ Ajouter un item</button>
-
-<app-add-user-item-form
-  *ngIf="showAddForm"
-  [userId]="user.id"
-  [itemId]="item.id"
-  (added)="showAddForm = false; refresh()"
-  (cancelled)="showAddForm = false">
-</app-add-user-item-form>
+<button mat-raised-button color="primary" (click)="openCreateDialog()">
+  Ajouter un item
+</button>
 
 <hr>
 
