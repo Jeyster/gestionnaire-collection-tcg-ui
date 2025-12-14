@@ -10,6 +10,7 @@
     <app-user-item-card 
     [userItem]="userItem" 
     (sell)="onSell($event.userItemId, $event.sellUserItem)"
+    (open)="onOpen($event.userItemId, $event.openUserItem)"
     (delete)="onDelete($event)"/>
   </div>
 </div>

@@ -97,7 +97,12 @@ export default class ItemPriceHistories {
       const datasets: any[] = [];
 
       // 🟢 ACHAT
-      if (userItem.purchaseDate && userItem.purchasePrice) {
+      if (
+        userItem.purchaseDate && 
+        userItem.purchasePrice &&
+        ((!userItem.sellingOrOpeningDate && !userItem.sellingPrice) ||
+        (userItem.sellingOrOpeningDate && userItem.sellingPrice)) 
+      ) {
         datasets.push({
           label: `Achat Item #${userItem.id}`,
           data: [{

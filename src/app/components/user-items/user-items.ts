@@ -12,6 +12,7 @@ import { UserItemCard } from './user-item-card/user-item-card';
 import { MatDialog } from '@angular/material/dialog';
 import { AddUserItemDialog } from './add-user-item-dialog/add-user-item-dialog';
 import { SellUserItem } from '../../interfaces/sell-user-item';
+import { OpenUserItem } from '../../interfaces/open-user-item';
 
 @Component({
   selector: 'app-user-items',
@@ -86,6 +87,12 @@ export class UserItems {
 
   onSell(userItemId: number, sellUserItem: SellUserItem) {
     this.userItemService.sellUserItem(String(userItemId), sellUserItem).subscribe(() => {
+      this.reload$.next();
+    });
+  }
+
+  onOpen(userItemId: number, openUserItem: OpenUserItem) {
+    this.userItemService.openUserItem(String(userItemId), openUserItem).subscribe(() => {
       this.reload$.next();
     });
   }

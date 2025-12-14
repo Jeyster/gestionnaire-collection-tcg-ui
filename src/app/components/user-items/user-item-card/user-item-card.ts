@@ -6,6 +6,7 @@ import { CommonModule } from '@angular/common';
 import { MatDialog } from '@angular/material/dialog';
 import { ConfirmDialog } from '../../utils/confirm-dialog/confirm-dialog';
 import { SellUserItemDialog } from '../sell-user-item-dialog/sell-user-item-dialog';
+import { OpenUserItemDialog } from '../open-user-item-dialog/open-user-item-dialog';
 
 @Component({
   selector: 'app-user-item-card',
@@ -19,6 +20,7 @@ export class UserItemCard {
   @Input() userItem!: UserItem;
 
   @Output() sell = new EventEmitter<any>();
+  @Output() open = new EventEmitter<any>();
   @Output() delete = new EventEmitter<number>();
 
   constructor (private dialog: MatDialog) {}
@@ -38,7 +40,17 @@ export class UserItemCard {
   }
 
   onOpen() {
+    const dialogRef = this.dialog.open(OpenUserItemDialog, {
+      width: '400px',
+      data: {
+        userItem: this.userItem
+      }
+    });
 
+    dialogRef.afterClosed().subscribe(result => {
+      if (!result) return;
+      this.open.emit({userItemId: this.userItem.id, openUserItem: result});
+    });
   }
 
   onDelete() {
