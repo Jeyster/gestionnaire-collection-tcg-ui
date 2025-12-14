@@ -9,10 +9,11 @@ import { UserItemService } from '../../services/user-item-service';
 import { UserItem } from '../../interfaces/user-item';
 import { CommonModule } from '@angular/common';
 import { UserItemCard } from './user-item-card/user-item-card';
+import { AddUserItemForm } from './add-user-item-form/add-user-item-form';
 
 @Component({
   selector: 'app-user-items',
-  imports: [CommonModule, UserItemCard],
+  imports: [CommonModule, UserItemCard, AddUserItemForm],
   templateUrl: './user-items.html',
   styleUrl: './user-items.css',
   standalone: true
@@ -27,6 +28,8 @@ export class UserItems {
   protected item$: Observable<Item>;
   protected item!: Item;
   protected userItems$: Observable<UserItem[]>;
+
+  protected showAddForm = false;
 
   constructor(
     private userService: UserService,
@@ -48,5 +51,13 @@ export class UserItems {
   retour() {
     this.router.navigate(['/games', this.item.game.id, 'item-types', this.item.itemType.id, 'items']);
   }
+
+  refresh() {
+    this.userItems$ = this.userItemService.getUserItems(
+      String(this.user.id),
+      this.itemId
+    );
+  }
+
 
 }

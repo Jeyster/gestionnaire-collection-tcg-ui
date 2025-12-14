@@ -1,15 +1,28 @@
 <h2>Mes Items</h2>
 
 <div *ngIf="item$ | async as item">
-    {{item.game.name}} - {{item.itemType.name}} {{item.expansion.name}}
-    {{item.complement}} ({{item.locale.name}})
+  {{item.game.name}} - {{item.itemType.name}} {{item.expansion.name}}
+  {{item.complement}} ({{item.locale.name}})
 </div>
+
+<button (click)="showAddForm = true">➕ Ajouter un item</button>
+
+<app-add-user-item-form
+  *ngIf="showAddForm"
+  [userId]="user.id"
+  [itemId]="item.id"
+  (added)="showAddForm = false; refresh()"
+  (cancelled)="showAddForm = false">
+</app-add-user-item-form>
+
+<hr>
+
 <div *ngIf="userItems$ | async as userItems">
-    <div *ngFor="let userItem of userItems">
-        <app-user-item-card [userItem]="userItem"></app-user-item-card>
-    </div>
+  <div *ngFor="let userItem of userItems">
+    <app-user-item-card [userItem]="userItem"></app-user-item-card>
+  </div>
 </div>
 
 <div>
-    <button (click)="retour()">Retour</button>
+  <button (click)="retour()">Retour</button>
 </div>
