@@ -13,7 +13,7 @@
 
 <div *ngIf="userItems$ | async as userItems">
   <div *ngFor="let userItem of userItems">
-    <app-user-item-card [userItem]="userItem"></app-user-item-card>
+    <app-user-item-card [userItem]="userItem" (delete)="onDelete($event)"></app-user-item-card>
   </div>
 </div>
 

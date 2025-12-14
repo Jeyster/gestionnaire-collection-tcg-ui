@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { UserItem } from '../../../interfaces/user-item';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
@@ -14,5 +14,11 @@ import { CommonModule } from '@angular/common';
 export class UserItemCard {
 
     @Input() userItem!: UserItem;
+
+    @Output() delete = new EventEmitter<number>();
+
+    onDelete() {
+      this.delete.emit(this.userItem.id);
+    }
 
 }

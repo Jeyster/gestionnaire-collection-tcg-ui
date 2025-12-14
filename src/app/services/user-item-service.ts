@@ -23,4 +23,9 @@ export class UserItemService {
     );
   }
 
+  deleteUserItem(id: string) {
+    return this.http.delete('/gestionnaire-collection-tcg/v1/user-items/' + id);
+  }
+
+
 }

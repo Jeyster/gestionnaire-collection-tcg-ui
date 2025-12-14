@@ -83,4 +83,10 @@ export class UserItems {
     this.router.navigate(['/games', this.item.game.id, 'item-types', this.item.itemType.id, 'items']);
   }
 
+  onDelete(userItemId: number) {
+    this.userItemService.deleteUserItem(String(userItemId)).subscribe(() => {
+      this.reload$.next();
+    });
+  }
+
 }
