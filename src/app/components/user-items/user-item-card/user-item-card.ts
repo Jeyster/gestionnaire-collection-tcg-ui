@@ -7,6 +7,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { ConfirmDialog } from '../../utils/confirm-dialog/confirm-dialog';
 import { SellUserItemDialog } from '../sell-user-item-dialog/sell-user-item-dialog';
 import { OpenUserItemDialog } from '../open-user-item-dialog/open-user-item-dialog';
+import { AddUserItem } from '../../../interfaces/add-user-item';
 
 @Component({
   selector: 'app-user-item-card',
@@ -21,6 +22,7 @@ export class UserItemCard {
 
   @Output() sell = new EventEmitter<any>();
   @Output() open = new EventEmitter<any>();
+  @Output() duplicate = new EventEmitter<AddUserItem>();
   @Output() delete = new EventEmitter<number>();
 
   constructor (private dialog: MatDialog) {}
@@ -50,6 +52,23 @@ export class UserItemCard {
     dialogRef.afterClosed().subscribe(result => {
       if (!result) return;
       this.open.emit({userItemId: this.userItem.id, openUserItem: result});
+    });
+  }
+
+  onDuplicate() {
+    const dialogRef = this.dialog.open(ConfirmDialog);
+
+    dialogRef.afterClosed().subscribe(result => {
+      if (!result) return;
+
+      const addUserItem: AddUserItem = {
+        userId: this.userItem.user.id,
+        itemId: this.userItem.item.id,
+        purchasePrice: this.userItem.purchasePrice,
+        purchaseDate: String(this.userItem.purchaseDate),
+        comment: this.userItem.comment
+      };
+      this.duplicate.emit(addUserItem);
     });
   }
 

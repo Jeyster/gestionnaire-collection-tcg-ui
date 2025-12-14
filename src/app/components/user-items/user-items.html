@@ -11,6 +11,7 @@
     [userItem]="userItem" 
     (sell)="onSell($event.userItemId, $event.sellUserItem)"
     (open)="onOpen($event.userItemId, $event.openUserItem)"
+    (duplicate)="onDuplicate($event)"
     (delete)="onDelete($event)"/>
   </div>
 </div>
