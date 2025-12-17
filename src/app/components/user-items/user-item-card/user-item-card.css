@@ -7,10 +7,15 @@ mat-card-content div:last-child {
   margin-bottom: 0;
 }
 
-.sold {
-  border-left: 8px solid #16a34a; /* vert */
+mat-card.sold {
+  border-left: 5px solid #22c55e;
 }
 
-.opened {
-  border-left: 8px solid #f59e0b; /* orange */
+mat-card.opened {
+  border-left: 5px solid #f59e0b;
 }
+
+mat-card:not(.sold):not(.opened) {
+  border-left: 5px solid #38bdf8;
+}
+

@@ -2,6 +2,17 @@
   width: 100%;
 }
 
+.mat-dialog-container {
+  background: #020617;
+  color: #e5e7eb;
+  border-radius: 16px;
+}
+
+.mat-dialog-title {
+  color: #a78bfa;
+  font-weight: 600;
+}
+
 mat-dialog-content {
   display: flex;
   flex-direction: column;

@@ -8,14 +8,14 @@
     </div>
   </div>
 
-  <button mat-stroked-button (click)="retour()">
-    <mat-icon>undo</mat-icon>
+  <button mat-stroked-button class="back-button" (click)="retour()">
+    <mat-icon>arrow_back</mat-icon>
     Retour
   </button>
 </div>
 
-<div class="add-item-button">
-  <button mat-stroked-button (click)="openCreateDialog()">
+<div class="add-item">
+  <button mat-stroked-button class="add-item-button" (click)="openCreateDialog()">
     <mat-icon>add</mat-icon>
     Ajouter un item
   </button>

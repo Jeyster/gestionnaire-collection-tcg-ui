@@ -1,3 +1,12 @@
-.add-item-button {
+.add-item {
     margin-bottom: 16px;
+}
+
+button.mat-mdc-outlined-button.add-item-button {
+  border-color: #94a3b8;
+  color: #334155;
+}
+
+button.mat-mdc-outlined-button.add-item-button mat-icon {
+  color: #334155;
 }

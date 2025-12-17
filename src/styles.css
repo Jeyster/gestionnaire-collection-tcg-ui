@@ -1,3 +1,25 @@
 /* You can add global styles to this file, and also import other style files */
-@import '@angular/material/prebuilt-themes/indigo-pink.css';
 @import url("app/shared/css/icon.css");
+@import '@angular/material/prebuilt-themes/indigo-pink.css';
+
+/* Background global */
+body {
+  margin: 0;
+  background: linear-gradient(
+    180deg,
+    #f1f5f9 0%,
+    #e2e8f0 100%
+  );
+  color: #0f172a;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+
+button.mat-raised-button.mat-primary {
+  background: linear-gradient(135deg, #7c3aed, #a78bfa);
+  color: white;
+}
+
+button.mat-button {
+  color: #7c3aed;
+}

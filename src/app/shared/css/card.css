@@ -1,3 +1,18 @@
+mat-card {
+  background-color: #f8fafc; /* pas blanc pur */
+  color: #0f172a;
+  border-radius: 14px;
+  box-shadow:
+    0 10px 25px rgba(0,0,0,0.15);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+mat-card:hover {
+  transform: translateY(-4px);
+  box-shadow:
+    0 16px 40px rgba(0,0,0,0.25);
+}
+
 mat-card.example-card {
   height: 100%;
   display: flex;
