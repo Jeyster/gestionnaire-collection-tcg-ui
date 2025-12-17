@@ -8,7 +8,6 @@ import { MatIconModule } from '@angular/material/icon';
   imports: [
     MatButtonModule,
     MatDialogActions,
-    MatDialogContent,
     MatIconModule
   ],
   templateUrl: './confirm-dialog.html',
