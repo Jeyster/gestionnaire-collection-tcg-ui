@@ -1,0 +1,19 @@
+mat-card.example-card {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+mat-card-header {
+  margin-bottom: 8px;
+}
+
+mat-card-content {
+  flex-grow: 1;
+}
+
+mat-card-actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+}

@@ -1,0 +1,17 @@
+.full-width {
+  width: 100%;
+}
+
+mat-dialog-content {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+mat-dialog-actions {
+  margin-top: 8px;
+}
+
+.dialog-header {
+  margin-left: 16px;
+}

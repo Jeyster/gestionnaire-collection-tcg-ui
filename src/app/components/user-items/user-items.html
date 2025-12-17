@@ -1,11 +1,27 @@
-<h2>Mes Items</h2>
+<div class="page-header">
+  <div>
+    <h2>Mes Items</h2>
+    
+    <div *ngIf="item$ | async as item">
+      {{item.game.name}} - {{item.itemType.name}} {{item.expansion.name}}
+      {{item.complement}} ({{item.locale.name}})
+    </div>
+  </div>
 
-<div *ngIf="item$ | async as item">
-  {{item.game.name}} - {{item.itemType.name}} {{item.expansion.name}}
-  {{item.complement}} ({{item.locale.name}})
+  <button mat-stroked-button (click)="retour()">
+    <mat-icon>undo</mat-icon>
+    Retour
+  </button>
 </div>
 
-<div *ngIf="userItems$ | async as userItems">
+<div class="add-item-button">
+  <button mat-stroked-button (click)="openCreateDialog()">
+    <mat-icon>add</mat-icon>
+    Ajouter un item
+  </button>
+</div>
+
+<div *ngIf="userItems$ | async as userItems" class="cards-grid">
   <div *ngFor="let userItem of userItems">
     <app-user-item-card 
     [userItem]="userItem" 
@@ -16,9 +32,3 @@
   </div>
 </div>
 
-<div>
-  <button mat-raised-button color="primary" (click)="openCreateDialog()">
-    Ajouter un item
-  </button>
-  <button (click)="retour()">Retour</button>
-</div>

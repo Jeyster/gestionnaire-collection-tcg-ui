@@ -7,12 +7,22 @@ import { ItemTypeCard } from './item-type-card/item-type-card';
 import { CommonModule } from '@angular/common';
 import { Game } from '../../interfaces/game';
 import { GameService } from '../../services/game-service';
+import { MatButtonModule } from '@angular/material/button';
+import { MatIconModule } from '@angular/material/icon';
 
 @Component({
   selector: 'app-item-types',
-  imports: [CommonModule, ItemTypeCard],
+  imports: [
+    CommonModule, 
+    ItemTypeCard,
+    MatButtonModule,
+    MatIconModule
+  ],
   templateUrl: './item-types.html',
-  styleUrls: ['./item-types.css'],
+  styleUrls: [
+    './item-types.css',
+    '../../shared/css/cards-grid.css'
+  ],
   standalone: true
 })
 export default class ItemTypes {

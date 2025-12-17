@@ -11,11 +11,17 @@ import { User } from '../../interfaces/user';
 import { UserItem } from '../../interfaces/user-item';
 import { UserService } from '../../services/user-service';
 import { UserItemService } from '../../services/user-item-service';
+import { MatButtonModule } from '@angular/material/button';
+import { MatIconModule } from '@angular/material/icon';
 
 @Component({
   selector: 'app-item-price-histories',
   standalone: true,
-  imports: [CommonModule],
+  imports: [
+    CommonModule,
+    MatButtonModule,
+    MatIconModule
+  ],
   templateUrl: './item-price-histories.html',
   styleUrls: ['./item-price-histories.css']
 })

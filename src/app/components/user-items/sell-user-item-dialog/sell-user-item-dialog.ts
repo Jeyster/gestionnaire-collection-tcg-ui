@@ -9,6 +9,7 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import { UserItem } from '../../../interfaces/user-item';
 import { SellUserItem } from '../../../interfaces/sell-user-item';
+import { MatIconModule } from '@angular/material/icon';
 
 @Component({
   selector: 'app-sell-user-item-dialog',
@@ -22,9 +23,14 @@ import { SellUserItem } from '../../../interfaces/sell-user-item';
     MatDatepickerModule,
     MatNativeDateModule,
     MatDialogActions,
-    MatDialogContent
+    MatDialogContent,
+    MatIconModule
   ],
-  templateUrl: './sell-user-item-dialog.html'
+  templateUrl: './sell-user-item-dialog.html',
+  styleUrls: [
+    './sell-user-item-dialog.css',
+    '../../../shared/css/dialog.css'
+  ]
 })
 export class SellUserItemDialog {
 

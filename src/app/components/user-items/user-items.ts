@@ -14,15 +14,22 @@ import { AddUserItemDialog } from './add-user-item-dialog/add-user-item-dialog';
 import { SellUserItem } from '../../interfaces/sell-user-item';
 import { OpenUserItem } from '../../interfaces/open-user-item';
 import { AddUserItem } from '../../interfaces/add-user-item';
+import { MatIconModule } from '@angular/material/icon';
+import { MatButtonModule } from '@angular/material/button';
 
 @Component({
   selector: 'app-user-items',
   imports: [
     CommonModule, 
-    UserItemCard 
+    UserItemCard,
+    MatButtonModule,
+    MatIconModule
   ],
   templateUrl: './user-items.html',
-  styleUrl: './user-items.css',
+  styleUrls: [
+    './user-items.css',
+    '../../shared/css/cards-grid.css'
+  ],
   standalone: true
 })
 export class UserItems {

@@ -3,6 +3,9 @@
     <mat-card-title>{{itemType.name}}</mat-card-title>
   </mat-card-header>
   <mat-card-actions>
-    <button mat-button [routerLink]="['/games', gameId, 'item-types', itemType.id, 'items']">Voir items</button>
+    <button mat-button [routerLink]="['/games', gameId, 'item-types', itemType.id, 'items']">
+      <mat-icon>visibility</mat-icon>
+      Voir items
+    </button>
   </mat-card-actions>
 </mat-card>

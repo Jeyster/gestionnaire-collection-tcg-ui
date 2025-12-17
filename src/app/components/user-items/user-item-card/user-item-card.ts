@@ -8,12 +8,21 @@ import { ConfirmDialog } from '../../utils/confirm-dialog/confirm-dialog';
 import { SellUserItemDialog } from '../sell-user-item-dialog/sell-user-item-dialog';
 import { OpenUserItemDialog } from '../open-user-item-dialog/open-user-item-dialog';
 import { AddUserItem } from '../../../interfaces/add-user-item';
+import { MatIconModule } from '@angular/material/icon';
 
 @Component({
   selector: 'app-user-item-card',
-  imports: [CommonModule, MatCardModule, MatButtonModule],
+  imports: [
+    CommonModule, 
+    MatCardModule, 
+    MatButtonModule,
+    MatIconModule
+  ],
   templateUrl: './user-item-card.html',
-  styleUrl: './user-item-card.css',
+  styleUrls: [
+    './user-item-card.css',
+    '../../../shared/css/card.css'
+  ],
   standalone: true
 })
 export class UserItemCard {

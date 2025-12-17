@@ -1,6 +1,7 @@
 <!-- Utilisation de l'async pipe pour récupérer et afficher les jeux -->
-<div *ngIf="games$ | async as games">
-  <div *ngFor="let game of games">
-    <app-game-card [game]="game"></app-game-card>
-  </div>
+<div *ngIf="games$ | async as games" class="cards-grid">
+  <app-game-card
+    *ngFor="let game of games"
+    [game]="game">
+  </app-game-card>
 </div>

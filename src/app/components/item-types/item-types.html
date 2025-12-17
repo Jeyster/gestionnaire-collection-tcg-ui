@@ -1,12 +1,16 @@
-<div *ngIf="game$ | async as game">
-    <h2>Types d'Item {{game.name}}</h2>
-</div>
-<div *ngIf="itemTypes$ | async as itemTypes">
-    <div *ngFor="let itemType of itemTypes">
-        <app-item-type-card [itemType]="itemType"></app-item-type-card>
-    </div>
+<div class="page-header">
+    <h2 *ngIf="game$ | async as game">
+    Types d'Item {{ game.name }}
+    </h2>
+
+    <button mat-stroked-button (click)="retour()">
+        <mat-icon>undo</mat-icon>
+        Retour
+    </button>
 </div>
 
-<div>
-    <button (click)="retour()">Retour</button>
+<div *ngIf="itemTypes$ | async as itemTypes" class="cards-grid">
+    <app-item-type-card 
+    *ngFor="let itemType of itemTypes" 
+    [itemType]="itemType"/>
 </div>

@@ -8,6 +8,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import { AddUserItem } from '../../../interfaces/add-user-item';
+import { MatIconModule } from '@angular/material/icon';
 
 @Component({
   selector: 'app-add-user-item-dialog',
@@ -21,9 +22,14 @@ import { AddUserItem } from '../../../interfaces/add-user-item';
     MatDatepickerModule,
     MatNativeDateModule,
     MatDialogActions,
-    MatDialogContent
+    MatDialogContent,
+    MatIconModule
   ],
-  templateUrl: './add-user-item-dialog.html'
+  templateUrl: './add-user-item-dialog.html',
+  styleUrls: [
+    './add-user-item-dialog.css',
+    '../../../shared/css/dialog.css'
+  ]
 })
 export class AddUserItemDialog {
 

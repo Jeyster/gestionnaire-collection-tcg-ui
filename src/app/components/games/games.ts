@@ -10,7 +10,10 @@ import { Game } from '../../interfaces/game';
   standalone: true,
   imports: [CommonModule, GameCard],
   templateUrl: './games.html',
-  styleUrls: ['./games.css']
+  styleUrls: [
+    './games.css',
+    '../../shared/css/cards-grid.css'
+  ]
 })
 export class Games {
   games$: Observable<Game[]>;

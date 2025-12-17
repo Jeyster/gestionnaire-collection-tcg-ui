@@ -9,6 +9,7 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import { UserItem } from '../../../interfaces/user-item';
 import { OpenUserItem } from '../../../interfaces/open-user-item';
+import { MatIconModule } from '@angular/material/icon';
 
 @Component({
   selector: 'app-open-user-item-dialog',
@@ -22,9 +23,14 @@ import { OpenUserItem } from '../../../interfaces/open-user-item';
     MatDatepickerModule,
     MatNativeDateModule,
     MatDialogActions,
-    MatDialogContent
+    MatDialogContent,
+    MatIconModule
   ],
-  templateUrl: './open-user-item-dialog.html'
+  templateUrl: './open-user-item-dialog.html',
+  styleUrls: [
+    './open-user-item-dialog.css',
+    '../../../shared/css/dialog.css'
+  ]
 })
 export class OpenUserItemDialog {
 

@@ -1,4 +1,8 @@
-<mat-card class="example-card" appearance="outlined">
+<mat-card class="example-card" appearance="outlined" 
+[ngClass]="{
+    sold: userItem.sellingPrice,
+    opened: !userItem.sellingPrice && userItem.sellingOrOpeningDate
+  }">
   <mat-card-header>
     <mat-card-title></mat-card-title>
     <mat-card-subtitle></mat-card-subtitle>
@@ -23,10 +27,25 @@
     <div *ngIf="userItem.comment">{{userItem.comment}}</div>
   </mat-card-content>
   <mat-card-actions>
-    <button *ngIf="!userItem.sellingOrOpeningDate" (click)="onSell()">Vendre</button>
-    <button *ngIf="!userItem.sellingOrOpeningDate" (click)="onOpen()">Ouvrir</button>
-    <button *ngIf="!userItem.sellingOrOpeningDate" (click)="onDuplicate()">Dupliquer</button>
-    <button (click)="onDelete()">Supprimer</button>
+    <button mat-button="filled" *ngIf="!userItem.sellingOrOpeningDate" (click)="onSell()">
+      <mat-icon>sell</mat-icon>
+      Vendre
+    </button>
+
+    <button mat-button *ngIf="!userItem.sellingOrOpeningDate" (click)="onOpen()">
+      <mat-icon>lock_open</mat-icon>
+      Ouvrir
+    </button>
+
+    <button mat-button *ngIf="!userItem.sellingOrOpeningDate" (click)="onDuplicate()">
+      <mat-icon>content_copy</mat-icon>
+      Dupliquer
+    </button>
+
+    <button mat-button color="warn" (click)="onDelete()">
+      <mat-icon>delete</mat-icon>
+      Supprimer
+    </button>
   </mat-card-actions>
 </mat-card>
 
