@@ -16,7 +16,7 @@ import { Game } from '../../interfaces/game';
   ]
 })
 export class Games {
-  games$: Observable<Game[]>;
+  protected games$: Observable<Game[]>;
 
   constructor(private gameService: GameService) {
     this.games$ = this.gameService.getGames();

@@ -1,0 +1,12 @@
+<div class="results-grid" *ngIf="items.length; else empty">
+  <app-item-card
+    *ngFor="let item of items; trackBy: trackByItemId"
+    [item]="item">
+  </app-item-card>
+</div>
+
+<ng-template #empty>
+  <p class="empty-state">
+    Aucun item ne correspond à votre recherche.
+  </p>
+</ng-template>

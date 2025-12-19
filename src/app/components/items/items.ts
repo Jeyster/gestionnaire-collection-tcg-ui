@@ -31,6 +31,7 @@ export default class Items {
 
   private router = inject(Router);
   private route = inject(ActivatedRoute);
+  private itemService = inject(ItemService);
 
   protected items$: Observable<Item[]>;
 
@@ -40,7 +41,6 @@ export default class Items {
   protected itemType$: Observable<ItemType>;
   
   constructor(
-    private itemService: ItemService,
     private gameService: GameService,
     private itemTypeService: ItemTypeService
   ) {

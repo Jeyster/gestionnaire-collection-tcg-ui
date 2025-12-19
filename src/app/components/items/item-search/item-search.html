@@ -1,0 +1,10 @@
+<h1>Recherche d’items</h1>
+
+<div class="item-search-filters">
+  <app-item-search-filters (searchFilters)="onSearch($event)"/>
+</div>
+
+
+<div *ngIf="items$ | async as items" class="item-search-results">
+  <app-item-search-results *ngIf="items" [items]="items"/>
+</div>
