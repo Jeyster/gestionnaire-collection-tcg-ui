@@ -17,7 +17,7 @@ export class ItemSearchResults {
   @Input({ required: true })
   items: Item[] = [];
 
-  trackByItemId(index: number, item: Item): number {
+  protected trackByItemId(index: number, item: Item): number {
     return item.id;
   }
 

@@ -28,7 +28,8 @@ import { MatButtonModule } from '@angular/material/button';
   templateUrl: './user-items.html',
   styleUrls: [
     './user-items.css',
-    '../../shared/css/cards-grid.css'
+    '../../shared/css/cards-grid.css',
+    '../../shared/css/page.css'
   ],
   standalone: true
 })

@@ -3,3 +3,10 @@
   grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
   gap: 16px;
 }
+
+.empty-state {
+  text-align: center;
+  color: #6b7280;
+  font-style: italic;
+  margin-top: 48px;
+}

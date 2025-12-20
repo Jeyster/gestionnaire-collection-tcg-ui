@@ -1,57 +1,54 @@
-<form [formGroup]="form" (ngSubmit)="search()">
+<form [formGroup]="form" (ngSubmit)="search()" class="filters-container">
 
-  <mat-card class="filters-card">
-    <div class="filters-grid">
+  <div class="filters-grid">
 
-      <mat-form-field appearance="outline">
-        <mat-label>Jeu</mat-label>
-        <mat-select formControlName="gameId">
-          <mat-option [value]="null">Tous</mat-option>
-          <mat-option *ngFor="let game of games$ | async" [value]="game.id">
-            {{ game.name }}
-          </mat-option>
-        </mat-select>
-      </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>Jeu</mat-label>
+      <mat-select formControlName="gameId">
+        <mat-option [value]="null">Tous</mat-option>
+        <mat-option *ngFor="let game of games$ | async" [value]="game.id">
+          {{ game.name }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
 
-      <mat-form-field appearance="outline">
-        <mat-label>Type d’item</mat-label>
-        <mat-select formControlName="itemTypeId">
-          <mat-option [value]="null">Tous</mat-option>
-          <mat-option *ngFor="let type of itemTypes$ | async" [value]="type.id">
-            {{ type.name }}
-          </mat-option>
-        </mat-select>
-      </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>Type d’item</mat-label>
+      <mat-select formControlName="itemTypeId">
+        <mat-option [value]="null">Tous</mat-option>
+        <mat-option *ngFor="let type of itemTypes$ | async" [value]="type.id">
+          {{ type.name }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
 
-      <mat-form-field appearance="outline">
-        <mat-label>Langue</mat-label>
-        <mat-select formControlName="localeId">
-          <mat-option [value]="null">Toutes</mat-option>
-          <mat-option *ngFor="let locale of locales$ | async" [value]="locale.id">
-            {{ locale.name }}
-          </mat-option>
-        </mat-select>
-      </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>Langue</mat-label>
+      <mat-select formControlName="localeId">
+        <mat-option [value]="null">Toutes</mat-option>
+        <mat-option *ngFor="let locale of locales$ | async" [value]="locale.id">
+          {{ locale.name }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
 
-      <mat-form-field appearance="outline">
-        <mat-label>Extension</mat-label>
-        <mat-select formControlName="expansionId">
-          <mat-option [value]="null">Toutes</mat-option>
-          <mat-option *ngFor="let exp of expansions$ | async" [value]="exp.id">
-            {{ exp.name }}
-          </mat-option>
-        </mat-select>
-      </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>Extension</mat-label>
+      <mat-select formControlName="expansionId">
+        <mat-option [value]="null">Toutes</mat-option>
+        <mat-option *ngFor="let exp of expansions$ | async" [value]="exp.id">
+          {{ exp.name }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
 
-    </div>
+  </div>
 
-    <mat-card-actions>
-      <button mat-raised-button color="primary" type="submit">
-        <mat-icon>search</mat-icon>
-        Rechercher
-      </button>
-    </mat-card-actions>
-
-  </mat-card>
+  <mat-card-actions class="filters-actions">
+    <button mat-raised-button color="primary" type="submit">
+      <mat-icon>search</mat-icon>
+      Rechercher
+    </button>
+  </mat-card-actions>
 
 </form>

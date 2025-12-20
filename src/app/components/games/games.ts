@@ -12,7 +12,8 @@ import { Game } from '../../interfaces/game';
   templateUrl: './games.html',
   styleUrls: [
     './games.css',
-    '../../shared/css/cards-grid.css'
+    '../../shared/css/cards-grid.css',
+    '../../shared/css/page.css'
   ]
 })
 export class Games {

@@ -16,7 +16,10 @@ import { ActivatedRoute, Router } from "@angular/router";
     ItemSearchResults
   ],
   templateUrl: './item-search.html',
-  styleUrls: ['./item-search.css']
+  styleUrls: [
+    './item-search.css',
+    '../../../shared/css/page.css'
+  ]
 })
 export class ItemSearch {
 

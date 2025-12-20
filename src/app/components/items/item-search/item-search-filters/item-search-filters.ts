@@ -2,18 +2,13 @@ import { CommonModule } from "@angular/common";
 import { Component, Output, EventEmitter, Input, inject } from "@angular/core";
 import { ReactiveFormsModule, FormBuilder } from "@angular/forms";
 import { MatButton } from "@angular/material/button";
-import { MatCard, MatCardActions } from "@angular/material/card";
+import { MatCardActions } from "@angular/material/card";
 import { MatFormField } from "@angular/material/form-field";
 import { MatSelectModule } from '@angular/material/select';
 import { MatIcon } from "@angular/material/icon";
 import { GameService } from "../../../../services/game-service";
 import { ItemTypeService } from "../../../../services/item-type-service";
 import { ItemSearchFiltersDto } from "../item-search-filters-dto";
-import { Observable } from "rxjs";
-import { Game } from "../../../../interfaces/game";
-import { ItemType } from "../../../../interfaces/item-type";
-import { Locale } from "../../../../interfaces/locale";
-import { Expansion } from "../../../../interfaces/expansion";
 import { ExpansionService } from "../../../../services/expansion-service";
 import { LocaleService } from "../../../../services/locale-service";
 
@@ -26,7 +21,6 @@ import { LocaleService } from "../../../../services/locale-service";
     MatFormField, 
     MatButton, 
     MatIcon, 
-    MatCard,
     MatCardActions,
     MatSelectModule
   ],

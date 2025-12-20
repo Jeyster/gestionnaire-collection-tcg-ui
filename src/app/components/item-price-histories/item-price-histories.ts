@@ -23,7 +23,10 @@ import { MatIconModule } from '@angular/material/icon';
     MatIconModule
   ],
   templateUrl: './item-price-histories.html',
-  styleUrls: ['./item-price-histories.css']
+  styleUrls: [
+    './item-price-histories.css',
+    '../../shared/css/page.css'
+  ]
 })
 export default class ItemPriceHistories {
 

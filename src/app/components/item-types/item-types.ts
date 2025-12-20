@@ -21,7 +21,8 @@ import { MatIconModule } from '@angular/material/icon';
   templateUrl: './item-types.html',
   styleUrls: [
     './item-types.css',
-    '../../shared/css/cards-grid.css'
+    '../../shared/css/cards-grid.css',
+    '../../shared/css/page.css'
   ],
   standalone: true
 })
