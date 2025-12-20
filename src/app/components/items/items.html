@@ -3,7 +3,7 @@
         {{itemType.name}} {{game.name}}
     </h2>
 
-    <app-bouton-retour/>
+    <app-back-button/>
 </div>
 <div *ngIf="items$ | async as items" class="cards-grid">
     <div *ngFor="let item of items">

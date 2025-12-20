@@ -11,7 +11,7 @@ import { ItemType } from '../../interfaces/item-type';
 import { ItemTypeService } from '../../services/item-type-service';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
-import { BoutonRetour } from '../shared/bouton-retour/bouton-retour';
+import { BackButton } from '../shared/back-button/back-button';
 
 @Component({
   selector: 'app-items',
@@ -19,7 +19,7 @@ import { BoutonRetour } from '../shared/bouton-retour/bouton-retour';
     CommonModule, 
     MatButtonModule,
     MatIconModule,
-    BoutonRetour,
+    BackButton,
     ItemCard
   ],
   templateUrl: './items.html',

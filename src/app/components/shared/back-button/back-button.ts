@@ -3,15 +3,15 @@ import { MatButton } from '@angular/material/button';
 import { MatIcon } from '@angular/material/icon';
 
 @Component({
-  selector: 'app-bouton-retour',
+  selector: 'app-back-button',
   imports: [
     MatButton,
     MatIcon
   ],
-  templateUrl: './bouton-retour.html',
-  styleUrl: './bouton-retour.css',
+  templateUrl: './back-button.html',
+  styleUrl: './back-button.css',
 })
-export class BoutonRetour {
+export class BackButton {
 
   goBack() {
       window.history.back();

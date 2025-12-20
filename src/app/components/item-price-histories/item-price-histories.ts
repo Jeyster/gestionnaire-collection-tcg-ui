@@ -13,7 +13,7 @@ import { UserService } from '../../services/user-service';
 import { UserItemService } from '../../services/user-item-service';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
-import { BoutonRetour } from '../shared/bouton-retour/bouton-retour';
+import { BackButton } from '../shared/back-button/back-button';
 
 @Component({
   selector: 'app-item-price-histories',
@@ -22,7 +22,7 @@ import { BoutonRetour } from '../shared/bouton-retour/bouton-retour';
     CommonModule,
     MatButtonModule,
     MatIconModule,
-    BoutonRetour
+    BackButton
   ],
   templateUrl: './item-price-histories.html',
   styleUrls: [
