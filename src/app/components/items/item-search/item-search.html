@@ -1,7 +1,7 @@
 <h1>Recherche d’items</h1>
 
-<div class="item-search-filters">
-  <app-item-search-filters (searchFilters)="onSearch($event)"/>
+<div *ngIf="filters$ | async as filters" class="item-search-filters">
+  <app-item-search-filters [filters]="filters" (searchFilters)="onSearch($event)"/>
 </div>
 
 

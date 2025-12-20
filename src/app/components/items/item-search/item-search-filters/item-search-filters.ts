@@ -1,10 +1,10 @@
 import { CommonModule } from "@angular/common";
 import { Component, Output, EventEmitter, Input, inject } from "@angular/core";
-import { ReactiveFormsModule, FormBuilder, FormGroup } from "@angular/forms";
+import { ReactiveFormsModule, FormBuilder } from "@angular/forms";
 import { MatButton } from "@angular/material/button";
-import { MatCard, MatCardActions, MatCardTitle } from "@angular/material/card";
+import { MatCard, MatCardActions } from "@angular/material/card";
 import { MatFormField } from "@angular/material/form-field";
-import {MatSelectModule} from '@angular/material/select';
+import { MatSelectModule } from '@angular/material/select';
 import { MatIcon } from "@angular/material/icon";
 import { GameService } from "../../../../services/game-service";
 import { ItemTypeService } from "../../../../services/item-type-service";
@@ -28,17 +28,26 @@ import { LocaleService } from "../../../../services/locale-service";
     MatIcon, 
     MatCard,
     MatCardActions,
-    MatSelectModule,
-    MatCardTitle
+    MatSelectModule
   ],
-  templateUrl: './item-search-filters.html'
+  templateUrl: './item-search-filters.html',
+  styleUrls: ['./item-search-filters.css']
 })
 export class ItemSearchFilters {
+
+  @Input({ required: true })
+  set filters(value: ItemSearchFiltersDto) {
+    this.form.patchValue(value);
+  }
 
   @Output()
   searchFilters = new EventEmitter<ItemSearchFiltersDto>();
 
   private fb = inject(FormBuilder);
+  private gameService = inject(GameService);
+  private itemTypeService = inject(ItemTypeService);
+  private localeService = inject(LocaleService);
+  private expansionService = inject(ExpansionService);
 
   protected form = this.fb.group<ItemSearchFiltersDto>({
     gameId: null,
@@ -47,25 +56,12 @@ export class ItemSearchFilters {
     expansionId: null
   });
 
-  protected games$: Observable<Game[]>;
-  protected itemTypes$: Observable<ItemType[]>;
-  protected locales$: Observable<Locale[]>;
-  protected expansions$: Observable<Expansion[]>;
-  
-  constructor(
-    private gameService: GameService,
-    private itemTypeService: ItemTypeService,
-    private localeService: LocaleService,
-    private expansionService: ExpansionService
-  ) {
-    this.games$ = this.gameService.getGames();
-    this.itemTypes$ = this.itemTypeService.getItemTypes();
-    this.locales$ = this.localeService.getLocales();
-    this.expansions$ = this.expansionService.getExpansions();
-    
-  }
+  protected games$ = this.gameService.getGames();
+  protected itemTypes$ = this.itemTypeService.getItemTypes();
+  protected locales$ = this.localeService.getLocales();
+  protected expansions$ = this.expansionService.getExpansions();
 
-  search() {
-    this.searchFilters.emit(this.form.value);
+  protected search() {
+    this.searchFilters.emit(this.form.getRawValue());
   }
 }

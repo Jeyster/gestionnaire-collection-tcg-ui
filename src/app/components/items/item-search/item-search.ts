@@ -15,7 +15,8 @@ import { ActivatedRoute, Router } from "@angular/router";
     ItemSearchFilters, 
     ItemSearchResults
   ],
-  templateUrl: './item-search.html'
+  templateUrl: './item-search.html',
+  styleUrls: ['./item-search.css']
 })
 export class ItemSearch {
 
@@ -23,7 +24,7 @@ export class ItemSearch {
   private router = inject(Router);
   private itemService = inject(ItemService);
 
-  private filters$ = this.route.queryParams.pipe(
+  protected filters$ = this.route.queryParams.pipe(
     map(params => ({
       gameId: params['gameId'] ? +params['gameId'] : null,
       itemTypeId: params['itemTypeId'] ? +params['itemTypeId'] : null,
