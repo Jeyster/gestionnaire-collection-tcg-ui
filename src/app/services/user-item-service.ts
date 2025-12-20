@@ -4,6 +4,7 @@ import { UserItem } from '../interfaces/user-item';
 import { AddUserItem } from '../interfaces/add-user-item';
 import { SellUserItem } from '../interfaces/sell-user-item';
 import { OpenUserItem } from '../interfaces/open-user-item';
+import { EditUserItem } from '../interfaces/edit-user-item';
 
 @Injectable({
   providedIn: 'root'
@@ -25,6 +26,13 @@ export class UserItemService {
     );
   }
   
+  editUserItem(id: string, editUserItem: EditUserItem) {
+    return this.http.put(
+      '/gestionnaire-collection-tcg/v1/user-items/' + id, 
+      editUserItem
+    );
+  }
+
   sellUserItem(id: string, sellUserItem: SellUserItem) {
     return this.http.put(
       '/gestionnaire-collection-tcg/v1/user-items/' + id + '/sell', 

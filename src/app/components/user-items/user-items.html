@@ -22,6 +22,7 @@
   <div *ngFor="let userItem of userItems">
     <app-user-item-card 
     [userItem]="userItem" 
+    (edit)="onEdit($event.userItemId, $event.editUserItem)"
     (sell)="onSell($event.userItemId, $event.sellUserItem)"
     (open)="onOpen($event.userItemId, $event.openUserItem)"
     (duplicate)="onDuplicate($event)"

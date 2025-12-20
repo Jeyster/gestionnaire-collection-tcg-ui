@@ -17,6 +17,7 @@ import { AddUserItem } from '../../interfaces/add-user-item';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { BackButton } from '../shared/back-button/back-button';
+import { EditUserItem } from '../../interfaces/edit-user-item';
 
 @Component({
   selector: 'app-user-items',
@@ -30,7 +31,6 @@ import { BackButton } from '../shared/back-button/back-button';
   templateUrl: './user-items.html',
   styleUrls: [
     './user-items.css',
-    '../../shared/css/cards-grid.css',
     '../../shared/css/page.css'
   ],
   standalone: true
@@ -89,6 +89,12 @@ export class UserItems {
       this.userItemService.addUserItem(result).subscribe(() => {
         this.reload$.next(); // 🔥 RAFRAÎCHISSEMENT GARANTI
       });
+    });
+  }
+
+  onEdit(userItemId: number, editUserItem: EditUserItem) {
+    this.userItemService.editUserItem(String(userItemId), editUserItem).subscribe(() => {
+      this.reload$.next();
     });
   }
 

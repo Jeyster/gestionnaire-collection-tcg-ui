@@ -10,3 +10,9 @@ button.mat-mdc-outlined-button.add-item-button {
 button.mat-mdc-outlined-button.add-item-button mat-icon {
   color: #334155;
 }
+
+.cards-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 16px;
+}
