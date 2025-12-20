@@ -3,7 +3,9 @@
     <mat-card-title>{{itemType.name}}</mat-card-title>
   </mat-card-header>
   <mat-card-actions>
-    <button mat-button [routerLink]="['/games', gameId, 'item-types', itemType.id, 'items']">
+    <button mat-button 
+    [routerLink]="['/items']"
+    [queryParams]="{ gameId: gameId, itemTypeId: itemType.id }">
       <mat-icon>visibility</mat-icon>
       Voir items
     </button>

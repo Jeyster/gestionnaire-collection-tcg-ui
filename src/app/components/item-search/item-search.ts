@@ -6,12 +6,14 @@ import { ItemSearchFilters } from "./item-search-filters/item-search-filters";
 import { ItemSearchResults } from "./item-search-results/item-search-results";
 import { ItemSearchFiltersDto } from "./item-search-filters-dto";
 import { ActivatedRoute, Router } from "@angular/router";
+import { BackButton } from "../shared/back-button/back-button";
 
 @Component({
   selector: 'app-item-search',
   standalone: true,
   imports: [
-    CommonModule, 
+    CommonModule,
+    BackButton,
     ItemSearchFilters, 
     ItemSearchResults
   ],

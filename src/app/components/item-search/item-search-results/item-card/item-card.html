@@ -7,13 +7,13 @@
   </mat-card-content>
   <mat-card-actions>
     <button mat-button
-            [routerLink]="['/games', item.game.id, 'item-types', item.itemType.id, 'items', item.id, 'user-items']">
+            [routerLink]="['/items', item.id, 'user-items']">
       <mat-icon>inventory</mat-icon>
       Mes Items
     </button>
 
     <button mat-button
-            [routerLink]="['/games', item.game.id, 'item-types', item.itemType.id, 'items', item.id, 'price-histories']">
+            [routerLink]="['/items', item.id, 'price-histories']">
       <mat-icon>show_chart</mat-icon>
       Historique CM
     </button>

@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { Item } from '../../../interfaces/item';
-import { ItemCard } from '../../items/item-card/item-card';
+import { ItemCard } from './item-card/item-card';
 import { CommonModule } from '@angular/common';
 
 @Component({
