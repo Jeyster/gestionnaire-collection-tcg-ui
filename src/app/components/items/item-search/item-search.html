@@ -1,10 +1,18 @@
-<h1>Recherche d’items</h1>
+<h2>Recherche d’items</h2>
 
-<div class="item-search-filters">
-  <app-item-search-filters (searchFilters)="onSearch($event)"/>
+<div class="item-search-filters" *ngIf="filters$ | async as filters">
+  <app-item-search-filters 
+  [filters]="filters"
+  [games]="games$ | async"
+  [itemTypes]="itemTypes$ | async"
+  [locales]="locales$ | async"
+  [expansions]="expansions$ | async"
+  (searchFilters)="onSearch($event)"
+  (gameChange)="onGameChange($event)"
+  />
 </div>
 
 
 <div *ngIf="items$ | async as items" class="item-search-results">
-  <app-item-search-results *ngIf="items" [items]="items"/>
+  <app-item-search-results [items]="items"/>
 </div>

@@ -1,15 +1,13 @@
 <form [formGroup]="form" (ngSubmit)="search()">
 
   <mat-card class="filters-card">
-    <mat-card-title>Filtres</mat-card-title>
-
     <div class="filters-grid">
 
       <mat-form-field appearance="outline">
         <mat-label>Jeu</mat-label>
-        <mat-select formControlName="gameId">
+        <mat-select formControlName="gameId" (selectionChange)="onGameChange($event.value)">
           <mat-option [value]="null">Tous</mat-option>
-          <mat-option *ngFor="let game of games$ | async" [value]="game.id">
+          <mat-option *ngFor="let game of games" [value]="game.id">
             {{ game.name }}
           </mat-option>
         </mat-select>
@@ -19,7 +17,7 @@
         <mat-label>Type d’item</mat-label>
         <mat-select formControlName="itemTypeId">
           <mat-option [value]="null">Tous</mat-option>
-          <mat-option *ngFor="let type of itemTypes$ | async" [value]="type.id">
+          <mat-option *ngFor="let type of itemTypes" [value]="type.id">
             {{ type.name }}
           </mat-option>
         </mat-select>
@@ -29,7 +27,7 @@
         <mat-label>Langue</mat-label>
         <mat-select formControlName="localeId">
           <mat-option [value]="null">Toutes</mat-option>
-          <mat-option *ngFor="let locale of locales$ | async" [value]="locale.id">
+          <mat-option *ngFor="let locale of locales" [value]="locale.id">
             {{ locale.name }}
           </mat-option>
         </mat-select>
@@ -39,7 +37,7 @@
         <mat-label>Extension</mat-label>
         <mat-select formControlName="expansionId">
           <mat-option [value]="null">Toutes</mat-option>
-          <mat-option *ngFor="let exp of expansions$ | async" [value]="exp.id">
+          <mat-option *ngFor="let exp of expansions" [value]="exp.id">
             {{ exp.name }}
           </mat-option>
         </mat-select>

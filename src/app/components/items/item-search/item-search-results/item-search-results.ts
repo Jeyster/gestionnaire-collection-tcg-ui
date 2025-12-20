@@ -10,14 +10,14 @@ import { CommonModule } from '@angular/common';
     ItemCard
   ],
   templateUrl: './item-search-results.html',
-  styleUrl: './item-search-results.css',
+  styleUrls: ['./item-search-results.css']
 })
 export class ItemSearchResults {
 
   @Input({ required: true })
   items: Item[] = [];
 
-  trackByItemId(index: number, item: Item): number {
+  protected trackByItemId(index: number, item: Item): number {
     return item.id;
   }
 

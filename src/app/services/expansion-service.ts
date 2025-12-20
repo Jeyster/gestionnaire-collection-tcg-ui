@@ -13,4 +13,11 @@ export class ExpansionService {
     return this.http.get<Expansion[]>('/gestionnaire-collection-tcg/v1/expansions');
   }
 
+  getExpansionsByGame(gameId: string) {
+    if (gameId === "") {
+      return this.http.get<Expansion[]>('/gestionnaire-collection-tcg/v1/expansions');
+    }
+    return this.http.get<Expansion[]>('/gestionnaire-collection-tcg/v1/games/' + gameId + '/expansions');
+  }
+
 }
