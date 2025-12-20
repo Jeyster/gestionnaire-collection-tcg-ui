@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Item } from '../interfaces/item';
 import { PriceHistory } from '../interfaces/price-history';
-import { ItemSearchFiltersDto } from '../components/items/item-search/item-search-filters-dto';
+import { ItemSearchFiltersDto } from '../components/item-search/item-search-filters-dto';
 
 @Injectable({
   providedIn: 'root'

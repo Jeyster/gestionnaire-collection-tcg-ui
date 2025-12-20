@@ -16,11 +16,13 @@ import { OpenUserItem } from '../../interfaces/open-user-item';
 import { AddUserItem } from '../../interfaces/add-user-item';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
+import { BoutonRetour } from '../shared/bouton-retour/bouton-retour';
 
 @Component({
   selector: 'app-user-items',
   imports: [
-    CommonModule, 
+    CommonModule,
+    BoutonRetour, 
     UserItemCard,
     MatButtonModule,
     MatIconModule

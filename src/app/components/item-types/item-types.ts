@@ -9,14 +9,16 @@ import { Game } from '../../interfaces/game';
 import { GameService } from '../../services/game-service';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
+import { BoutonRetour } from '../shared/bouton-retour/bouton-retour';
 
 @Component({
   selector: 'app-item-types',
   imports: [
     CommonModule, 
-    ItemTypeCard,
     MatButtonModule,
-    MatIconModule
+    MatIconModule,
+    BoutonRetour,
+    ItemTypeCard
   ],
   templateUrl: './item-types.html',
   styleUrls: [

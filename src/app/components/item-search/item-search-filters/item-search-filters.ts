@@ -6,11 +6,11 @@ import { MatCardActions } from "@angular/material/card";
 import { MatFormField } from "@angular/material/form-field";
 import { MatSelectModule } from '@angular/material/select';
 import { MatIcon } from "@angular/material/icon";
-import { GameService } from "../../../../services/game-service";
-import { ItemTypeService } from "../../../../services/item-type-service";
+import { GameService } from "../../../services/game-service";
+import { ItemTypeService } from "../../../services/item-type-service";
 import { ItemSearchFiltersDto } from "../item-search-filters-dto";
-import { ExpansionService } from "../../../../services/expansion-service";
-import { LocaleService } from "../../../../services/locale-service";
+import { ExpansionService } from "../../../services/expansion-service";
+import { LocaleService } from "../../../services/locale-service";
 
 @Component({
   selector: 'app-item-search-filters',

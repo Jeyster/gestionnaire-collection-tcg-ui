@@ -1,7 +1,7 @@
 import { CommonModule } from "@angular/common";
 import { Component, inject } from "@angular/core";
 import { map, switchMap } from "rxjs";
-import { ItemService } from "../../../services/item-service";
+import { ItemService } from "../../services/item-service";
 import { ItemSearchFilters } from "./item-search-filters/item-search-filters";
 import { ItemSearchResults } from "./item-search-results/item-search-results";
 import { ItemSearchFiltersDto } from "./item-search-filters-dto";
@@ -18,7 +18,7 @@ import { ActivatedRoute, Router } from "@angular/router";
   templateUrl: './item-search.html',
   styleUrls: [
     './item-search.css',
-    '../../../shared/css/page.css'
+    '../../shared/css/page.css'
   ]
 })
 export class ItemSearch {

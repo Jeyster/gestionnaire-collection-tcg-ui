@@ -11,14 +11,16 @@ import { ItemType } from '../../interfaces/item-type';
 import { ItemTypeService } from '../../services/item-type-service';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
+import { BoutonRetour } from '../shared/bouton-retour/bouton-retour';
 
 @Component({
   selector: 'app-items',
   imports: [
     CommonModule, 
-    ItemCard,
     MatButtonModule,
-    MatIconModule
+    MatIconModule,
+    BoutonRetour,
+    ItemCard
   ],
   templateUrl: './items.html',
   styleUrls: [
