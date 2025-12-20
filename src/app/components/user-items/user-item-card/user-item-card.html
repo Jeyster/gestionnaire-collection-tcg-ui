@@ -1,57 +1,128 @@
-<mat-card class="example-card" appearance="outlined" 
-[ngClass]="{
+<mat-card
+  class="example-card"
+  appearance="outlined"
+  [ngClass]="{
     sold: userItem.sellingPrice,
     opened: !userItem.sellingPrice && userItem.sellingOrOpeningDate
-  }">
-  <mat-card-header>
-    <mat-card-title></mat-card-title>
-    <mat-card-subtitle></mat-card-subtitle>
-  </mat-card-header>
-  <mat-card-content>
-    <div>Prix d'achat : {{userItem.purchasePrice}}</div>
-    <div>Date d'achat : {{userItem.purchaseDate | date:'dd/MM/yyyy'}}</div>
-    <div *ngIf="userItem.purchaseComment">{{userItem.purchaseComment}}</div>
+  }"
+>
 
+  <mat-card-content>
+
+    <!-- ACHAT -->
+    <div class="event-line purchase">
+      <mat-icon>shopping_cart</mat-icon>
+
+      <span class="event-title">Achat</span>
+
+      <span class="event-price">
+        {{ userItem.purchasePrice }}€
+      </span>
+
+      <span class="event-date">
+        le {{ userItem.purchaseDate | date:'dd/MM/yyyy' }}
+      </span>
+    </div>
+
+    <div
+      class="event-comment"
+      *ngIf="userItem.purchaseComment">
+      "{{ userItem.purchaseComment }}"
+    </div>
+
+    <!-- VENTE -->
     @if (userItem.sellingPrice) {
-      <div>
-        Prix de vente : {{userItem.sellingPrice}}
+      <div class="event-line sell">
+        <mat-icon>sell</mat-icon>
+
+        <span class="event-title">Vente</span>
+
+        <span class="event-price">
+          {{ userItem.sellingPrice }}€
+        </span>
+
+        <span class="event-date">
+          le {{ userItem.sellingOrOpeningDate | date:'dd/MM/yyyy' }}
+        </span>
       </div>
-      <div>
-        Date de la vente : {{userItem.sellingOrOpeningDate | date:'dd/MM/yyyy'}}
-      </div>
-    } @else if (userItem.sellingOrOpeningDate) {
-      <div>
-        Date d'ouverture : {{userItem.sellingOrOpeningDate | date:'dd/MM/yyyy'}}
+
+      <div
+        class="event-comment"
+        *ngIf="userItem.sellingOrOpeningComment">
+        "{{ userItem.sellingOrOpeningComment }}"
       </div>
     }
-    <div *ngIf="userItem.sellingOrOpeningComment">{{userItem.sellingOrOpeningComment}}</div>
+
+    <!-- OUVERTURE -->
+    @else if (userItem.sellingOrOpeningDate) {
+      <div class="event-line open">
+        <mat-icon>lock_open</mat-icon>
+
+        <span class="event-title">Ouverture</span>
+
+        <span class="event-date">
+          le {{ userItem.sellingOrOpeningDate | date:'dd/MM/yyyy' }}
+        </span>
+      </div>
+
+      <div
+        class="event-comment"
+        *ngIf="userItem.sellingOrOpeningComment">
+        "{{ userItem.sellingOrOpeningComment }}"
+      </div>
+    }
 
   </mat-card-content>
-  <mat-card-actions>
-    <button mat-button *ngIf="!userItem.sellingOrOpeningDate" (click)="onEdit()">
-      <mat-icon>edit</mat-icon>
-      Modifier
-    </button>
 
-    <button mat-button *ngIf="!userItem.sellingOrOpeningDate" (click)="onSell()">
+  <mat-card-actions class="actions">
+
+    <button
+      mat-button
+      *ngIf="!userItem.sellingOrOpeningDate"
+      (click)="onSell()"
+      matTooltip="Vendre"
+      class="icon-action">
       <mat-icon>sell</mat-icon>
-      Vendre
     </button>
 
-    <button mat-button *ngIf="!userItem.sellingOrOpeningDate" (click)="onOpen()">
+    <button
+      mat-button
+      *ngIf="!userItem.sellingOrOpeningDate"
+      (click)="onOpen()"
+      matTooltip="Ouvrir"
+      class="icon-action">
       <mat-icon>lock_open</mat-icon>
-      Ouvrir
+    </button>
+    
+    <span class="actions-spacer"></span>
+
+    <button
+      mat-button
+      *ngIf="!userItem.sellingOrOpeningDate"
+      (click)="onEdit()"
+      matTooltip="Modifier"
+      class="icon-action">
+      <mat-icon>edit</mat-icon>
     </button>
 
-    <button mat-button *ngIf="!userItem.sellingOrOpeningDate" (click)="onDuplicate()">
+    <button
+      mat-button
+      *ngIf="!userItem.sellingOrOpeningDate"
+      (click)="onDuplicate()"
+      matTooltip="Dupliquer"
+      class="icon-action">
       <mat-icon>content_copy</mat-icon>
-      Dupliquer
+    </button>
+    
+    <button
+      mat-button
+      (click)="onDelete()"
+      matTooltip="Supprimer"
+      class="icon-action">
+      <mat-icon>delete</mat-icon>
     </button>
 
-    <button mat-button color="warn" (click)="onDelete()">
-      <mat-icon>delete</mat-icon>
-      Supprimer
-    </button>
   </mat-card-actions>
+
 </mat-card>
 

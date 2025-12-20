@@ -8,9 +8,8 @@ import { ConfirmDialog } from '../../utils/confirm-dialog/confirm-dialog';
 import { SellUserItemDialog } from '../sell-user-item-dialog/sell-user-item-dialog';
 import { OpenUserItemDialog } from '../open-user-item-dialog/open-user-item-dialog';
 import { AddUserItem } from '../../../interfaces/add-user-item';
-import { MatIconModule } from '@angular/material/icon';
-import { SellUserItem } from '../../../interfaces/sell-user-item';
-import { OpenUserItem } from '../../../interfaces/open-user-item';
+import { MatIcon } from '@angular/material/icon';
+import {MatTooltipModule} from '@angular/material/tooltip';
 import { EditUserItemDialog } from '../dialogs/edit-user-item-dialog/edit-user-item-dialog';
 
 @Component({
@@ -19,7 +18,8 @@ import { EditUserItemDialog } from '../dialogs/edit-user-item-dialog/edit-user-i
     CommonModule, 
     MatCardModule, 
     MatButtonModule,
-    MatIconModule
+    MatIcon,
+    MatTooltipModule
   ],
   templateUrl: './user-item-card.html',
   styleUrls: [

@@ -8,14 +8,101 @@ mat-card-content div:last-child {
 }
 
 mat-card.sold {
-  border-left: 5px solid #22c55e;
+  border-right: 5px solid #22c55e;
 }
 
 mat-card.opened {
-  border-left: 5px solid #f59e0b;
+  border-right: 5px solid #f59e0b;
 }
 
-mat-card:not(.sold):not(.opened) {
+mat-card{
   border-left: 5px solid #38bdf8;
+}
+
+.event-line {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.9rem;
+  margin-bottom: 2px;
+}
+
+.event-line mat-icon {
+  font-size: 18px;
+  opacity: 0.8;
+}
+
+.event-title {
+  font-weight: 600;
+}
+
+.event-price {
+  font-weight: 600;
+}
+
+.event-date {
+  color: #475569;
+  font-size: 0.85rem;
+}
+
+/* Couleurs par type d'événement */
+.event-line.purchase mat-icon {
+  color: #38bdf8;
+}
+
+.event-line.sell mat-icon {
+  color: #22c55e;
+}
+
+.event-line.open mat-icon {
+  color: #f59e0b;
+}
+
+/* Commentaires */
+.event-comment {
+  font-style: italic;
+  color: #475569;
+  margin: 2px 0 8px 24px;
+  font-size: 0.85rem;
+}
+
+mat-card-actions.actions {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 4px;
+  padding-top: 4px;
+}
+
+mat-card-actions.actions button {
+  width: 36px;
+  height: 36px;
+}
+
+mat-card-actions.actions mat-icon {
+  font-size: 20px;
+}
+
+/* Séparation visuelle avant l'action destructive */
+.actions-spacer {
+  flex: 1;
+}
+
+/* Boutons icône compacts */
+.icon-action {
+  min-width: 36px;
+  padding: 4px 6px;
+  line-height: 1;
+}
+
+/* Icône bien centrée */
+.icon-action mat-icon {
+  font-size: 20px;
+  margin: 0;
+}
+
+/* Hover plus discret */
+.icon-action:hover {
+  background-color: rgba(0, 0, 0, 0.04);
 }
 
