@@ -1,7 +1,8 @@
 <div class="results-grid" *ngIf="items.length; else empty">
   <app-item-card
     *ngFor="let item of items; trackBy: trackByItemId"
-    [item]="item">
+    [item]="item"
+    class="results-card">
   </app-item-card>
 </div>
 

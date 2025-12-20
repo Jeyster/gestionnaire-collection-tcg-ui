@@ -4,6 +4,21 @@
   gap: 16px;
 }
 
+.results-card {
+  animation: fadeIn 0.2s ease-in;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 .empty-state {
   text-align: center;
   color: #6b7280;
