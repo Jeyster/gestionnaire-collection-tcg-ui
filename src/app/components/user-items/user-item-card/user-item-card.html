@@ -10,6 +10,7 @@
   <mat-card-content>
     <div>Prix d'achat : {{userItem.purchasePrice}}</div>
     <div>Date d'achat : {{userItem.purchaseDate | date:'dd/MM/yyyy'}}</div>
+    <div *ngIf="userItem.purchaseComment">{{userItem.purchaseComment}}</div>
 
     @if (userItem.sellingPrice) {
       <div>
@@ -23,8 +24,8 @@
         Date d'ouverture : {{userItem.sellingOrOpeningDate | date:'dd/MM/yyyy'}}
       </div>
     }
+    <div *ngIf="userItem.sellingOrOpeningComment">{{userItem.sellingOrOpeningComment}}</div>
 
-    <div *ngIf="userItem.comment">{{userItem.comment}}</div>
   </mat-card-content>
   <mat-card-actions>
     <button mat-button *ngIf="!userItem.sellingOrOpeningDate" (click)="onSell()">

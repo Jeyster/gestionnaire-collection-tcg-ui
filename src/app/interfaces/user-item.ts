@@ -7,7 +7,8 @@ export interface UserItem {
     item: Item,
     purchasePrice: number,
     purchaseDate: Date,
+    purchaseComment: string,
     sellingPrice: number,
     sellingOrOpeningDate: Date,
-    comment: string
+    sellingOrOpeningComment: string
 }

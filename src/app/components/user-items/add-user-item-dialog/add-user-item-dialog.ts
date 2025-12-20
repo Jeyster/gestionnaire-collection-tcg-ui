@@ -44,7 +44,7 @@ export class AddUserItemDialog {
       this.form = this.fb.group({
         purchasePrice: [null, [Validators.required, Validators.min(0)]],
         purchaseDate: [null, Validators.required],
-        comment: ['']
+        purchaseComment: [null]
       }); 
   }
 
@@ -58,7 +58,7 @@ export class AddUserItemDialog {
       itemId: this.data.itemId,
       purchasePrice: value.purchasePrice!,
       purchaseDate: this.toLocalISOString(value.purchaseDate!), // ✅ ISO
-      comment: value.comment ?? ''
+      purchaseComment: value.purchaseComment ?? ''
     };
 
     this.dialogRef.close(payload);

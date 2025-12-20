@@ -46,8 +46,4 @@ export default class ItemTypes {
     this.itemTypes$ = this.itemTypeService.getItemTypesByGameId(this.gameId);
   }
 
-  retour() {
-    this.router.navigate(['/games']);
-  }
-
 }

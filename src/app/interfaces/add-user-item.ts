@@ -3,5 +3,5 @@ export interface AddUserItem {
     itemId: number,
     purchasePrice: number,
     purchaseDate: string,
-    comment: string
+    purchaseComment: string
 }

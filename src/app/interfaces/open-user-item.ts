@@ -1,4 +1,4 @@
 export interface OpenUserItem {
     openingDate: string,
-    comment: string
+    openingComment: string
 }

@@ -75,7 +75,7 @@ export class UserItemCard {
         itemId: this.userItem.item.id,
         purchasePrice: this.userItem.purchasePrice,
         purchaseDate: String(this.userItem.purchaseDate),
-        comment: this.userItem.comment
+        purchaseComment: this.userItem.purchaseComment
       };
       this.duplicate.emit(addUserItem);
     });

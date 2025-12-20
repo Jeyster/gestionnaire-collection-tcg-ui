@@ -92,10 +92,6 @@ export class UserItems {
     });
   }
 
-  retour() {
-    this.router.navigate(['/games', this.item.game.id, 'item-types', this.item.itemType.id, 'items']);
-  }
-
   onSell(userItemId: number, sellUserItem: SellUserItem) {
     this.userItemService.sellUserItem(String(userItemId), sellUserItem).subscribe(() => {
       this.reload$.next();

@@ -44,7 +44,7 @@ export class OpenUserItemDialog {
   ) {
       this.form = this.fb.group({
         openingDate: [null, Validators.required],
-        comment: [this.data.userItem.comment]
+        openingComment: [null]
       }); 
   }
 
@@ -55,7 +55,7 @@ export class OpenUserItemDialog {
 
     const payload: OpenUserItem = {
       openingDate: this.toLocalISOString(value.openingDate!), // ✅ ISO
-      comment: value.comment ?? ''
+      openingComment: value.openingComment ?? ''
     };
 
     this.dialogRef.close(payload);

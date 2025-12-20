@@ -45,7 +45,7 @@ export class SellUserItemDialog {
       this.form = this.fb.group({
         sellingPrice: [null, [Validators.required, Validators.min(0)]],
         sellingDate: [null, Validators.required],
-        comment: [this.data.userItem.comment]
+        sellingComment: [null]
       }); 
   }
 
@@ -57,7 +57,7 @@ export class SellUserItemDialog {
     const payload: SellUserItem = {
       sellingPrice: value.sellingPrice!,
       sellingDate: this.toLocalISOString(value.sellingDate!), // ✅ ISO
-      comment: value.comment ?? ''
+      sellingComment: value.sellingComment ?? ''
     };
 
     this.dialogRef.close(payload);

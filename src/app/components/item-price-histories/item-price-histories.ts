@@ -189,13 +189,4 @@ export default class ItemPriceHistories {
     return colors[seed % colors.length];
   }
 
-  retour() {
-    this.router.navigate([
-      '/games',
-      this.item.game.id,
-      'item-types',
-      this.item.itemType.id,
-      'items'
-    ]);
-  }
 }

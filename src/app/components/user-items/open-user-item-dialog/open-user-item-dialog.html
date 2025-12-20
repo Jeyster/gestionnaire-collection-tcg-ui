@@ -4,6 +4,7 @@
   <div>
     <p>Prix d'achat : {{ data.userItem.purchasePrice }} €</p>
     <p>Date d'achat : {{ data.userItem.purchaseDate | date:'dd/MM/yyyy' }}</p>
+    <p>{{ data.userItem.purchaseComment }}</p>
   </div>
 </div>
 
@@ -19,7 +20,7 @@
 
     <mat-form-field appearance="fill" class="full-width">
       <mat-label>Commentaire</mat-label>
-      <textarea matInput rows="3" formControlName="comment"></textarea>
+      <textarea matInput rows="3" formControlName="openingComment"></textarea>
     </mat-form-field>
 
   </mat-dialog-content>
