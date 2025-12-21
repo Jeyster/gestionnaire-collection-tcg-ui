@@ -7,12 +7,6 @@
   gap: 16px;
 }
 
-.page-header-left {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-}
-
 .page-title {
   font-size: 1.75rem;
   font-weight: 600;
@@ -32,7 +26,7 @@
   background-color: #e2e8f0;
   border-radius: 12px;
   padding: 2px 8px;
-  font-size: 1.1rem;
+  font-size: 1.3rem;
   font-weight: 500;
   white-space: nowrap;
 }
