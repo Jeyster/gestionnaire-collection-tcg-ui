@@ -10,6 +10,7 @@ import { MatNativeDateModule } from '@angular/material/core';
 import { UserItem } from '../../user-item';
 import { OpenUserItem } from './open-user-item';
 import { MatIconModule } from '@angular/material/icon';
+import { PurchaseEvent } from '../../events/purchase-event/purchase-event';
 
 @Component({
   selector: 'app-open-user-item-dialog',
@@ -24,12 +25,13 @@ import { MatIconModule } from '@angular/material/icon';
     MatNativeDateModule,
     MatDialogActions,
     MatDialogContent,
-    MatIconModule
+    MatIconModule,
+    PurchaseEvent
   ],
   templateUrl: './open-user-item-dialog.html',
   styleUrls: [
     './open-user-item-dialog.css',
-    '../../../../shared/css/dialog.css'
+    '../user-item-dialog.css'
   ]
 })
 export class OpenUserItemDialog {

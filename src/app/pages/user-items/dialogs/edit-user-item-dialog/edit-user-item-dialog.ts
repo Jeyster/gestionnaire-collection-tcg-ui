@@ -29,7 +29,7 @@ import { MatIconModule } from '@angular/material/icon';
   templateUrl: './edit-user-item-dialog.html',
   styleUrls: [
     './edit-user-item-dialog.css',
-    '../../../../shared/css/dialog.css'
+    '../user-item-dialog.css'
   ]
 })
 export class EditUserItemDialog {

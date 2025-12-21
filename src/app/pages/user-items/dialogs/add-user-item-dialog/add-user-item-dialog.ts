@@ -28,7 +28,7 @@ import { MatIconModule } from '@angular/material/icon';
   templateUrl: './add-user-item-dialog.html',
   styleUrls: [
     './add-user-item-dialog.css',
-    '../../../../shared/css/dialog.css'
+    '../user-item-dialog.css'
   ]
 })
 export class AddUserItemDialog {

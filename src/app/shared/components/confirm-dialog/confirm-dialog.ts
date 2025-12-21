@@ -12,8 +12,7 @@ import { MatIconModule } from '@angular/material/icon';
   ],
   templateUrl: './confirm-dialog.html',
   styleUrls: [
-    './confirm-dialog.css',
-    '../../../shared/css/dialog.css'
+    './confirm-dialog.css'
   ],
   standalone: true
 })
