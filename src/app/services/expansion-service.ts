@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Expansion } from '../interfaces/expansion';
+import { Expansion } from '../shared/interfaces/expansion';
 
 @Injectable({
   providedIn: 'root'

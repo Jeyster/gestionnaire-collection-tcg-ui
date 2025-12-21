@@ -1,0 +1,25 @@
+import { Component } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { GameService } from '../../services/game-service';
+import { GameCard } from './game-card/game-card';
+import { Observable } from 'rxjs';
+import { Game } from '../../shared/interfaces/game';
+
+@Component({
+  selector: 'app-games',
+  standalone: true,
+  imports: [CommonModule, GameCard],
+  templateUrl: './games-page.html',
+  styleUrls: [
+    './games-page.css',
+    '../../shared/css/cards-grid.css',
+    '../../shared/css/page.css'
+  ]
+})
+export class GamesPage {
+  protected games$: Observable<Game[]>;
+
+  constructor(private gameService: GameService) {
+    this.games$ = this.gameService.getGames();
+  }
+}

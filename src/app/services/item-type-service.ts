@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { ItemType } from '../interfaces/item-type';
+import { ItemType } from '../shared/interfaces/item-type';
 
 @Injectable({
   providedIn: 'root'

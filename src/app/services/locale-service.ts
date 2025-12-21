@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Locale } from '../interfaces/locale';
+import { Locale } from '../shared/interfaces/locale';
 
 @Injectable({
   providedIn: 'root'

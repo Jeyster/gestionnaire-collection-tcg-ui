@@ -1,8 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Item } from '../interfaces/item';
-import { PriceHistory } from '../interfaces/price-history';
-import { ItemSearchFiltersDto } from '../components/item-search/item-search-filters-dto';
+import { Item } from '../shared/interfaces/item';
+import { ItemPriceHistory } from '../pages/item-price-histories/item-price-history';
+import { ItemSearchFiltersDto } from '../pages/item-search/item-search-filters/item-search-filters-dto';
 
 @Injectable({
   providedIn: 'root'
@@ -33,7 +33,7 @@ export class ItemService {
   }
 
   getPriceHistories(itemId: string) {
-    return this.http.get<PriceHistory[]>('/gestionnaire-collection-tcg/v1/items/' + itemId + '/price-histories');
+    return this.http.get<ItemPriceHistory[]>('/gestionnaire-collection-tcg/v1/items/' + itemId + '/price-histories');
   }
 
 }

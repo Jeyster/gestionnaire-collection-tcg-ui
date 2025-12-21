@@ -1,0 +1,33 @@
+/* --- ADD ITEM BUTTON --- */
+.user-item-buttons {
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 4px;
+  padding-top: 4px;
+}
+
+.user-item-button {
+  border-color: #94a3b8;
+  color: #334155;
+  font-weight: 500;
+  transition: all 0.2s ease;
+}
+
+.user-item-button:hover {
+  background-color: #f1f5f9;
+  border-color: #64748b;
+}
+
+.user-item-button mat-icon {
+  color: #334155;
+  margin-right: 4px;
+}
+
+/* --- CARDS GRID --- */
+.cards-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 16px;
+}

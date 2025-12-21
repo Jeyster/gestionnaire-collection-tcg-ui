@@ -1,15 +1,15 @@
 import { Routes } from '@angular/router';
-import { Games } from './components/games/games';
-import ItemTypes from './components/item-types/item-types';
-import ItemPriceHistories from './components/item-price-histories/item-price-histories';
-import { UserItems } from './components/user-items/user-items';
-import { ItemSearch } from './components/item-search/item-search';
+import { GamesPage } from './pages/games/games-page';
+import ItemTypesPage from './pages/item-types/item-types-page';
+import ItemPriceHistoriesPage from './pages/item-price-histories/item-price-histories-page';
+import { UserItemsPage } from './pages/user-items/user-items-page';
+import { ItemSearchPage } from './pages/item-search/item-search-page';
 
 export const routes: Routes = [
     { path: '', redirectTo: '/games', pathMatch: 'full' },
-    { path: 'games', component: Games},
-    { path: 'games/:game-id/item-types', component: ItemTypes},
-    { path: 'items/:item-id/price-histories', component: ItemPriceHistories },
-    { path: 'items/:item-id/user-items', component: UserItems },
-    { path: 'items', component: ItemSearch}
+    { path: 'games', component: GamesPage},
+    { path: 'games/:game-id/item-types', component: ItemTypesPage},
+    { path: 'items/:item-id/price-histories', component: ItemPriceHistoriesPage },
+    { path: 'items/:item-id/user-items', component: UserItemsPage },
+    { path: 'items', component: ItemSearchPage}
 ];
