@@ -10,6 +10,7 @@ import { MatNativeDateModule } from '@angular/material/core';
 import { UserItem } from '../../user-item';
 import { SellUserItem } from './sell-user-item';
 import { MatIconModule } from '@angular/material/icon';
+import { PurchaseEvent } from '../../events/purchase-event/purchase-event';
 
 @Component({
   selector: 'app-sell-user-item-dialog',
@@ -24,7 +25,8 @@ import { MatIconModule } from '@angular/material/icon';
     MatNativeDateModule,
     MatDialogActions,
     MatDialogContent,
-    MatIconModule
+    MatIconModule,
+    PurchaseEvent
   ],
   templateUrl: './sell-user-item-dialog.html',
   styleUrls: [
