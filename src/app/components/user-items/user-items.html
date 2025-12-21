@@ -29,12 +29,30 @@
 
 </div>
 
-<div class="add-item">
-  <button mat-raised-button class="add-item-button" (click)="openCreateDialog()">
+<div class="user-item-buttons">
+  <button mat-raised-button class="user-item-button" (click)="openCreateDialog()">
     <mat-icon>add</mat-icon>
     Ajouter un item
   </button>
+
+  <span class="actions-spacer"></span>
+
+  <button mat-raised-button
+  class="user-item-button"
+          [routerLink]="['/items', item.id, 'price-histories']">
+    <mat-icon>show_chart</mat-icon>
+    Historique CM
+  </button>
+  
+  <a mat-raised-button 
+  class="user-item-button"
+  href="{{item.url}}" target="_blank">
+    <mat-icon>open_in_new</mat-icon>
+    Lien CM
+  </a>
 </div>
+
+
 
 <div *ngIf="userItems$ | async as userItems" class="cards-grid">
   <div *ngFor="let userItem of userItems">

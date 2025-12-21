@@ -1,6 +1,6 @@
 import { Component, inject } from '@angular/core';
 import { ItemService } from '../../services/item-service';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute, RouterLink } from '@angular/router';
 import { Observable, startWith, Subject, switchMap, tap } from 'rxjs';
 import { Item } from '../../interfaces/item';
 import { UserService } from '../../services/user-service';
@@ -23,10 +23,11 @@ import { EditUserItem } from '../../interfaces/edit-user-item';
   selector: 'app-user-items',
   imports: [
     CommonModule,
-    BackButton, 
-    UserItemCard,
+    RouterLink,
     MatButtonModule,
-    MatIconModule
+    MatIconModule,
+    BackButton, 
+    UserItemCard
   ],
   templateUrl: './user-items.html',
   styleUrls: [
@@ -36,7 +37,6 @@ import { EditUserItem } from '../../interfaces/edit-user-item';
 })
 export class UserItems {
 
-  private router = inject(Router);
   private route = inject(ActivatedRoute);
 
   protected user!: User;

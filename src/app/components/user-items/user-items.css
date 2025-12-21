@@ -68,23 +68,28 @@
 }
 
 /* --- ADD ITEM BUTTON --- */
-.add-item {
+.user-item-buttons {
   margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 4px;
+  padding-top: 4px;
 }
 
-button.mat-mdc-button-base.add-item-button {
+.user-item-button {
   border-color: #94a3b8;
   color: #334155;
   font-weight: 500;
   transition: all 0.2s ease;
 }
 
-button.mat-mdc-button-base.add-item-button:hover {
+.user-item-button:hover {
   background-color: #f1f5f9;
   border-color: #64748b;
 }
 
-button.mat-mdc-button-base.add-item-button mat-icon {
+.user-item-button mat-icon {
   color: #334155;
   margin-right: 4px;
 }
@@ -94,4 +99,8 @@ button.mat-mdc-button-base.add-item-button mat-icon {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
   gap: 16px;
+}
+
+.actions-spacer {
+  flex: 1;
 }
