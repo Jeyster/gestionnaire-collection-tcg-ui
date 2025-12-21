@@ -1,13 +1,11 @@
 import { Component, ElementRef, ViewChild, inject } from '@angular/core';
-import { Observable, tap, combineLatest } from 'rxjs';
+import { combineLatest } from 'rxjs';
 import { CommonModule } from '@angular/common';
 import { ItemService } from '../../services/item-service';
 import { ItemPriceHistory } from './item-price-history';
-import { ActivatedRoute, Router } from '@angular/router';
-import { Item } from '../../shared/interfaces/item';
+import { ActivatedRoute } from '@angular/router';
 import Chart from 'chart.js/auto';
 import 'chartjs-adapter-date-fns';
-import { User } from '../../shared/interfaces/user';
 import { UserItem } from '../user-items/user-item';
 import { UserService } from '../../services/user-service';
 import { UserItemService } from '../../services/user-item-service';
@@ -34,40 +32,22 @@ import { ItemInfos } from '../../shared/components/item-infos/item-infos';
 })
 export default class ItemPriceHistoriesPage {
 
-  private router = inject(Router);
   private route = inject(ActivatedRoute);
+  private itemService = inject(ItemService);
+  private userService = inject(UserService);
+  private userItemService = inject(UserItemService);
 
-  protected priceHistories$: Observable<ItemPriceHistory[]>;
+  protected user = this.userService.getLoggedUser();
+  protected itemId = this.route.snapshot.paramMap.get('item-id')!;  
 
-  protected itemId!: string;
-  protected item$: Observable<Item>;
-  protected item!: Item;
-  protected user!: User;
-  protected userItems$: Observable<UserItem[]>;
+  protected item$ = this.itemService.getItem(this.itemId);
+  protected priceHistories$ = this.itemService.getPriceHistories(this.itemId);
+  protected userItems$ = this.userItemService.getUserItems(String(this.user.id), this.itemId);
 
   @ViewChild('priceChart', { static: false })
-  priceChartCanvas!: ElementRef<HTMLCanvasElement>;
+  protected priceChartCanvas!: ElementRef<HTMLCanvasElement>;
 
-  chart: any;
-
-  constructor(
-    private itemService: ItemService,
-    private userService: UserService,
-    private userItemService: UserItemService
-  ) {
-    this.itemId = this.route.snapshot.paramMap.get('item-id')!;
-    this.priceHistories$ = this.itemService.getPriceHistories(this.itemId);
-
-    this.item$ = this.itemService.getItem(this.itemId)
-      .pipe(
-        tap(item => {
-          this.item = item;
-        })
-      );
-    
-    this.user = this.userService.getLoggedUser();
-    this.userItems$ = this.userItemService.getUserItems(String(this.user.id), this.itemId);
-  }
+  private chart: any;
 
   ngAfterViewInit() {
     // On crée le graph lorsque les données arrivent
