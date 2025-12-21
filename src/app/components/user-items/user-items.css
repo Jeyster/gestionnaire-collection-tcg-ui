@@ -1,16 +1,95 @@
-.add-item {
-    margin-bottom: 16px;
+/* --- PAGE HEADER --- */
+.page-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 20px;
+  gap: 16px;
 }
 
-button.mat-mdc-outlined-button.add-item-button {
+.page-header-left {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.page-title {
+  font-size: 1.75rem;
+  font-weight: 600;
+  margin: 0;
+  color: #0f172a;
+}
+
+/* INFO BADGES */
+.item-info {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  color: #334155;
+}
+
+.item-info .badge {
+  background-color: #e2e8f0;
+  border-radius: 12px;
+  padding: 2px 8px;
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+.item-info .game {
+  background-color: #38bdf8; 
+  color: #0f172a;
+}
+
+.item-info .item-type {
+  background-color: #a5f3fc; 
+  color: #0f172a;
+}
+
+.item-info .expansion {
+  background-color: #c7d2fe; 
+  color: #1e3a8a;
+}
+
+.item-info .complement {
+  background-color: #fef9c3; 
+  color: #78350f;
+}
+
+.item-info .locale {
+  background-color: #f0fdf4; 
+  color: #166534;
+}
+
+/* PAGE HEADER RIGHT */
+.page-header-right {
+  display: flex;
+  align-items: center;
+}
+
+/* --- ADD ITEM BUTTON --- */
+.add-item {
+  margin-bottom: 20px;
+}
+
+button.mat-mdc-button-base.add-item-button {
   border-color: #94a3b8;
   color: #334155;
+  font-weight: 500;
+  transition: all 0.2s ease;
 }
 
-button.mat-mdc-outlined-button.add-item-button mat-icon {
+button.mat-mdc-button-base.add-item-button:hover {
+  background-color: #f1f5f9;
+  border-color: #64748b;
+}
+
+button.mat-mdc-button-base.add-item-button mat-icon {
   color: #334155;
+  margin-right: 4px;
 }
 
+/* --- CARDS GRID --- */
 .cards-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));

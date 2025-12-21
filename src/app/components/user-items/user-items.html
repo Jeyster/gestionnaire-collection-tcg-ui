@@ -1,18 +1,36 @@
 <div class="page-header">
-  <div>
-    <h2>Mes Items</h2>
-    
-    <div *ngIf="item$ | async as item">
-      {{item.game.name}} - {{item.itemType.name}} {{item.expansion.name}}
-      {{item.complement}} ({{item.locale.name}})
+
+  <div class="page-header-left">
+
+    <div class="page-title">Mes Items</div>
+
+    <div *ngIf="item$ | async as item" class="item-info">
+
+      <span class="badge game">{{ item.game.name }}</span>
+      <span class="badge item-type">{{ item.itemType.name }}</span>
+
+      <span class="badge expansion" *ngIf="item.expansion.name !== 'Autre'">
+        {{ item.expansion.name }}
+      </span>
+
+      <span class="badge complement" *ngIf="item.complement">
+        {{ item.complement }}
+      </span>
+
+      <span class="badge locale">{{ item.locale.name }}</span>
+
     </div>
+
   </div>
 
-  <app-back-button/>
+  <div class="page-header-right">
+    <app-back-button/>
+  </div>
+
 </div>
 
 <div class="add-item">
-  <button mat-stroked-button class="add-item-button" (click)="openCreateDialog()">
+  <button mat-raised-button class="add-item-button" (click)="openCreateDialog()">
     <mat-icon>add</mat-icon>
     Ajouter un item
   </button>
@@ -21,12 +39,11 @@
 <div *ngIf="userItems$ | async as userItems" class="cards-grid">
   <div *ngFor="let userItem of userItems">
     <app-user-item-card 
-    [userItem]="userItem" 
-    (edit)="onEdit($event.userItemId, $event.editUserItem)"
-    (sell)="onSell($event.userItemId, $event.sellUserItem)"
-    (open)="onOpen($event.userItemId, $event.openUserItem)"
-    (duplicate)="onDuplicate($event)"
-    (delete)="onDelete($event)"/>
+      [userItem]="userItem" 
+      (edit)="onEdit($event.userItemId, $event.editUserItem)"
+      (sell)="onSell($event.userItemId, $event.sellUserItem)"
+      (open)="onOpen($event.userItemId, $event.openUserItem)"
+      (duplicate)="onDuplicate($event)"
+      (delete)="onDelete($event)"/>
   </div>
 </div>
-

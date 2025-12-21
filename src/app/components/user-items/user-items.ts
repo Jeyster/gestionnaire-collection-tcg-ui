@@ -30,8 +30,7 @@ import { EditUserItem } from '../../interfaces/edit-user-item';
   ],
   templateUrl: './user-items.html',
   styleUrls: [
-    './user-items.css',
-    '../../shared/css/page.css'
+    './user-items.css'
   ],
   standalone: true
 })
