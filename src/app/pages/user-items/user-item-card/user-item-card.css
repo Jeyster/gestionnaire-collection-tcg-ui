@@ -46,6 +46,7 @@ mat-card-actions.actions button {
 
 /* Icône bien centrée */
 .icon-action mat-icon {
+  color: var(--color-icon-basic);
   font-size: 20px;
   margin: 0;
 }

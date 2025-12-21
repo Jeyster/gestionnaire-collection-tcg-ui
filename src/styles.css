@@ -7,7 +7,7 @@
   --color-purchase: #38bdf8;
   --color-sell: #22c55e;
   --color-open: #f59e0b;
-  --color-danger: #ef4444;
+  --color-danger: #c92929;
 
   /* Texte */
   --color-text-muted: #475569;
@@ -15,6 +15,8 @@
 
   /* Surfaces */
   --color-card-bg: #f8fafc;
+
+  --color-icon-basic: #3d3d3d;
 }
 
 /* Background global */
