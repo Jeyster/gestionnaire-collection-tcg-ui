@@ -10,65 +10,71 @@
   <mat-card-content>
 
     <!-- ACHAT -->
-    <div class="event-line purchase">
-      <mat-icon>shopping_cart</mat-icon>
-
-      <span class="event-title">Acheté</span>
-
-      <span class="event-price">
-        {{ userItem.purchasePrice }}€
-      </span>
-
-      <span class="event-date">
-        le {{ userItem.purchaseDate | date:'dd/MM/yyyy' }}
-      </span>
-    </div>
-
-    <div
-      class="event-comment"
-      *ngIf="userItem.purchaseComment">
-      "{{ userItem.purchaseComment }}"
+    <div class="event">
+      <div class="event-line purchase">
+        <mat-icon>shopping_cart</mat-icon>
+  
+        <span class="event-title">Acheté</span>
+  
+        <span class="event-price">
+          {{ userItem.purchasePrice }}€
+        </span>
+  
+        <span class="event-date">
+          le {{ userItem.purchaseDate | date:'dd/MM/yyyy' }}
+        </span>
+      </div>
+  
+      <div
+        class="event-comment"
+        *ngIf="userItem.purchaseComment">
+        "{{ userItem.purchaseComment }}"
+      </div>
     </div>
 
     <!-- VENTE -->
     @if (userItem.sellingPrice) {
-      <div class="event-line sell">
-        <mat-icon>sell</mat-icon>
-
-        <span class="event-title">Vendu</span>
-
-        <span class="event-price">
-          {{ userItem.sellingPrice }}€
-        </span>
-
-        <span class="event-date">
-          le {{ userItem.sellingOrOpeningDate | date:'dd/MM/yyyy' }}
-        </span>
-      </div>
-
-      <div
-        class="event-comment"
-        *ngIf="userItem.sellingOrOpeningComment">
-        "{{ userItem.sellingOrOpeningComment }}"
+      <div class="event">
+        <div class="event-line sell">
+          <mat-icon>sell</mat-icon>
+  
+          <span class="event-title">Vendu</span>
+  
+          <span class="event-price">
+            {{ userItem.sellingPrice }}€
+          </span>
+  
+          <span class="event-date">
+            le {{ userItem.sellingOrOpeningDate | date:'dd/MM/yyyy' }}
+          </span>
+        </div>
+  
+        <div
+          class="event-comment"
+          *ngIf="userItem.sellingOrOpeningComment">
+          "{{ userItem.sellingOrOpeningComment }}"
+        </div>
       </div>
     }
 
     <!-- OUVERTURE -->
     @else if (userItem.sellingOrOpeningDate) {
-      <div class="event-line open">
-        <mat-icon>lock_open</mat-icon>
-
-        <span class="event-title">Ouvert</span>
-
-        <span class="event-date">
-          le {{ userItem.sellingOrOpeningDate | date:'dd/MM/yyyy' }}
-        </span>
-      </div>
-
-      <div
-        class="event-comment"
-        *ngIf="userItem.sellingOrOpeningComment">
-        "{{ userItem.sellingOrOpeningComment }}"
+      <div class="event">
+        <div class="event-line open">
+          <mat-icon>lock_open</mat-icon>
+  
+          <span class="event-title">Ouvert</span>
+  
+          <span class="event-date">
+            le {{ userItem.sellingOrOpeningDate | date:'dd/MM/yyyy' }}
+          </span>
+        </div>
+  
+        <div
+          class="event-comment"
+          *ngIf="userItem.sellingOrOpeningComment">
+          "{{ userItem.sellingOrOpeningComment }}"
+        </div>
       </div>
     }
 
@@ -81,7 +87,7 @@
       *ngIf="!userItem.sellingOrOpeningDate"
       (click)="onSell()"
       matTooltip="Vendre"
-      class="icon-action">
+      class="icon-action sell">
       <mat-icon>sell</mat-icon>
     </button>
 
@@ -90,7 +96,7 @@
       *ngIf="!userItem.sellingOrOpeningDate"
       (click)="onOpen()"
       matTooltip="Ouvrir"
-      class="icon-action">
+      class="icon-action open">
       <mat-icon>lock_open</mat-icon>
     </button>
     

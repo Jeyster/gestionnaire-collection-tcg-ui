@@ -27,6 +27,12 @@ mat-card{
   margin-bottom: 2px;
 }
 
+.event + .event {
+  margin-top: 8px;
+  padding-top: 8px;
+  border-top: 1px solid rgba(0, 0, 0, 0.08);
+}
+
 .event-line mat-icon {
   font-size: 18px;
   opacity: 0.8;
@@ -75,10 +81,6 @@ mat-card-actions.actions button {
   height: 36px;
 }
 
-mat-card-actions.actions mat-icon {
-  font-size: 20px;
-}
-
 /* Séparation visuelle avant l'action destructive */
 .actions-spacer {
   flex: 1;
@@ -95,6 +97,14 @@ mat-card-actions.actions mat-icon {
 .icon-action mat-icon {
   font-size: 20px;
   margin: 0;
+}
+
+.icon-action.sell mat-icon {
+  color: #22c55e;
+}
+
+.icon-action.open mat-icon {
+  color: #f59e0b;
 }
 
 /* Hover plus discret */

@@ -91,7 +91,7 @@ export default class ItemPriceHistoriesPage {
     }
 
     const cmDataset = {
-      label: 'Prix moyen (CM)',
+      label: 'Prix moyen CardMarket',
       data: priceHistories
         .sort((a, b) => new Date(a.createdAt).getTime() - new Date(b.createdAt).getTime())
         .map(h => ({
@@ -175,7 +175,7 @@ export default class ItemPriceHistoriesPage {
           y: {
             title: {
               display: true,
-              text: 'Prix'
+              text: 'Prix (en €)'
             }
           }
         }
