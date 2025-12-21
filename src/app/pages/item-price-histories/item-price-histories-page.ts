@@ -109,7 +109,7 @@ export default class ItemPriceHistoriesPage {
 
       const datasets: any[] = [];
 
-      // 🟢 ACHAT
+      // ACHAT
       if (
         userItem.purchaseDate && 
         userItem.purchasePrice &&
@@ -122,7 +122,7 @@ export default class ItemPriceHistoriesPage {
             x: new Date(userItem.purchaseDate),
             y: userItem.purchasePrice
           }],
-          borderColor: '#16a34a',
+          borderColor: '#38bdf8',
           backgroundColor: color,
           pointStyle: 'triangle',
           pointRadius: 8,
@@ -130,7 +130,7 @@ export default class ItemPriceHistoriesPage {
         });
       }
 
-      // 🔴 VENTE
+      // VENTE
       if (userItem.sellingOrOpeningDate && userItem.sellingPrice) {
         datasets.push({
           label: `Vente Item #${userItem.id}`,
@@ -138,7 +138,7 @@ export default class ItemPriceHistoriesPage {
             x: new Date(userItem.sellingOrOpeningDate),
             y: userItem.sellingPrice
           }],
-          borderColor: '#dc2626',
+          borderColor: '#22c55e',
           backgroundColor: color,
           pointStyle: 'rect',
           pointRadius: 8,

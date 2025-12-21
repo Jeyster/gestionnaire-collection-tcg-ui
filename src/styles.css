@@ -2,6 +2,21 @@
 @import url("app/shared/css/icon.css");
 @import '@angular/material/prebuilt-themes/indigo-pink.css';
 
+:root {
+  /* États */
+  --color-purchase: #38bdf8;
+  --color-sell: #22c55e;
+  --color-open: #f59e0b;
+  --color-danger: #ef4444;
+
+  /* Texte */
+  --color-text-muted: #475569;
+  --color-text-main: #0f172a;
+
+  /* Surfaces */
+  --color-card-bg: #f8fafc;
+}
+
 /* Background global */
 body {
   margin: 0;

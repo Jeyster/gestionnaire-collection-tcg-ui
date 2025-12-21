@@ -7,16 +7,16 @@ mat-card-content div:last-child {
   margin-bottom: 0;
 }
 
+mat-card{
+  border-left: 5px solid var(--color-purchase);
+}
+
 mat-card.sold {
-  border-right: 5px solid #22c55e;
+  border-right: 5px solid var(--color-sell);
 }
 
 mat-card.opened {
-  border-right: 5px solid #f59e0b;
-}
-
-mat-card{
-  border-left: 5px solid #38bdf8;
+  border-right: 5px solid var(--color-open);
 }
 
 .event-line {
@@ -49,15 +49,15 @@ mat-card{
 
 /* Couleurs par type d'événement */
 .event-line.purchase mat-icon {
-  color: #38bdf8;
+  color: var(--color-purchase);
 }
 
 .event-line.sell mat-icon {
-  color: #22c55e;
+  color: var(--color-sell);
 }
 
 .event-line.open mat-icon {
-  color: #f59e0b;
+  color: var(--color-open);
 }
 
 /* Commentaires */
@@ -100,11 +100,11 @@ mat-card-actions.actions button {
 }
 
 .icon-action.sell mat-icon {
-  color: #22c55e;
+  color: var(--color-sell);
 }
 
 .icon-action.open mat-icon {
-  color: #f59e0b;
+  color: var(--color-open);
 }
 
 /* Hover plus discret */
