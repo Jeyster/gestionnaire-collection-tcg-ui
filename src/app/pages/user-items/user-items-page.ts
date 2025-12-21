@@ -18,6 +18,7 @@ import { EditUserItem } from './dialogs/edit-user-item-dialog/edit-user-item';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { BackButton } from '../../shared/components/back-button/back-button';
+import { ItemInfos } from '../../shared/components/item-infos/item-infos';
 
 @Component({
   selector: 'app-user-items',
@@ -26,7 +27,8 @@ import { BackButton } from '../../shared/components/back-button/back-button';
     RouterLink,
     MatButtonModule,
     MatIconModule,
-    BackButton, 
+    BackButton,
+    ItemInfos,
     UserItemCard
   ],
   templateUrl: './user-items-page.html',
