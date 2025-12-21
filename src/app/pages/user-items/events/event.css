@@ -1,0 +1,28 @@
+.event-line {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.9rem;
+  margin-bottom: 2px;
+}
+
+.event-line mat-icon {
+  font-size: 18px;
+  opacity: 0.8;
+}
+
+.event-price {
+  font-weight: 600;
+}
+
+.event-date {
+  color: #475569;
+  font-size: 0.85rem;
+}
+
+.event-comment {
+  font-style: italic;
+  color: #475569;
+  margin: 2px 0 8px 24px;
+  font-size: 0.85rem;
+}

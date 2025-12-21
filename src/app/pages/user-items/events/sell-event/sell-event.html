@@ -1,0 +1,26 @@
+<div class="event">
+
+    <div class="event-line sell">
+
+        <mat-icon>sell</mat-icon>
+
+        <span class="event-title">
+            Vendu
+        </span>
+
+        <span class="event-price">
+            {{ userItem.sellingPrice }}€
+        </span>
+
+        <span class="event-date">
+            le {{ userItem.sellingOrOpeningDate | date:'dd/MM/yyyy' }}
+        </span>
+
+    </div>
+
+    <div class="event-comment"
+        *ngIf="userItem.sellingOrOpeningComment">
+        "{{ userItem.sellingOrOpeningComment }}"
+    </div>
+    
+</div>

@@ -1,12 +1,9 @@
 import { Component, inject } from '@angular/core';
 import { ItemService } from '../../services/item-service';
 import { ActivatedRoute, RouterLink } from '@angular/router';
-import { Observable, startWith, Subject, switchMap, tap } from 'rxjs';
-import { Item } from '../../shared/interfaces/item';
+import { startWith, Subject, switchMap } from 'rxjs';
 import { UserService } from '../../services/user-service';
-import { User } from '../../shared/interfaces/user';
 import { UserItemService } from '../../services/user-item-service';
-import { UserItem } from './user-item';
 import { CommonModule } from '@angular/common';
 import { UserItemCard } from './user-item-card/user-item-card';
 import { MatDialog } from '@angular/material/dialog';
@@ -41,40 +38,25 @@ import { ItemInfos } from '../../shared/components/item-infos/item-infos';
 export class UserItemsPage {
 
   private route = inject(ActivatedRoute);
+  private dialog = inject(MatDialog);
+  private userService = inject(UserService);
+  private itemService = inject(ItemService);
+  private userItemService = inject(UserItemService);
 
-  protected user!: User;
-  protected itemId!: string;
-  protected item$: Observable<Item>;
-  protected item!: Item;
-  protected userItems$: Observable<UserItem[]>;
+  protected user = this.userService.getLoggedUser();
+  protected itemId = this.route.snapshot.paramMap.get('item-id')!;
 
+  protected item$ = this.itemService.getItem(this.itemId);
   private reload$ = new Subject<void>();
-
-  constructor(
-    private userService: UserService,
-    private itemService: ItemService,
-    private userItemService: UserItemService,
-    private dialog: MatDialog
-  ) {
-    this.user = this.userService.getLoggedUser();
-    this.itemId = this.route.snapshot.paramMap.get('item-id')!;
-    this.item$ = this.itemService.getItem(this.itemId)
-      .pipe(
-        tap(item => {
-          this.item = item;
-        })
-      );
-
-    this.userItems$ = this.reload$.pipe(
-      startWith(void 0), // 👈 charge au démarrage
-      switchMap(() =>
-        this.userItemService.getUserItems(
-          String(this.user.id),
-          this.itemId
-        )
+  protected userItems$ = this.reload$.pipe(
+    startWith(void 0), // 👈 charge au démarrage
+    switchMap(() =>
+      this.userItemService.getUserItems(
+        String(this.user.id),
+        this.itemId
       )
-    );
-  }
+    )
+  );
 
   openCreateDialog() {
     const dialogRef = this.dialog.open(AddUserItemDialog, {

@@ -9,6 +9,7 @@ import { CommonModule } from '@angular/common';
   ],
   templateUrl: './item-infos.html',
   styleUrl: './item-infos.css',
+  standalone: true
 })
 export class ItemInfos {
 

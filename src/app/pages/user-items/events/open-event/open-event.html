@@ -1,0 +1,22 @@
+<div class="event">
+
+    <div class="event-line open">
+
+        <mat-icon>lock_open</mat-icon>
+
+        <span class="event-title">
+            Ouvert
+        </span>
+
+        <span class="event-date">
+            le {{ userItem.sellingOrOpeningDate | date:'dd/MM/yyyy' }}
+        </span>
+
+    </div>
+
+    <div class="event-comment"
+        *ngIf="userItem.sellingOrOpeningComment">
+        "{{ userItem.sellingOrOpeningComment }}"
+    </div>
+    
+</div>

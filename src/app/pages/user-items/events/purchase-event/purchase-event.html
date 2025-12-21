@@ -1,0 +1,26 @@
+<div class="event">
+
+    <div class="event-line purchase">
+
+        <mat-icon>shopping_cart</mat-icon>
+
+        <span class="event-title">
+            Acheté
+        </span>
+
+        <span class="event-price">
+            {{ userItem.purchasePrice }}€
+        </span>
+
+        <span class="event-date">
+            le {{ userItem.purchaseDate | date:'dd/MM/yyyy' }}
+        </span>
+
+    </div>
+
+    <div class="event-comment"
+        *ngIf="userItem.purchaseComment">
+        "{{ userItem.purchaseComment }}"
+    </div>
+
+</div>

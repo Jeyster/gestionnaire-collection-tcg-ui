@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, EventEmitter, inject, Input, Output } from '@angular/core';
 import { UserItem } from '../user-item';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
@@ -9,8 +9,11 @@ import { SellUserItemDialog } from '../dialogs/sell-user-item-dialog/sell-user-i
 import { OpenUserItemDialog } from '../dialogs/open-user-item-dialog/open-user-item-dialog';
 import { AddUserItem } from '../dialogs/add-user-item-dialog/add-user-item';
 import { MatIcon } from '@angular/material/icon';
-import {MatTooltipModule} from '@angular/material/tooltip';
+import { MatTooltipModule } from '@angular/material/tooltip';
 import { EditUserItemDialog } from '../dialogs/edit-user-item-dialog/edit-user-item-dialog';
+import { PurchaseEvent } from '../events/purchase-event/purchase-event';
+import { SellEvent } from '../events/sell-event/sell-event';
+import { OpenEvent } from '../events/open-event/open-event';
 
 @Component({
   selector: 'app-user-item-card',
@@ -19,7 +22,10 @@ import { EditUserItemDialog } from '../dialogs/edit-user-item-dialog/edit-user-i
     MatCardModule, 
     MatButtonModule,
     MatIcon,
-    MatTooltipModule
+    MatTooltipModule,
+    PurchaseEvent,
+    SellEvent,
+    OpenEvent
   ],
   templateUrl: './user-item-card.html',
   styleUrls: [
@@ -38,7 +44,7 @@ export class UserItemCard {
   @Output() duplicate = new EventEmitter<AddUserItem>();
   @Output() delete = new EventEmitter<number>();
 
-  constructor (private dialog: MatDialog) {}
+  private dialog = inject(MatDialog);
 
   onEdit() {
     const dialogRef = this.dialog.open(EditUserItemDialog, {

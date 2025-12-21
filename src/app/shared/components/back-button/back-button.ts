@@ -10,6 +10,7 @@ import { MatIcon } from '@angular/material/icon';
   ],
   templateUrl: './back-button.html',
   styleUrl: './back-button.css',
+  standalone: true
 })
 export class BackButton {
 
