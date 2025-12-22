@@ -27,3 +27,9 @@
   margin: 2px 0 8px 24px;
   font-size: 0.85rem;
 }
+
+.second-event {
+  margin-top: 8px;
+  padding-top: 8px;
+  border-top: 1px solid rgba(0, 0, 0, 0.08);
+}

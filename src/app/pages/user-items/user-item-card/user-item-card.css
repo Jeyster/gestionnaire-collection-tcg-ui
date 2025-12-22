@@ -1,12 +1,3 @@
-mat-card-content div {
-  margin-bottom: 4px;
-  font-size: 0.9rem;
-}
-
-mat-card-content div:last-child {
-  margin-bottom: 0;
-}
-
 mat-card.sold {
   border-left: 3px solid var(--color-sell);
 }
@@ -26,11 +17,6 @@ mat-card-actions.actions {
 mat-card-actions.actions button {
   width: 36px;
   height: 36px;
-}
-
-/* Séparation visuelle avant l'action destructive */
-.actions-spacer {
-  flex: 1;
 }
 
 /* Boutons icône compacts */

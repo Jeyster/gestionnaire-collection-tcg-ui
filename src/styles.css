@@ -1,5 +1,4 @@
 /* You can add global styles to this file, and also import other style files */
-@import url("app/shared/css/icon.css");
 @import '@angular/material/prebuilt-themes/indigo-pink.css';
 
 :root {
@@ -31,12 +30,7 @@ body {
   font-family: Roboto, "Helvetica Neue", sans-serif;
 }
 
-
-button.mat-raised-button.mat-primary {
-  background: linear-gradient(135deg, #7c3aed, #a78bfa);
-  color: white;
-}
-
-button.mat-button {
-  color: #7c3aed;
+/* Séparation visuelle */
+.flex-spacer {
+  flex: 1;
 }
