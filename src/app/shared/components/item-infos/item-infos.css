@@ -3,7 +3,20 @@
   display: flex;
   flex-wrap: wrap;
   gap: 6px;
-  color: #334155;
+}
+
+.item-info-line {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.item-info.multiline {
+  flex-direction: column;
+}
+
+.item-info-line.multiline {
+  justify-content: center;
 }
 
 .item-info .badge {
@@ -13,6 +26,10 @@
   font-size: 1.2rem;
   font-weight: 500;
   white-space: nowrap;
+}
+
+.item-info.multiline .badge {
+  font-size: 1.1rem;
 }
 
 .item-info .game {

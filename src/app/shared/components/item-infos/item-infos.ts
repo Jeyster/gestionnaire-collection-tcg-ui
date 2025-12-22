@@ -16,4 +16,7 @@ export class ItemInfos {
   @Input()
   item!: Item;
 
+  @Input() 
+  multiline = false;
+
 }

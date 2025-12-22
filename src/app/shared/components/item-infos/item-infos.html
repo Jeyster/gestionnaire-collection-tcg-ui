@@ -1,8 +1,14 @@
-  <div class="item-info">
+<div class="item-info" [class.multiline]="multiline">
+
+  <div class="item-info-line" [class.multiline]="multiline">
 
     <span class="badge game">{{ item.game.name }}</span>
     <span class="badge item-type">{{ item.itemType.name }}</span>
+  
+  </div>
 
+  <div class="item-info-line" [class.multiline]="multiline">
+  
     <span class="badge expansion" *ngIf="item.expansion.name !== 'Autre'">
       {{ item.expansion.name }}
     </span>
@@ -10,7 +16,13 @@
     <span class="badge complement" *ngIf="item.complement">
       {{ item.complement }}
     </span>
+    
+  </div>
+
+  <div class="item-info-line" [class.multiline]="multiline">
 
     <span class="badge locale">{{ item.locale.name }}</span>
 
   </div>
+
+</div>

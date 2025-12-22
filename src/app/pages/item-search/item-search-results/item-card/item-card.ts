@@ -4,6 +4,7 @@ import { MatCardModule } from '@angular/material/card';
 import { RouterLink } from '@angular/router';
 import { Item } from '../../../../shared/interfaces/item';
 import { MatIconModule } from '@angular/material/icon';
+import { ItemInfos } from '../../../../shared/components/item-infos/item-infos';
 
 @Component({
   selector: 'app-item-card',
@@ -12,7 +13,8 @@ import { MatIconModule } from '@angular/material/icon';
     MatCardModule,
     MatButtonModule,
     MatIconModule, 
-    RouterLink
+    RouterLink,
+    ItemInfos
   ],
   templateUrl: './item-card.html',
   styleUrls: [

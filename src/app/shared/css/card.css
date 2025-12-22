@@ -30,5 +30,5 @@ mat-card-content {
 mat-card-actions {
   display: flex;
   flex-wrap: wrap;
-  justify-content: flex-end;
+  justify-content: space-evenly;
 }
