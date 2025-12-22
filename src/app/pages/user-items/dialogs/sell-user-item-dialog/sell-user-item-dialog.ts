@@ -1,6 +1,6 @@
-import { Component, Inject } from '@angular/core';
+import { Component, inject, Inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA, MatDialogActions, MatDialogContent } from '@angular/material/dialog';
 import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -11,6 +11,7 @@ import { UserItem } from '../../user-item';
 import { SellUserItem } from './sell-user-item';
 import { MatIconModule } from '@angular/material/icon';
 import { PurchaseEvent } from '../../events/purchase-event/purchase-event';
+import { StringUtil } from '../../../../services/string-util';
 
 @Component({
   selector: 'app-sell-user-item-dialog',
@@ -36,20 +37,20 @@ import { PurchaseEvent } from '../../events/purchase-event/purchase-event';
 })
 export class SellUserItemDialog {
 
-  protected form: FormGroup;
+  private fb = inject(FormBuilder);
+  private dialogRef = inject(MatDialogRef<SellUserItemDialog>);
+  private stringUtil = inject(StringUtil);
+
+  protected form = this.fb.group({
+    sellingPrice: [null, [Validators.required, Validators.min(0)]],
+    sellingDate: [null, Validators.required],
+    sellingComment: [null]
+  }); 
   
   constructor(
-    private fb: FormBuilder,
-    private dialogRef: MatDialogRef<SellUserItemDialog>,
     @Inject(MAT_DIALOG_DATA)
     public data: { userItem: UserItem}
-  ) {
-      this.form = this.fb.group({
-        sellingPrice: [null, [Validators.required, Validators.min(0)]],
-        sellingDate: [null, Validators.required],
-        sellingComment: [null]
-      }); 
-  }
+  ) {}
 
   submit() {
     if (this.form.invalid) return;
@@ -58,16 +59,11 @@ export class SellUserItemDialog {
 
     const payload: SellUserItem = {
       sellingPrice: value.sellingPrice!,
-      sellingDate: this.toLocalISOString(value.sellingDate!), // ✅ ISO
+      sellingDate: this.stringUtil.toLocalISOString(value.sellingDate!), // ✅ ISO
       sellingComment: value.sellingComment ?? ''
     };
 
     this.dialogRef.close(payload);
-  }
-
-  private toLocalISOString(date: Date): string {
-    const pad = (n: number) => n.toString().padStart(2, '0');
-    return `${date.getFullYear()}-${pad(date.getMonth() + 1)}-${pad(date.getDate())}T00:00:00`;
   }
 
   cancel() {

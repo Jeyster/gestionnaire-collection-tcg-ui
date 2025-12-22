@@ -1,4 +1,4 @@
-import { Component, Inject } from '@angular/core';
+import { Component, inject, Inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA, MatDialogActions, MatDialogContent } from '@angular/material/dialog';
@@ -10,6 +10,7 @@ import { MatNativeDateModule } from '@angular/material/core';
 import { UserItem } from '../../user-item';
 import { EditUserItem } from './edit-user-item';
 import { MatIconModule } from '@angular/material/icon';
+import { StringUtil } from '../../../../services/string-util';
 
 @Component({
   selector: 'app-edit-user-item-dialog',
@@ -34,11 +35,13 @@ import { MatIconModule } from '@angular/material/icon';
 })
 export class EditUserItemDialog {
 
+  private fb = inject(FormBuilder);
+  private dialogRef = inject(MatDialogRef<EditUserItemDialog>);
+  private stringUtil = inject(StringUtil);
+
   protected form: FormGroup;
   
   constructor(
-    private fb: FormBuilder,
-    private dialogRef: MatDialogRef<EditUserItemDialog>,
     @Inject(MAT_DIALOG_DATA)
     public data: { userItem: UserItem}
   ) {
@@ -60,16 +63,11 @@ export class EditUserItemDialog {
 
     const payload: EditUserItem = {
       purchasePrice: value.purchasePrice!,
-      purchaseDate: this.toLocalISOString(value.purchaseDate!), // ✅ ISO
+      purchaseDate: this.stringUtil.toLocalISOString(value.purchaseDate!), // ✅ ISO
       purchaseComment: value.purchaseComment ?? ''
     };
 
     this.dialogRef.close(payload);
-  }
-
-  private toLocalISOString(date: Date): string {
-    const pad = (n: number) => n.toString().padStart(2, '0');
-    return `${date.getFullYear()}-${pad(date.getMonth() + 1)}-${pad(date.getDate())}T00:00:00`;
   }
 
   cancel() {
