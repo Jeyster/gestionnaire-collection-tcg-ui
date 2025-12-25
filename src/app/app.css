@@ -25,11 +25,22 @@
   align-items: center;
 }
 
-.app-header h1 {
+.app-brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.app-brand .app-logo {
+  height: 48px;
+  width: auto;
+}
+
+.app-brand h1 {
   margin: 0;
   font-weight: 600;
   letter-spacing: 0.5px;
-  font-size: 1.8rem;
+  font-size: 1.5rem;
   color: #020617;
 }
 
