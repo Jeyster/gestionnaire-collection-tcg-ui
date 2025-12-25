@@ -1,17 +1,40 @@
-.app-content {
-  padding: 24px;
-}
-
 .app-container {
   min-height: 100vh;
+  display: flex;
+  flex-direction: column;
 }
 
 .app-header {
-  background: linear-gradient(90deg, #d8d6db, #b6d4dd);
+  background: linear-gradient(90deg, #d8d6db, #a9d1dd);
   box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+  position: relative;
+}
+
+.app-header::after {
+  content: '';
+  height: 3px;
+  background: linear-gradient(90deg, var(--color-purchase), var(--color-sell), var(--color-open));
+  display: block;
+}
+
+.app-header-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 16px 24px;
+  display: flex;
+  align-items: center;
 }
 
 .app-header h1 {
+  margin: 0;
   font-weight: 600;
   letter-spacing: 0.5px;
+  font-size: 1.8rem;
+  color: #020617;
 }
+
+.app-content {
+  padding: 24px;
+  flex: 1;
+}
+
