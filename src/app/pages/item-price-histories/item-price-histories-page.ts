@@ -15,7 +15,7 @@ import { BackButton } from '../../shared/components/back-button/back-button';
 import { ItemInfos } from '../../shared/components/item-infos/item-infos';
 
 @Component({
-  selector: 'app-item-price-histories',
+  selector: 'app-item-price-histories-page',
   standalone: true,
   imports: [
     CommonModule,

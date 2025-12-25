@@ -18,7 +18,7 @@ import { BackButton } from '../../shared/components/back-button/back-button';
 import { ItemInfos } from '../../shared/components/item-infos/item-infos';
 
 @Component({
-  selector: 'app-user-items',
+  selector: 'app-user-items-page',
   imports: [
     CommonModule,
     RouterLink,

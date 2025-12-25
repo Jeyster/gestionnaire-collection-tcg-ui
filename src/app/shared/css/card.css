@@ -1,5 +1,5 @@
 mat-card {
-  background-color: #f8fafc; /* pas blanc pur */
+  background-color: var(--color-card-bg);
   color: #0f172a;
   border-radius: 14px;
   box-shadow:

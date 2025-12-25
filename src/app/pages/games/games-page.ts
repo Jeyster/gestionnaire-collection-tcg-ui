@@ -1,14 +1,15 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { GameService } from '../../services/game-service';
 import { GameCard } from './game-card/game-card';
-import { Observable } from 'rxjs';
-import { Game } from '../../shared/interfaces/game';
 
 @Component({
-  selector: 'app-games',
+  selector: 'app-games-page',
   standalone: true,
-  imports: [CommonModule, GameCard],
+  imports: [
+    CommonModule, 
+    GameCard
+  ],
   templateUrl: './games-page.html',
   styleUrls: [
     './games-page.css',
@@ -17,9 +18,9 @@ import { Game } from '../../shared/interfaces/game';
   ]
 })
 export class GamesPage {
-  protected games$: Observable<Game[]>;
 
-  constructor(private gameService: GameService) {
-    this.games$ = this.gameService.getGames();
-  }
+  private gameService = inject(GameService);
+
+  protected games$ = this.gameService.getGames();
+
 }

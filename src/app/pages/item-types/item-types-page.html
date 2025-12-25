@@ -1,9 +1,15 @@
 <div class="page-header">
-    <h2 *ngIf="game$ | async as game">
-    Types d'Item {{ game.name }}
-    </h2>
 
+    <div class="page-title" *ngIf="game$ | async as game">
+        Types d'item {{ game.name }}
+    </div>
+
+    <span class="flex-spacer"></span>
+
+    <div>
     <app-back-button/>
+    </div>
+
 </div>
 
 <div *ngIf="itemTypes$ | async as itemTypes" class="cards-grid">

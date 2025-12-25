@@ -9,7 +9,7 @@ import { ActivatedRoute, Router } from "@angular/router";
 import { BackButton } from "../../shared/components/back-button/back-button";
 
 @Component({
-  selector: 'app-item-search',
+  selector: 'app-item-search-page',
   standalone: true,
   imports: [
     CommonModule,

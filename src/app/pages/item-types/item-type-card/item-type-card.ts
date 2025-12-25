@@ -23,11 +23,9 @@ export class ItemTypeCard {
 
   private route = inject(ActivatedRoute);
 
-  @Input() itemType!: ItemType;
+  @Input() 
+  itemType!: ItemType;
 
-  protected gameId!: string;
+  protected gameId = this.route.snapshot.paramMap.get('game-id')!;
 
-  ngOnInit() {
-    this.gameId = this.route.snapshot.paramMap.get('game-id')!;
-  }
 }

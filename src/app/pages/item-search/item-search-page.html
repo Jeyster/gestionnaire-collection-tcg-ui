@@ -1,7 +1,13 @@
 <div class="page-header">
-  <h2>Recherche d’items</h2>
 
-  <app-back-button/>
+  <div class="page-title">Recherche d'items</div>
+
+  <span class="flex-spacer"></span>
+
+  <div>
+    <app-back-button/>
+  </div>
+
 </div>
 
 <div *ngIf="filters$ | async as filters" class="item-search-filters">

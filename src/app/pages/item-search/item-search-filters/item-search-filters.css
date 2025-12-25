@@ -1,14 +1,17 @@
 .filters-container {
-  background-color: #f7f8fa;
+  background-color: var(--color-card-bg);
   border-radius: 12px;
-  padding: 20px;
+  padding: 14px;
+}
+
+.filters-container .mat-mdc-form-field-focus-overlay {
+  background-color: rgba(167, 139, 250, 0.08); /* violet léger */
 }
 
 .filters-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
   gap: 16px;
-  margin-bottom: 16px;
 }
 
 mat-form-field {

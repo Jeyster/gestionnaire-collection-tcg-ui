@@ -1,13 +1,13 @@
-<mat-card class="flex-card" appearance="outlined">
-  <mat-card-header>
-    <mat-card-title>{{game.name}}</mat-card-title>
-  </mat-card-header>
-  <img mat-card-image src="/{{game.name}}.jpg">
-  <mat-card-actions>
-    <button mat-button [routerLink]="['/games', game.id, 'item-types']">
-      <mat-icon>visibility</mat-icon>
-      Voir types d'item
-    </button>
-  </mat-card-actions>
-</mat-card>
+<mat-card
+  class="game-card clickable-card"
+  appearance="outlined"
+  [routerLink]="['/games', game.id, 'item-types']"
+>
 
+  <img
+    mat-card-image
+    src="/{{ game.name }}.jpg"
+    alt="{{ game.name }}"
+  />
+  
+</mat-card>
