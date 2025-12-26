@@ -4,10 +4,11 @@
 
       <div class="app-brand">
         <img
-          mat-card-image
           class="app-logo"
           src="/logo.svg"
           alt="TCG"
+          [routerLink]="['/']"
+          matTooltip="Retour à l'accueil"
         />
         <h1>Gestionnaire de collections TCG</h1>
       </div>

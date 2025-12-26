@@ -32,8 +32,12 @@
 }
 
 .app-brand .app-logo {
-  height: 48px;
+  height: 36px;
   width: auto;
+}
+
+.app-brand .app-logo:hover {
+  cursor: pointer;
 }
 
 .app-brand h1 {
