@@ -4,15 +4,17 @@ import { MatCardModule } from '@angular/material/card';
 import { Game } from '../../../shared/interfaces/game';
 import { RouterLink } from '@angular/router';
 import { MatIconModule } from '@angular/material/icon';
+import { MatTooltip } from '@angular/material/tooltip';
 
 @Component({
   selector: 'app-game-card',
   standalone: true,
   imports: [
+    RouterLink,
     MatCardModule, 
     MatButtonModule,
-    MatIconModule, 
-    RouterLink
+    MatIconModule,
+    MatTooltip 
   ],
   templateUrl: './game-card.html',
   styleUrls: [

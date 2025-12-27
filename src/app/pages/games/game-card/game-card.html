@@ -1,6 +1,7 @@
 <mat-card
   class="game-card clickable-card"
   appearance="outlined"
+  matTooltip="Voir les types d'item {{ game.name }}"
   [routerLink]="['/games', game.id, 'item-types']"
 >
 

@@ -4,14 +4,15 @@ import { MatCardModule } from '@angular/material/card';
 import { ActivatedRoute, RouterLink } from '@angular/router';
 import { ItemType } from '../../../shared/interfaces/item-type';
 import { MatIconModule } from '@angular/material/icon';
+import { MatTooltip } from '@angular/material/tooltip';
 
 @Component({
   selector: 'app-item-type-card',
   imports: [
+    RouterLink,
     MatCardModule, 
     MatButtonModule,
-    MatIconModule,
-    RouterLink
+    MatIconModule
   ],
   templateUrl: './item-type-card.html',
   styleUrls: [
