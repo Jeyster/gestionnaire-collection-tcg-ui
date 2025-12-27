@@ -1,5 +1,5 @@
 import { Component, inject } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 import { ItemTypeService } from '../../services/item-type-service';
 import { ItemTypeCard } from './item-type-card/item-type-card';
 import { CommonModule } from '@angular/common';

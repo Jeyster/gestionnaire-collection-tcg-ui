@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Item } from '../shared/interfaces/item';
 import { ItemPriceHistory } from '../pages/item-price-histories/item-price-history';
 import { ItemSearchFiltersDto } from '../pages/item-search/item-search-filters/item-search-filters-dto';
+import { Page } from '../shared/interfaces/page';
 
 @Injectable({
   providedIn: 'root'
@@ -12,7 +13,7 @@ export class ItemService {
   constructor(private http: HttpClient) { }
 
   searchItems(filters: ItemSearchFiltersDto) {
-    return this.http.get<Item[]>('/gestionnaire-collection-tcg/v1/items', {
+    return this.http.get<Page<Item>>('/gestionnaire-collection-tcg/v1/items', {
       params: Object.fromEntries(
         Object.entries(filters)
           .filter(([_, v]) => v !== null && v !== undefined)

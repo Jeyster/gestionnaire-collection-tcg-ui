@@ -25,3 +25,8 @@
   font-style: italic;
   margin-top: 48px;
 }
+
+.mat-mdc-paginator {
+  background-color: transparent;
+  margin-top: 8px;
+}

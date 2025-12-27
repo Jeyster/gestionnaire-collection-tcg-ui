@@ -1,9 +1,21 @@
-<div class="results-grid" *ngIf="items.length; else empty">
-  <app-item-card
-    *ngFor="let item of items; trackBy: trackByItemId"
-    [item]="item"
-    class="results-card">
-  </app-item-card>
+<div *ngIf="itemsPage">
+
+  <div class="results-grid" *ngIf="itemsPage.content.length; else empty">
+    <app-item-card
+      *ngFor="let item of itemsPage.content; trackBy: trackByItemId"
+      [item]="item"
+      class="results-card">
+    </app-item-card>
+  </div>
+
+  <mat-paginator
+    [length]="itemsPage.totalElements"
+    [pageIndex]="itemsPage.number"
+    [pageSize]="itemsPage.size"
+    [pageSizeOptions]="[9, 18, 45]"
+    (page)="pageChange.emit($event)">
+  </mat-paginator>
+
 </div>
 
 <ng-template #empty>

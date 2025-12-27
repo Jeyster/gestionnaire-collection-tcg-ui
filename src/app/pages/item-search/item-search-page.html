@@ -14,7 +14,9 @@
   <app-item-search-filters [filters]="filters" (searchFilters)="onSearch($event)"/>
 </div>
 
-
-<div *ngIf="items$ | async as items" class="item-search-results">
-  <app-item-search-results *ngIf="items" [items]="items"/>
+<div *ngIf="itemsPage$ | async as itemsPage" class="item-search-results">
+  <app-item-search-results
+    [itemsPage]="itemsPage"
+    (pageChange)="onPageChange($event)"
+  />
 </div>
