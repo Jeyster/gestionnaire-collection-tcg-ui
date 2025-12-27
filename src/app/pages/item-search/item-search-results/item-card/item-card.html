@@ -3,19 +3,19 @@
     <app-item-infos [item]="item" [multiline]="true"/>
   </mat-card-content>
   <mat-card-actions>
-    <button mat-button
+    <button mat-stroked-button
             [routerLink]="['/items', item.id, 'user-items']">
       <mat-icon>inventory</mat-icon>
       Mes Items
     </button>
 
-    <button mat-button
+    <button mat-stroked-button
             [routerLink]="['/items', item.id, 'price-histories']">
       <mat-icon>show_chart</mat-icon>
       Prix CM
     </button>
 
-    <a mat-button href="{{item.url}}" target="_blank">
+    <a mat-stroked-button href="{{item.url}}" target="_blank">
       <mat-icon>open_in_new</mat-icon>
       Lien CM
     </a>

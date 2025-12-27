@@ -43,12 +43,13 @@ export class ItemSearchFilters {
   private localeService = inject(LocaleService);
   private expansionService = inject(ExpansionService);
 
-  protected form = this.fb.group<ItemSearchFiltersDto>({
+  private initForm: ItemSearchFiltersDto = {
     gameId: null,
     itemTypeId: null,
     localeId: null,
     expansionId: null
-  });
+  };
+  protected form = this.fb.group<ItemSearchFiltersDto>(this.initForm); 
 
   protected games$ = this.gameService.getGames();
   protected itemTypes$ = this.itemTypeService.getItemTypes();
@@ -57,5 +58,10 @@ export class ItemSearchFilters {
 
   protected search() {
     this.searchFilters.emit(this.form.getRawValue());
+  }
+
+  protected resetForm() {
+    this.form.reset(this.initForm);
+    this.search();
   }
 }
