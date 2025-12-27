@@ -1,5 +1,5 @@
 .filters-container {
-  background-color: var(--color-card-bg);
+  background-color: transparent;
   border-radius: 12px;
   padding: 14px;
 }

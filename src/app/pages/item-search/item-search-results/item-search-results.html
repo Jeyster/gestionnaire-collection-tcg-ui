@@ -1,6 +1,6 @@
-<div *ngIf="itemsPage">
+<div *ngIf="itemsPage.content.length; else empty">
 
-  <div class="results-grid" *ngIf="itemsPage.content.length; else empty">
+  <div class="results-grid">
     <app-item-card
       *ngFor="let item of itemsPage.content; trackBy: trackByItemId"
       [item]="item"
@@ -12,7 +12,7 @@
     [length]="itemsPage.totalElements"
     [pageIndex]="itemsPage.number"
     [pageSize]="itemsPage.size"
-    [pageSizeOptions]="[9, 18, 45]"
+    [pageSizeOptions]="[12, 24, 48]"
     (page)="pageChange.emit($event)">
   </mat-paginator>
 
