@@ -37,9 +37,7 @@ export class ItemSearchPage {
       localeId: params['localeId'] ? +params['localeId'] : null,
       expansionId: params['expansionId'] ? +params['expansionId'] : null,
       pageIndex: params['pageIndex'] ? +params['pageIndex'] : 0,
-      pageSize: params['pageSize'] ? +params['pageSize'] : 12,
-      sort: params['sort'] ?? 'game.name',
-      direction: params['direction'] ?? 'asc'
+      pageSize: params['pageSize'] ? +params['pageSize'] : 12
     }))
   );
 

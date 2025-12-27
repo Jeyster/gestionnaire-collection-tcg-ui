@@ -5,6 +5,4 @@ export interface ItemSearchFiltersDto {
   expansionId: number | null;
   pageIndex?: number | null;
   pageSize?: number | null;
-  sort?: string | null;
-  direction?: 'asc' | 'desc' | null;
 }
