@@ -1,7 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { Component, Input } from '@angular/core';
 import { MatIcon } from '@angular/material/icon';
-import { UserItem } from '../../user-item';
+import { UserItem } from '../../../../shared/interfaces/user-item';
 
 @Component({
   selector: 'app-open-event',

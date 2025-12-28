@@ -7,7 +7,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
-import { UserItem } from '../../user-item';
+import { UserItem } from '../../../../shared/interfaces/user-item';
 import { OpenUserItem } from './open-user-item';
 import { MatIconModule } from '@angular/material/icon';
 import { PurchaseEvent } from '../../events/purchase-event/purchase-event';

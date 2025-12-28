@@ -2,8 +2,8 @@
   class="flex-card"
   appearance="outlined"
   [ngClass]="{
-    sold: userItem.sellingPrice,
-    opened: !userItem.sellingPrice && userItem.sellingOrOpeningDate
+    sold: userItem.status === UserItemStatus.SOLD,
+    opened: userItem.status === UserItemStatus.OPENED
   }"
 >
 
@@ -11,10 +11,10 @@
 
     <app-purchase-event [userItem]="userItem"/>
 
-    @if (userItem.sellingPrice) {
+    @if (userItem.status === UserItemStatus.SOLD) {
       <app-sell-event [userItem]="userItem"/>
     }
-    @else if (userItem.sellingOrOpeningDate) {
+    @else if (userItem.status === UserItemStatus.OPENED) {
       <app-open-event [userItem]="userItem"/>
 
     }

@@ -1,5 +1,5 @@
 import { Component, EventEmitter, inject, Input, Output } from '@angular/core';
-import { UserItem } from '../user-item';
+import { UserItem } from '../../../shared/interfaces/user-item';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { CommonModule } from '@angular/common';
@@ -14,6 +14,7 @@ import { EditUserItemDialog } from '../dialogs/edit-user-item-dialog/edit-user-i
 import { PurchaseEvent } from '../events/purchase-event/purchase-event';
 import { SellEvent } from '../events/sell-event/sell-event';
 import { OpenEvent } from '../events/open-event/open-event';
+import { UserItemStatus } from '../../../shared/enums/user-item-status';
 
 @Component({
   selector: 'app-user-item-card',
@@ -43,6 +44,8 @@ export class UserItemCard {
   @Output() open = new EventEmitter<any>();
   @Output() duplicate = new EventEmitter<AddUserItem>();
   @Output() delete = new EventEmitter<number>();
+
+  protected readonly UserItemStatus = UserItemStatus;
 
   private dialog = inject(MatDialog);
 

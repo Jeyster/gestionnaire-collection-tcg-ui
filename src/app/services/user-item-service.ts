@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { UserItem } from '../pages/user-items/user-item';
+import { UserItem } from '../shared/interfaces/user-item';
 import { AddUserItem } from '../pages/user-items/dialogs/add-user-item-dialog/add-user-item';
 import { SellUserItem } from '../pages/user-items/dialogs/sell-user-item-dialog/sell-user-item';
 import { OpenUserItem } from '../pages/user-items/dialogs/open-user-item-dialog/open-user-item';

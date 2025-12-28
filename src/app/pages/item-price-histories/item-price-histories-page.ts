@@ -6,7 +6,7 @@ import { ItemPriceHistory } from './item-price-history';
 import { ActivatedRoute } from '@angular/router';
 import Chart from 'chart.js/auto';
 import 'chartjs-adapter-date-fns';
-import { UserItem } from '../user-items/user-item';
+import { isPurchased, isSold, UserItem } from '../../shared/interfaces/user-item';
 import { UserService } from '../../services/user-service';
 import { UserItemService } from '../../services/user-item-service';
 import { MatButtonModule } from '@angular/material/button';
@@ -84,18 +84,14 @@ export default class ItemPriceHistoriesPage {
       pointRadius: 3,
     };
 
+    /* On n'affiche pas les items ouverts */
     const userItemDatasets = userItems.flatMap((userItem, index) => {
       const color = this.randomColor(index);
 
       const datasets: any[] = [];
 
       // ACHAT
-      if (
-        userItem.purchaseDate && 
-        userItem.purchasePrice &&
-        ((!userItem.sellingOrOpeningDate && !userItem.sellingPrice) ||
-        (userItem.sellingOrOpeningDate && userItem.sellingPrice)) 
-      ) {
+      if (isPurchased(userItem) || isSold(userItem)) {
         datasets.push({
           label: `Achat Item #${userItem.id}`,
           data: [{
@@ -111,7 +107,7 @@ export default class ItemPriceHistoriesPage {
       }
 
       // VENTE
-      if (userItem.sellingOrOpeningDate && userItem.sellingPrice) {
+      if (isSold(userItem)) {
         datasets.push({
           label: `Vente Item #${userItem.id}`,
           data: [{
