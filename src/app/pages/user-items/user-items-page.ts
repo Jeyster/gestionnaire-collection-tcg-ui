@@ -16,6 +16,8 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { BackButton } from '../../shared/components/back-button/back-button';
 import { ItemInfos } from '../../shared/components/item-infos/item-infos';
+import { USER_ITEM_STATUS_CONFIG } from '../../shared/configs/user-item-status.config';
+import { UserItemStatus } from '../../shared/enums/user-item-status';
 
 @Component({
   selector: 'app-user-items-page',
@@ -36,6 +38,9 @@ import { ItemInfos } from '../../shared/components/item-infos/item-infos';
   standalone: true
 })
 export class UserItemsPage {
+
+  protected readonly UserItemStatus = UserItemStatus;
+  protected readonly UserItemStatusConfig = USER_ITEM_STATUS_CONFIG;
 
   private route = inject(ActivatedRoute);
   private dialog = inject(MatDialog);

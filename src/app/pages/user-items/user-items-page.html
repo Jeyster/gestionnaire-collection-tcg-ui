@@ -15,8 +15,8 @@
 </div>
 
 <div class="user-item-buttons">
-  <button mat-raised-button class="user-item-button" (click)="openCreateDialog()">
-    <mat-icon>add</mat-icon>
+  <button mat-raised-button class="user-item-button purchase" (click)="openCreateDialog()">
+    <mat-icon>{{ UserItemStatusConfig[UserItemStatus.PURCHASED].icon }}</mat-icon>
     Ajouter un item
   </button>
 
