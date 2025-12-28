@@ -12,7 +12,7 @@ export const USER_ITEM_STATUS_CONFIG: Record<
   [UserItemStatus.SOLD]: {
     label: 'Vendu',
     color: 'var(--color-sell)',
-    icon: 'sell',
+    icon: 'payments',
   },
   [UserItemStatus.OPENED]: {
     label: 'Ouvert',

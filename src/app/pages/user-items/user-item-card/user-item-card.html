@@ -29,7 +29,7 @@
       (click)="onSell()"
       matTooltip="Vendre"
       class="icon-action sell">
-      <mat-icon>sell</mat-icon>
+      <mat-icon>{{ UserItemStatusConfig[UserItemStatus.SOLD].icon }}</mat-icon>
     </button>
 
     <button
@@ -38,7 +38,7 @@
       (click)="onOpen()"
       matTooltip="Ouvrir"
       class="icon-action open">
-      <mat-icon>lock_open</mat-icon>
+      <mat-icon>{{ UserItemStatusConfig[UserItemStatus.OPENED].icon }}</mat-icon>
     </button>
     
     <span class="flex-spacer"></span>

@@ -15,6 +15,7 @@ import { PurchaseEvent } from '../events/purchase-event/purchase-event';
 import { SellEvent } from '../events/sell-event/sell-event';
 import { OpenEvent } from '../events/open-event/open-event';
 import { UserItemStatus } from '../../../shared/enums/user-item-status';
+import { USER_ITEM_STATUS_CONFIG } from '../../../shared/configs/user-item-status.config';
 
 @Component({
   selector: 'app-user-item-card',
@@ -46,6 +47,7 @@ export class UserItemCard {
   @Output() delete = new EventEmitter<number>();
 
   protected readonly UserItemStatus = UserItemStatus;
+  protected readonly UserItemStatusConfig = USER_ITEM_STATUS_CONFIG;
 
   private dialog = inject(MatDialog);
 

@@ -2,10 +2,10 @@
 
     <div class="event-line sell">
 
-        <mat-icon>sell</mat-icon>
+        <mat-icon>{{ UserItemStatusConfig[UserItemStatus.SOLD].icon }}</mat-icon>
 
         <span class="event-title">
-            Vendu
+            {{ UserItemStatusConfig[UserItemStatus.SOLD].label }}
         </span>
 
         <span class="event-price">

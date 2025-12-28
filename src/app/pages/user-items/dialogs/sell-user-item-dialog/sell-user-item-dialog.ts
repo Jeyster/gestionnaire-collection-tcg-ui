@@ -12,6 +12,8 @@ import { SellUserItem } from './sell-user-item';
 import { MatIconModule } from '@angular/material/icon';
 import { PurchaseEvent } from '../../events/purchase-event/purchase-event';
 import { StringUtil } from '../../../../services/string-util';
+import { USER_ITEM_STATUS_CONFIG } from '../../../../shared/configs/user-item-status.config';
+import { UserItemStatus } from '../../../../shared/enums/user-item-status';
 
 @Component({
   selector: 'app-sell-user-item-dialog',
@@ -36,6 +38,9 @@ import { StringUtil } from '../../../../services/string-util';
   ]
 })
 export class SellUserItemDialog {
+
+  protected readonly UserItemStatus = UserItemStatus;
+  protected readonly UserItemStatusConfig = USER_ITEM_STATUS_CONFIG;
 
   private fb = inject(FormBuilder);
   private dialogRef = inject(MatDialogRef<SellUserItemDialog>);
