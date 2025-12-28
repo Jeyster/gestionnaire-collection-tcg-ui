@@ -37,4 +37,8 @@ export class ItemService {
     return this.http.get<ItemPriceHistory[]>('/gestionnaire-collection-tcg/v1/items/' + itemId + '/price-histories');
   }
 
+  getLastPriceHistory(itemId: string) {
+    return this.http.get<ItemPriceHistory>('/gestionnaire-collection-tcg/v1/items/' + itemId + '/last-price-history');
+  }
+
 }

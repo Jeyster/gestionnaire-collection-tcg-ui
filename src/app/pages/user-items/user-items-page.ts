@@ -18,6 +18,7 @@ import { BackButton } from '../../shared/components/back-button/back-button';
 import { ItemInfos } from '../../shared/components/item-infos/item-infos';
 import { USER_ITEM_STATUS_CONFIG } from '../../shared/configs/user-item-status.config';
 import { UserItemStatus } from '../../shared/enums/user-item-status';
+import { CardmarketEvent } from './events/cardmarket-event/cardmarket-event';
 
 @Component({
   selector: 'app-user-items-page',
@@ -28,7 +29,8 @@ import { UserItemStatus } from '../../shared/enums/user-item-status';
     MatIconModule,
     BackButton,
     ItemInfos,
-    UserItemCard
+    UserItemCard,
+    CardmarketEvent
   ],
   templateUrl: './user-items-page.html',
   styleUrls: [
@@ -52,6 +54,7 @@ export class UserItemsPage {
   protected itemId = this.route.snapshot.paramMap.get('itemId')!;
 
   protected item$ = this.itemService.getItem(this.itemId);
+  protected lastPriceHistory$ = this.itemService.getLastPriceHistory(this.itemId);
   private reload$ = new Subject<void>();
   protected userItems$ = this.reload$.pipe(
     startWith(void 0), // 👈 charge au démarrage

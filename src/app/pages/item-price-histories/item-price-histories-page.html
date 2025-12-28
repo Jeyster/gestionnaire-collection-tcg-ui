@@ -14,6 +14,10 @@
 
 </div>
 
+<div *ngIf="lastPriceHistory$ | async as lastPriceHistory" class="price-info-bar">
+  <app-cardmarket-event [itemPriceHistory]="lastPriceHistory"/>
+</div>
+
 <div class="chart-container">
     <canvas #priceChart></canvas>
 </div>

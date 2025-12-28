@@ -13,6 +13,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { BackButton } from '../../shared/components/back-button/back-button';
 import { ItemInfos } from '../../shared/components/item-infos/item-infos';
+import { CardmarketEvent } from '../user-items/events/cardmarket-event/cardmarket-event';
 
 @Component({
   selector: 'app-item-price-histories-page',
@@ -22,7 +23,8 @@ import { ItemInfos } from '../../shared/components/item-infos/item-infos';
     MatButtonModule,
     MatIconModule,
     BackButton,
-    ItemInfos
+    ItemInfos,
+    CardmarketEvent
   ],
   templateUrl: './item-price-histories-page.html',
   styleUrls: [
@@ -41,6 +43,7 @@ export default class ItemPriceHistoriesPage {
   protected itemId = this.route.snapshot.paramMap.get('itemId')!;  
 
   protected item$ = this.itemService.getItem(this.itemId);
+  protected lastPriceHistory$ = this.itemService.getLastPriceHistory(this.itemId);
   protected priceHistories$ = this.itemService.getPriceHistories(this.itemId);
   protected userItems$ = this.userItemService.getUserItems(String(this.user.id), this.itemId);
 

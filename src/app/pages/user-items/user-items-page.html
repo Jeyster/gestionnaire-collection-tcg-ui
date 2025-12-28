@@ -5,13 +5,17 @@
   <div *ngIf="item$ | async as item">
     <app-item-infos [item]="item"/>
   </div>
-
+  
   <span class="flex-spacer"></span>
-
+  
   <div>
     <app-back-button/>
   </div>
+  
+</div>
 
+<div *ngIf="lastPriceHistory$ | async as lastPriceHistory" class="price-info-bar">
+  <app-cardmarket-event [itemPriceHistory]="lastPriceHistory"/>
 </div>
 
 <div class="user-item-buttons">
@@ -27,7 +31,7 @@
   class="user-item-button"
           [routerLink]="['/items', item.id, 'price-histories']">
     <mat-icon>show_chart</mat-icon>
-    Prix CM
+    Historique Prix
   </button>
   
   <a mat-raised-button 
