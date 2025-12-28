@@ -27,6 +27,6 @@ export class ItemTypeCard {
   @Input() 
   itemType!: ItemType;
 
-  protected gameId = this.route.snapshot.paramMap.get('game-id')!;
+  protected gameId = this.route.snapshot.paramMap.get('gameId')!;
 
 }

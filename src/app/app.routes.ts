@@ -6,10 +6,40 @@ import { UserItemsPage } from './pages/user-items/user-items-page';
 import { ItemSearchPage } from './pages/item-search/item-search-page';
 
 export const routes: Routes = [
-    { path: '', redirectTo: '/games', pathMatch: 'full' },
-    { path: 'games', component: GamesPage},
-    { path: 'games/:game-id/item-types', component: ItemTypesPage},
-    { path: 'items/:item-id/price-histories', component: ItemPriceHistoriesPage },
-    { path: 'items/:item-id/user-items', component: UserItemsPage },
-    { path: 'items', component: ItemSearchPage}
+  {
+    path: '',
+    redirectTo: 'games',
+    pathMatch: 'full',
+  },
+  {
+    path: 'games',
+    children: [
+      {
+        path: '',
+        component: GamesPage,
+      },
+      {
+        path: ':gameId/item-types',
+        component: ItemTypesPage,
+      },
+    ],
+  },
+  {
+    path: 'items',
+    children: [
+      {
+        path: '',
+        component: ItemSearchPage,
+      },
+      {
+        path: ':itemId/price-histories',
+        component: ItemPriceHistoriesPage,
+      },
+      {
+        path: ':itemId/user-items',
+        component: UserItemsPage,
+      },
+    ],
+  },
 ];
+

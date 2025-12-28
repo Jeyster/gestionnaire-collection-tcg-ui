@@ -31,7 +31,7 @@ export default class ItemTypesPage {
   private itemTypeService = inject(ItemTypeService);
   private gameService = inject(GameService);
 
-  protected gameId = this.route.snapshot.paramMap.get('game-id')!;
+  protected gameId = this.route.snapshot.paramMap.get('gameId')!;
   protected game$ = this.gameService.getGame(this.gameId);
   protected itemTypes$ = this.itemTypeService.getItemTypesByGameId(this.gameId);
 

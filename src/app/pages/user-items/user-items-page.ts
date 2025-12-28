@@ -44,7 +44,7 @@ export class UserItemsPage {
   private userItemService = inject(UserItemService);
 
   protected user = this.userService.getLoggedUser();
-  protected itemId = this.route.snapshot.paramMap.get('item-id')!;
+  protected itemId = this.route.snapshot.paramMap.get('itemId')!;
 
   protected item$ = this.itemService.getItem(this.itemId);
   private reload$ = new Subject<void>();

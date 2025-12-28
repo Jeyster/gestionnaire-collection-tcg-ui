@@ -38,7 +38,7 @@ export default class ItemPriceHistoriesPage {
   private userItemService = inject(UserItemService);
 
   protected user = this.userService.getLoggedUser();
-  protected itemId = this.route.snapshot.paramMap.get('item-id')!;  
+  protected itemId = this.route.snapshot.paramMap.get('itemId')!;  
 
   protected item$ = this.itemService.getItem(this.itemId);
   protected priceHistories$ = this.itemService.getPriceHistories(this.itemId);
