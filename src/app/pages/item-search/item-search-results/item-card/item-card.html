@@ -1,24 +1,25 @@
 <mat-card class="flex-card" appearance="outlined">
+
   <mat-card-content>
+
     <app-item-infos [item]="item" [multiline]="true"/>
+
+    <app-item-cardmarket-infos-compact 
+      *ngIf="lastPriceHistory$ | async as lastPriceHistory" 
+      [itemPriceHistory]="lastPriceHistory"
+    />
+
   </mat-card-content>
+
   <mat-card-actions>
+
     <button mat-stroked-button
             [routerLink]="['/items', item.id, 'user-items']">
       <mat-icon>inventory</mat-icon>
       Mes Items
     </button>
 
-    <button mat-stroked-button
-            [routerLink]="['/items', item.id, 'price-histories']">
-      <mat-icon>show_chart</mat-icon>
-      Prix CM
-    </button>
-
-    <a mat-stroked-button href="{{item.url}}" target="_blank">
-      <mat-icon>open_in_new</mat-icon>
-      Lien CM
-    </a>
   </mat-card-actions>
+
 </mat-card>
 

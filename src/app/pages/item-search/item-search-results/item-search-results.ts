@@ -19,9 +19,11 @@ import { ItemCard } from './item-card/item-card';
 })
 export class ItemSearchResults {
 
-  @Input({ required: true }) itemsPage!: Page<Item>;
+  @Input({ required: true }) 
+  itemsPage!: Page<Item>;
 
-  @Output() pageChange = new EventEmitter<PageEvent>();
+  @Output() 
+  pageChange = new EventEmitter<PageEvent>();
 
   trackByItemId(_: number, item: Item): number {
     return item.id;

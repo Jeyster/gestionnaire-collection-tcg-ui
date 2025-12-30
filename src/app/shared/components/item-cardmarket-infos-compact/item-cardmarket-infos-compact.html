@@ -1,0 +1,34 @@
+<div class="market-compact">
+
+  <!-- Info principale -->
+  <div class="market-info">
+    <span class="market-price">
+      {{ itemPriceHistory.averagePrice }} €
+    </span>
+
+    <span class="market-date">
+      sur Cardmarket · 
+      {{ itemPriceHistory.createdAt | date:'dd/MM/yyyy' }}
+    </span>
+  </div>
+
+  <!-- Actions -->
+  <div class="market-actions">
+    <button
+      mat-icon-button
+      [routerLink]="['/items', itemPriceHistory.item.id, 'price-histories']"
+      matTooltip="Historique des prix">
+      <mat-icon>show_chart</mat-icon>
+    </button>
+
+    <a
+      mat-icon-button
+      href="{{ itemPriceHistory.item.url }}"
+      target="_blank"
+      rel="noopener"
+      matTooltip="Voir sur Cardmarket">
+      <mat-icon>open_in_new</mat-icon>
+    </a>
+  </div>
+
+</div>

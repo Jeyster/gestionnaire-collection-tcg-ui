@@ -1,0 +1,33 @@
+.market-compact {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  padding: 0px 8px;
+  border-radius: 8px;
+
+  background-color: #f3f4f5;
+  border-left: 3px solid var(--color-cardmarket);
+}
+
+.market-info {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.85rem;
+}
+
+.market-price {
+  font-weight: 600;
+  color: #0f172a;
+}
+
+.market-date {
+  font-size: 0.75rem;
+  color: #64748b;
+}
+
+.market-actions {
+  display: flex;
+  gap: 2px;
+}
