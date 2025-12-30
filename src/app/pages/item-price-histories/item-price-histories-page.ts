@@ -13,7 +13,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { BackButton } from '../../shared/components/back-button/back-button';
 import { ItemInfos } from '../../shared/components/item-infos/item-infos';
-import { CardmarketEvent } from '../user-items/events/cardmarket-event/cardmarket-event';
+import { ItemCardmarketInfos } from '../../shared/components/item-cardmarket-infos/item-cardmarket-infos';
 
 @Component({
   selector: 'app-item-price-histories-page',
@@ -24,7 +24,7 @@ import { CardmarketEvent } from '../user-items/events/cardmarket-event/cardmarke
     MatIconModule,
     BackButton,
     ItemInfos,
-    CardmarketEvent
+    ItemCardmarketInfos
   ],
   templateUrl: './item-price-histories-page.html',
   styleUrls: [
@@ -74,7 +74,7 @@ export default class ItemPriceHistoriesPage {
     }
 
     const cmDataset = {
-      label: 'Prix moyen CardMarket',
+      label: 'Prix moyen Cardmarket',
       data: priceHistories
         .sort((a, b) => new Date(a.createdAt).getTime() - new Date(b.createdAt).getTime())
         .map(h => ({

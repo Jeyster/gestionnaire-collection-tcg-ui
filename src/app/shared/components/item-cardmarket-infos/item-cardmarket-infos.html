@@ -1,0 +1,36 @@
+<div class="market-summary">
+
+  <div class="market-main">
+    <div class="market-info">
+      <div class="market-price">
+        {{ itemPriceHistory.averagePrice }} €
+      </div>
+
+      <div class="market-meta">
+        Prix moyen Cardmarket ·
+        {{ itemPriceHistory.createdAt | date:'dd/MM/yyyy' }}
+      </div>
+    </div>
+  </div>
+
+  <div class="market-actions">
+    <button
+      *ngIf="showHistoryButton"
+      mat-button
+      color="primary"
+      [routerLink]="['/items', itemPriceHistory.item.id, 'price-histories']">
+      <mat-icon>show_chart</mat-icon>
+      Historique
+    </button>
+
+    <a
+      mat-button
+      href="{{ itemPriceHistory.item.url }}"
+      target="_blank"
+      rel="noopener">
+      <mat-icon>open_in_new</mat-icon>
+      Cardmarket
+    </a>
+  </div>
+
+</div>

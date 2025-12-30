@@ -1,6 +1,6 @@
 import { Component, inject } from '@angular/core';
 import { ItemService } from '../../services/item-service';
-import { ActivatedRoute, RouterLink } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 import { startWith, Subject, switchMap } from 'rxjs';
 import { UserService } from '../../services/user-service';
 import { UserItemService } from '../../services/user-item-service';
@@ -18,19 +18,18 @@ import { BackButton } from '../../shared/components/back-button/back-button';
 import { ItemInfos } from '../../shared/components/item-infos/item-infos';
 import { USER_ITEM_STATUS_CONFIG } from '../../shared/configs/user-item-status.config';
 import { UserItemStatus } from '../../shared/enums/user-item-status';
-import { CardmarketEvent } from './events/cardmarket-event/cardmarket-event';
+import { ItemCardmarketInfos } from '../../shared/components/item-cardmarket-infos/item-cardmarket-infos';
 
 @Component({
   selector: 'app-user-items-page',
   imports: [
     CommonModule,
-    RouterLink,
     MatButtonModule,
     MatIconModule,
     BackButton,
     ItemInfos,
-    UserItemCard,
-    CardmarketEvent
+    ItemCardmarketInfos,
+    UserItemCard
   ],
   templateUrl: './user-items-page.html',
   styleUrls: [

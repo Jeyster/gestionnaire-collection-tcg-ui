@@ -14,39 +14,25 @@
   
 </div>
 
-<div *ngIf="lastPriceHistory$ | async as lastPriceHistory" class="price-info-bar">
-  <app-cardmarket-event [itemPriceHistory]="lastPriceHistory"/>
-</div>
+<app-item-cardmarket-infos 
+  *ngIf="lastPriceHistory$ | async as lastPriceHistory" 
+  [itemPriceHistory]="lastPriceHistory"
+  [showHistoryButton]="true"
+/>
 
 <div class="user-item-buttons">
+
   <button mat-raised-button class="user-item-button purchase" (click)="openCreateDialog()">
     <mat-icon>{{ UserItemStatusConfig[UserItemStatus.PURCHASED].icon }}</mat-icon>
     Ajouter un item
   </button>
 
-  <span class="flex-spacer"></span>
-
-  <button mat-raised-button
-  *ngIf="item$ | async as item"
-  class="user-item-button"
-          [routerLink]="['/items', item.id, 'price-histories']">
-    <mat-icon>show_chart</mat-icon>
-    Historique Prix
-  </button>
-  
-  <a mat-raised-button 
-  *ngIf="item$ | async as item"
-  class="user-item-button"
-  href="{{item.url}}" target="_blank">
-    <mat-icon>open_in_new</mat-icon>
-    Lien CM
-  </a>
 </div>
 
-
-
 <div *ngIf="userItems$ | async as userItems" class="cards-grid">
+
   <div *ngFor="let userItem of userItems">
+
     <app-user-item-card 
       [userItem]="userItem" 
       (edit)="onEdit($event.userItemId, $event.editUserItem)"
@@ -54,5 +40,7 @@
       (open)="onOpen($event.userItemId, $event.openUserItem)"
       (duplicate)="onDuplicate($event)"
       (delete)="onDelete($event)"/>
+
   </div>
+
 </div>
