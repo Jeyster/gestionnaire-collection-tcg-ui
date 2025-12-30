@@ -7,7 +7,7 @@
     </span>
 
     <span class="market-date">
-      sur Cardmarket · 
+      sur Cardmarket le
       {{ itemPriceHistory.createdAt | date:'dd/MM/yyyy' }}
     </span>
   </div>
@@ -16,6 +16,7 @@
   <div class="market-actions">
     <button
       mat-icon-button
+      class="medium-icon-button"
       [routerLink]="['/items', itemPriceHistory.item.id, 'price-histories']"
       matTooltip="Historique des prix">
       <mat-icon>show_chart</mat-icon>
@@ -23,12 +24,14 @@
 
     <a
       mat-icon-button
+      class="medium-icon-button"
       href="{{ itemPriceHistory.item.url }}"
       target="_blank"
       rel="noopener"
       matTooltip="Voir sur Cardmarket">
       <mat-icon>open_in_new</mat-icon>
     </a>
+
   </div>
 
 </div>
