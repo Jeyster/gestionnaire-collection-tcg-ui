@@ -1,0 +1,46 @@
+<div class="item-info">
+
+  <div class="item-info-line first-line">
+
+    <span class="badge game">{{ item.game.name }}</span>
+    <span class="badge item-type">{{ item.itemType.name }}</span>
+  
+  </div>
+
+  @if (item.expansion.name == 'Autre') {
+    <div class="item-info-line second-line">
+
+      <span class="badge complement">
+        {{ item.complement }}
+      </span>
+
+      <span class="badge locale">
+        {{ item.locale.name }}
+      </span>
+      
+    </div>
+  } @else {
+    <div class="item-info-line second-line">
+    
+      <span class="badge expansion">
+        {{ item.expansion.name }}
+      </span>
+
+      <span class="badge locale">
+        {{ item.locale.name }}
+      </span>
+      
+    </div>
+  }
+
+  @if (item.expansion.name != 'Autre' && item.complement != null) {
+    <div class="item-info-line third-line">
+  
+      <span class="badge complement">
+        {{ item.complement }}
+      </span>
+
+    </div>
+  }
+
+</div>

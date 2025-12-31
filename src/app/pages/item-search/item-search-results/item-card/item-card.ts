@@ -1,7 +1,6 @@
 import { Component, inject, Input } from '@angular/core';
 import { MatCardModule } from '@angular/material/card';
 import { Item } from '../../../../shared/interfaces/item';
-import { ItemInfos } from '../../../../shared/components/item-infos/item-infos';
 import { ItemService } from '../../../../services/item-service';
 import { Observable } from 'rxjs';
 import { ItemPriceHistory } from '../../../item-price-histories/item-price-history';
@@ -10,6 +9,7 @@ import { ItemCardmarketInfosCompact } from '../../../../shared/components/item-c
 import { UserItemsInfosCompact } from '../../../../shared/components/user-items-infos-compact/user-items-infos-compact';
 import { UserService } from '../../../../services/user-service';
 import { UserItemService } from '../../../../services/user-item-service';
+import { ItemInfosCompact } from '../../../../shared/components/item-infos-compact/item-infos-compact';
 
 @Component({
   selector: 'app-item-card',
@@ -17,7 +17,7 @@ import { UserItemService } from '../../../../services/user-item-service';
   imports: [
     CommonModule,
     MatCardModule,
-    ItemInfos,
+    ItemInfosCompact,
     ItemCardmarketInfosCompact,
     UserItemsInfosCompact
   ],

@@ -3,15 +3,15 @@ import { Item } from '../../interfaces/item';
 import { CommonModule } from '@angular/common';
 
 @Component({
-  selector: 'app-item-infos',
+  selector: 'app-item-infos-compact',
   imports: [
     CommonModule
   ],
-  templateUrl: './item-infos.html',
-  styleUrl: './item-infos.css',
+  templateUrl: './item-infos-compact.html',
+  styleUrl: './item-infos-compact.css',
   standalone: true
 })
-export class ItemInfos {
+export class ItemInfosCompact {
 
   @Input()
   item!: Item;
