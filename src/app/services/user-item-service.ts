@@ -19,6 +19,12 @@ export class UserItemService {
     );
   }
 
+  getUserItemsCount(userId: string, itemId: string) {
+    return this.http.get<number>(
+      '/gestionnaire-collection-tcg/v1/user-items/count?userId=' + userId + '&itemId=' + itemId
+    );
+  }
+
   addUserItem(addUserItem: AddUserItem) {
     return this.http.post(
       '/gestionnaire-collection-tcg/v1/user-items',

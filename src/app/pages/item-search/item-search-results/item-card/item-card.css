@@ -1,0 +1,12 @@
+.item-card-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 12px;
+}
+
+.item-meta-info {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}

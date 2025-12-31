@@ -1,4 +1,4 @@
-.market-compact {
+.user-items-info-compact {
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -6,10 +6,10 @@
   padding: 0px 8px;
   border-radius: 20px;
 
-  background-color: var(--color-card-card);
+  background-color: #edf7ef;;
 }
 
-.market-info {
+.user-items-info {
   display: flex;
   align-items: center;
   gap: 6px;
@@ -26,7 +26,7 @@
   color: #64748b;
 }
 
-.market-actions {
+.user-items-actions {
   display: flex;
   gap: 2px;
 }

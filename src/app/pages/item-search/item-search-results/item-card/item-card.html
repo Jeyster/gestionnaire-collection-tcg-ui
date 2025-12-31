@@ -1,25 +1,25 @@
 <mat-card class="flex-card" appearance="outlined">
 
-  <mat-card-content>
+  <mat-card-content class="item-card-content">
 
     <app-item-infos [item]="item" [multiline]="true"/>
 
-    <app-item-cardmarket-infos-compact 
-      *ngIf="lastPriceHistory$ | async as lastPriceHistory" 
-      [itemPriceHistory]="lastPriceHistory"
-    />
+    <div class="item-meta-info">
+  
+      <app-user-items-infos-compact
+        *ngIf="userItemsCount$ | async as userItemsCount"
+        [item]="item"
+        [userItemsCount]="userItemsCount"
+      />
+
+      <app-item-cardmarket-infos-compact 
+        *ngIf="lastPriceHistory$ | async as lastPriceHistory" 
+        [itemPriceHistory]="lastPriceHistory"
+      />
+      
+    </div>
 
   </mat-card-content>
-
-  <mat-card-actions>
-
-    <button mat-stroked-button
-            [routerLink]="['/items', item.id, 'user-items']">
-      <mat-icon>inventory</mat-icon>
-      Mes Items
-    </button>
-
-  </mat-card-actions>
 
 </mat-card>
 

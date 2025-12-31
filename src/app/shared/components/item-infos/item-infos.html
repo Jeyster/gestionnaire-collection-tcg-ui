@@ -7,7 +7,11 @@
   
   </div>
 
-  <div class="item-info-line" [class.multiline]="multiline">
+  <div 
+    class="item-info-line" 
+    [class.multiline]="multiline" 
+    [ngClass]="{ 'no-expansion': item.expansion.name == 'Autre' }"
+  >
   
     <span class="badge expansion" *ngIf="item.expansion.name !== 'Autre'">
       {{ item.expansion.name }}
@@ -19,7 +23,11 @@
     
   </div>
 
-  <div class="item-info-line" [class.multiline]="multiline">
+  <div 
+    class="item-info-line" 
+    [class.multiline]="multiline"
+    [ngClass]="{ 'no-expansion': item.expansion.name == 'Autre' }"
+  >
 
     <span class="badge locale">{{ item.locale.name }}</span>
 

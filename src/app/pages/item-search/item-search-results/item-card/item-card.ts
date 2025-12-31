@@ -1,15 +1,15 @@
 import { Component, inject, Input } from '@angular/core';
-import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
-import { RouterLink } from '@angular/router';
 import { Item } from '../../../../shared/interfaces/item';
-import { MatIconModule } from '@angular/material/icon';
 import { ItemInfos } from '../../../../shared/components/item-infos/item-infos';
 import { ItemService } from '../../../../services/item-service';
 import { Observable } from 'rxjs';
 import { ItemPriceHistory } from '../../../item-price-histories/item-price-history';
 import { CommonModule } from '@angular/common';
 import { ItemCardmarketInfosCompact } from '../../../../shared/components/item-cardmarket-infos-compact/item-cardmarket-infos-compact';
+import { UserItemsInfosCompact } from '../../../../shared/components/user-items-infos-compact/user-items-infos-compact';
+import { UserService } from '../../../../services/user-service';
+import { UserItemService } from '../../../../services/user-item-service';
 
 @Component({
   selector: 'app-item-card',
@@ -17,11 +17,9 @@ import { ItemCardmarketInfosCompact } from '../../../../shared/components/item-c
   imports: [
     CommonModule,
     MatCardModule,
-    MatButtonModule,
-    MatIconModule, 
-    RouterLink,
     ItemInfos,
-    ItemCardmarketInfosCompact
+    ItemCardmarketInfosCompact,
+    UserItemsInfosCompact
   ],
   templateUrl: './item-card.html',
   styleUrls: [
@@ -34,13 +32,18 @@ export class ItemCard {
   @Input() 
   item!: Item;
 
+  private userService = inject(UserService);
   private itemService = inject(ItemService);
+  private userItemService = inject(UserItemService);
+  
+  protected user = this.userService.getLoggedUser();
 
+  protected userItemsCount$!: Observable<number>;
   protected lastPriceHistory$!: Observable<ItemPriceHistory>;
-
+  
   ngOnInit() {
     this.lastPriceHistory$ = this.itemService.getLastPriceHistory(String(this.item.id));
+    this.userItemsCount$ = this.userItemService.getUserItemsCount(String(this.user.id), String(this.item.id));
   }
-
 
 }

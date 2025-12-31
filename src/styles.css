@@ -6,7 +6,9 @@
   --color-purchase: #38bdf8;
   --color-sell: #22c55e;
   --color-open: #f59e0b;
+
   --color-cardmarket: #727285;
+  --color-collection: #a6af26;
 
   /* Texte */
   --color-text-muted: #475569;
@@ -14,6 +16,7 @@
 
   /* Surfaces */
   --color-card-bg: #f8fafc;
+  --color-card-card: #f3f4f5;
 
   --color-icon-basic: #3d3d3d;
 }

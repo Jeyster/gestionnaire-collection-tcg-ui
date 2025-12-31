@@ -16,7 +16,11 @@
 }
 
 .item-info-line.multiline {
-  justify-content: center;
+  justify-content: space-between;
+}
+
+.item-info-line.multiline.no-expansion {
+  justify-content: flex-end;
 }
 
 .item-info .badge {
@@ -29,12 +33,24 @@
 }
 
 .item-info.multiline .badge {
-  font-size: 1.1rem;
+  font-size: 0.9rem;
 }
 
 .item-info .game {
   background-color: #38bdf8; 
   color: #0f172a;
+}
+
+.item-info-line.multiline .game {
+  font-size: 1.2rem;
+}
+
+.item-info-line.multiline .expansion {
+  font-size: 1.0rem;
+}
+
+.item-info-line.multiline .locale {
+  font-size: 0.8rem;
 }
 
 .item-info .item-type {
