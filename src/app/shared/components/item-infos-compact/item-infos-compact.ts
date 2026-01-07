@@ -8,7 +8,10 @@ import { CommonModule } from '@angular/common';
     CommonModule
   ],
   templateUrl: './item-infos-compact.html',
-  styleUrl: './item-infos-compact.css',
+  styleUrls: [
+    './item-infos-compact.css',
+    '../../css/item-infos-common.css'
+  ],
   standalone: true
 })
 export class ItemInfosCompact {

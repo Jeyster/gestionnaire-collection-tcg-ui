@@ -3,7 +3,6 @@ import { Item } from '../../interfaces/item';
 import { RouterLink } from '@angular/router';
 import { MatIcon } from '@angular/material/icon';
 import { MatTooltip } from '@angular/material/tooltip';
-import { CommonModule } from '@angular/common';
 import { MatIconButton } from '@angular/material/button';
 
 @Component({
