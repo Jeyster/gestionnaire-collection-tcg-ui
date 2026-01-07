@@ -16,12 +16,12 @@
   font-size: 0.85rem;
 }
 
-.market-price {
+.user-items-count {
   font-weight: 600;
   color: #0f172a;
 }
 
-.market-date {
+.user-items-count-label {
   font-size: 0.75rem;
   color: #64748b;
 }

@@ -2,12 +2,18 @@
 
     <!-- Info principale -->
     <div class="user-items-info">
-        <span class="market-price">
+        <span class="user-items-count">
             {{ userItemsCount }}
         </span>
 
-        <span class="market-date">
-            exemplaire(s) dans ma collection 
+        <span class="user-items-count-label">
+            @if(userItemsCount > 1) {
+                exemplaires
+            }
+            @else {
+                exemplaire
+            }
+             dans ma collection 
         </span>
     </div>
 
