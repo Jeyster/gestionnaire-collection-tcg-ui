@@ -4,10 +4,12 @@ import { RouterLink } from '@angular/router';
 import { MatIcon } from '@angular/material/icon';
 import { MatTooltip } from '@angular/material/tooltip';
 import { MatIconButton } from '@angular/material/button';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-user-items-infos-compact',
   imports: [
+    CommonModule,
     RouterLink,
     MatIconButton,
     MatIcon,
@@ -22,6 +24,6 @@ export class UserItemsInfosCompact {
   item!: Item;
 
   @Input()
-  userItemsCount!: number;
+  userItemsCount: number | null = null;
 
 }

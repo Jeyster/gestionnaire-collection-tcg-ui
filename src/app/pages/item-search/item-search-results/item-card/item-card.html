@@ -7,9 +7,8 @@
     <div class="item-meta-info">
   
       <app-user-items-infos-compact
-        *ngIf="userItemsCount$ | async as userItemsCount"
         [item]="item"
-        [userItemsCount]="userItemsCount"
+        [userItemsCount]="userItemsCount$ | async"
       />
 
       <app-item-cardmarket-infos-compact 
