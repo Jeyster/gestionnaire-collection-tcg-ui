@@ -3,17 +3,17 @@
     <!-- Info principale -->
     <div class="user-items-info">
         <span class="user-items-count">
-            {{ userItemsCount }}
+            {{ currentUserItemsCount }}
         </span>
 
         <span class="user-items-count-label">
-            @if(userItemsCount > 1) {
+            @if(currentUserItemsCount > 1) {
                 exemplaires
             }
             @else {
                 exemplaire
             }
-             dans ma collection 
+             actuellement dans ma collection (sur {{ userItemsCount }}) 
         </span>
     </div>
 

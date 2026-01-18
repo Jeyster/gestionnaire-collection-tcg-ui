@@ -39,11 +39,13 @@ export class ItemCard {
   protected user = this.userService.getLoggedUser();
 
   protected userItemsCount$!: Observable<number>;
+  protected currentUserItemsCount$!: Observable<number>;
   protected lastPriceHistory$!: Observable<ItemPriceHistory>;
   
   ngOnInit() {
-    this.lastPriceHistory$ = this.itemService.getLastPriceHistory(String(this.item.id));
     this.userItemsCount$ = this.userItemService.getUserItemsCount(String(this.user.id), String(this.item.id));
+    this.currentUserItemsCount$ = this.userItemService.getCurrentUserItemsCount(String(this.user.id), String(this.item.id));
+    this.lastPriceHistory$ = this.itemService.getLastPriceHistory(String(this.item.id));
   }
 
 }

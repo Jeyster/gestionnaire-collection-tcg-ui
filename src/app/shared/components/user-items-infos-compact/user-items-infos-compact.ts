@@ -25,5 +25,8 @@ export class UserItemsInfosCompact {
 
   @Input()
   userItemsCount: number | null = null;
+  
+  @Input()
+  currentUserItemsCount: number | null = null;
 
 }
