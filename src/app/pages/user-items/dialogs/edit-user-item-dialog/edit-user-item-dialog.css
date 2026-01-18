@@ -1,0 +1,19 @@
+.purchased mat-icon {
+  color: var(--color-purchase);
+}
+
+.sold mat-icon {
+  color: var(--color-sell);
+}
+
+.opened mat-icon {
+  color: var(--color-open);
+}
+
+.form-group-title {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 1.2rem;
+  margin-bottom: 15px;
+}

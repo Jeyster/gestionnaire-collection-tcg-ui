@@ -10,24 +10,83 @@
 
   <mat-dialog-content class="dialog-form">
 
-    <div class="form-row">
-      <mat-form-field appearance="outline">
-        <mat-label>Prix d'achat</mat-label>
-        <input matInput type="number" formControlName="purchasePrice">
-      </mat-form-field>
-
-      <mat-form-field appearance="outline">
-        <mat-label>Date</mat-label>
-        <input matInput [matDatepicker]="picker" formControlName="purchaseDate">
-        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-        <mat-datepicker #picker></mat-datepicker>
-      </mat-form-field>
+    <div class="purchased form-group-title">      
+      <mat-icon>{{ UserItemStatusConfig[UserItemStatus.PURCHASED].icon }}</mat-icon>
+      <span>Achat</span>
     </div>
+    <ng-container formGroupName="purchase">
+      
+      <div class="form-row">
+        <mat-form-field appearance="outline">
+          <mat-label>Prix</mat-label>
+          <input matInput type="number" formControlName="price">
+        </mat-form-field>
+  
+        <mat-form-field appearance="outline">
+          <mat-label>Date</mat-label>
+          <input matInput [matDatepicker]="picker" formControlName="date">
+          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+      </div>
+  
+      <mat-form-field appearance="outline">
+        <mat-label>Commentaire</mat-label>
+        <textarea matInput rows="2" formControlName="comment"></textarea>
+      </mat-form-field>
 
-    <mat-form-field appearance="outline">
-      <mat-label>Commentaire</mat-label>
-      <textarea matInput rows="2" formControlName="purchaseComment"></textarea>
-    </mat-form-field>
+    </ng-container>
+
+    @if (isSold) {
+      <div class="sold form-group-title">      
+        <mat-icon>{{ UserItemStatusConfig[UserItemStatus.SOLD].icon }}</mat-icon>
+        <span>Vente</span>
+      </div>
+      <ng-container formGroupName="sellingOrOpening">
+
+        <div class="form-row">
+          <mat-form-field appearance="outline">
+            <mat-label>Prix</mat-label>
+            <input matInput type="number" formControlName="price">
+          </mat-form-field>
+    
+          <mat-form-field appearance="outline">
+            <mat-label>Date</mat-label>
+            <input matInput [matDatepicker]="picker" formControlName="date">
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+          </mat-form-field>
+        </div>
+    
+        <mat-form-field appearance="outline">
+          <mat-label>Commentaire</mat-label>
+          <textarea matInput rows="2" formControlName="comment"></textarea>
+        </mat-form-field>
+
+      </ng-container>
+    }
+
+    @if (isOpened) {
+      <div class="opened form-group-title">      
+        <mat-icon>{{ UserItemStatusConfig[UserItemStatus.OPENED].icon }}</mat-icon>
+        <span>Ouverture</span>
+      </div>
+      <ng-container formGroupName="sellingOrOpening">
+    
+        <mat-form-field appearance="outline">
+          <mat-label>Date</mat-label>
+          <input matInput [matDatepicker]="picker" formControlName="date">
+          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+    
+        <mat-form-field appearance="outline">
+          <mat-label>Commentaire</mat-label>
+          <textarea matInput rows="2" formControlName="comment"></textarea>
+        </mat-form-field>
+
+      </ng-container>
+    }
 
   </mat-dialog-content>
 
