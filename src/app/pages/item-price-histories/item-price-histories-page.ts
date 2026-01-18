@@ -14,6 +14,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { BackButton } from '../../shared/components/back-button/back-button';
 import { ItemInfos } from '../../shared/components/item-infos/item-infos';
 import { ItemCardmarketInfos } from '../../shared/components/item-cardmarket-infos/item-cardmarket-infos';
+import { UserItemsInfos } from '../../shared/components/user-items-infos/user-items-infos';
 
 @Component({
   selector: 'app-item-price-histories-page',
@@ -24,7 +25,8 @@ import { ItemCardmarketInfos } from '../../shared/components/item-cardmarket-inf
     MatIconModule,
     BackButton,
     ItemInfos,
-    ItemCardmarketInfos
+    ItemCardmarketInfos,
+    UserItemsInfos
   ],
   templateUrl: './item-price-histories-page.html',
   styleUrls: [
@@ -46,6 +48,8 @@ export default class ItemPriceHistoriesPage {
   protected lastPriceHistory$ = this.itemService.getLastPriceHistory(this.itemId);
   protected priceHistories$ = this.itemService.getPriceHistories(this.itemId);
   protected userItems$ = this.userItemService.getUserItems(String(this.user.id), this.itemId);
+  protected userItemsCount$ = this.userItemService.getUserItemsCount(String(this.user.id), String(this.itemId));
+  protected currentUserItemsCount$ = this.userItemService.getCurrentUserItemsCount(String(this.user.id), String(this.itemId));
 
   @ViewChild('priceChart', { static: false })
   protected priceChartCanvas!: ElementRef<HTMLCanvasElement>;

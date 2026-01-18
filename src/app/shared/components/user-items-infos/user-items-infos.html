@@ -2,7 +2,6 @@
 *ngIf="userItemsCount !== null && currentUserItemsCount !== null" 
 class="user-items-info-compact"
 >
-
     <!-- Info principale -->
     <div class="user-items-info">
         <span class="user-items-count">
@@ -24,11 +23,10 @@ class="user-items-info-compact"
     <div class="user-items-actions">
 
         <button
-            mat-icon-button
-            class="medium-icon-button"
-            matTooltip="Voir ma collection"
+            mat-button
             [routerLink]="['/items', item.id, 'user-items']">
             <mat-icon>collections</mat-icon>
+            Voir ma collection
         </button>
 
     </div>

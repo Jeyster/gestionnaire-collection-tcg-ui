@@ -4,3 +4,15 @@
   padding: 16px;
   border-radius: 8px;
 }
+
+.item-infos {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+}
+
+.ui-infos, .cm-infos {
+  flex-grow: 1;
+}
+
