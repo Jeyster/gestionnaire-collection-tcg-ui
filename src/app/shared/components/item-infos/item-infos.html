@@ -2,18 +2,48 @@
 
   <div class="item-info-line">
 
-    <span class="badge game">{{ item.game.name }}</span>
-    <span class="badge item-type">{{ item.itemType.name }}</span>
+    <span 
+      class="badge game" 
+      [routerLink]="['/games', item.game.id, 'item-types']"
+      matTooltip="Aller vers &quot;Types d'item&quot;"
+    >
+      {{ item.game.name }}
+    </span>
+
+    <span 
+      class="badge item-type"
+      [routerLink]="['/items']"
+      [queryParams]="{
+        gameId: item.game.id,
+        itemTypeId: item.itemType.id
+      }"
+      matTooltip="Aller vers &quot;Recherche d'items&quot;"
+    >
+      {{ item.itemType.name }}
+    </span>
   
   </div>
 
   <div class="item-info-line">
   
-    <span class="badge expansion" *ngIf="item.expansion.name !== 'Autre'">
+    <span 
+      class="badge expansion"
+      *ngIf="item.expansion.name !== 'Autre'"
+      [routerLink]="['/items']"
+      [queryParams]="{
+        gameId: item.game.id,
+        itemTypeId: item.itemType.id,
+        expansionId: item.expansion.id
+      }"
+      matTooltip="Aller vers &quot;Recherche d'items&quot;"
+    >
       {{ item.expansion.name }}
     </span>
 
-    <span class="badge complement" *ngIf="item.complement">
+    <span 
+      class="badge complement" 
+      *ngIf="item.complement"
+      >
       {{ item.complement }}
     </span>
     
@@ -21,7 +51,19 @@
 
   <div class="item-info-line">
 
-    <span class="badge locale">{{ item.locale.name }}</span>
+    <span 
+      class="badge locale"
+      [routerLink]="['/items']"
+      [queryParams]="{
+        gameId: item.game.id,
+        itemTypeId: item.itemType.id,
+        expansionId: item.expansion.id,
+        localeId: item.locale.id
+      }"
+      matTooltip="Aller vers &quot;Recherche d'items&quot;"
+    >
+      {{ item.locale.name }}
+    </span>
 
   </div>
 

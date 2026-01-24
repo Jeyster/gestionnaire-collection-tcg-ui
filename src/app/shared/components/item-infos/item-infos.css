@@ -1,3 +1,10 @@
 .item-info .badge {
   font-size: 1.2rem;
 }
+
+.game,
+.item-type,
+.expansion,
+.locale {
+  cursor: pointer;
+}
