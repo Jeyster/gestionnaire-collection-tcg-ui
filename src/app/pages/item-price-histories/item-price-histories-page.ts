@@ -31,7 +31,8 @@ import { UserItemsInfos } from '../../shared/components/user-items-infos/user-it
   templateUrl: './item-price-histories-page.html',
   styleUrls: [
     './item-price-histories-page.css',
-    '../../shared/css/page.css'
+    '../../shared/css/page.css',
+    '../../shared/css/meta-item-infos.css'
   ]
 })
 export default class ItemPriceHistoriesPage {

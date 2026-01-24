@@ -14,11 +14,11 @@
 
 </div>
 
-<div class="item-infos">
+<div class="meta-item-infos">
   
   <app-user-items-infos
     *ngIf="item$ | async as item" 
-    class="item-info"
+    class="meta-item-info"
     [item]="item"
     [userItemsCount]="userItemsCount$ | async"
     [inStockUserItemsCount]="inStockUserItemsCount$ | async"
@@ -29,7 +29,7 @@
 
   <app-item-cardmarket-infos 
     *ngIf="lastPriceHistory$ | async as lastPriceHistory"
-    class="item-info" 
+    class="meta-item-info" 
     [itemPriceHistory]="lastPriceHistory"
     [showHistoryButton]="false"
   />

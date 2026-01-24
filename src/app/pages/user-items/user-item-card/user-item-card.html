@@ -2,6 +2,7 @@
   class="flex-card"
   appearance="outlined"
   [ngClass]="{
+    owned: userItem.status === UserItemStatus.PURCHASED,    
     sold: userItem.status === UserItemStatus.SOLD,
     opened: userItem.status === UserItemStatus.OPENED
   }"

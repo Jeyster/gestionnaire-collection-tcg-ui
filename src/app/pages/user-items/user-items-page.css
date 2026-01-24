@@ -1,13 +1,3 @@
-.item-infos {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  column-gap: 30px;
-}
-
-.item-info {
-  display: flex;
-}
-
 /* --- ADD ITEM BUTTON --- */
 .user-item-buttons {
   margin-bottom: 20px;

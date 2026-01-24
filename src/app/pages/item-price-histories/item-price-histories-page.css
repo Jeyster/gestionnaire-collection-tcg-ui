@@ -4,15 +4,3 @@
   padding: 16px;
   border-radius: 8px;
 }
-
-.item-infos {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  column-gap: 30px;
-}
-
-.item-info {
-  display: flex;
-}
-
-

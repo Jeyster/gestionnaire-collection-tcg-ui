@@ -10,7 +10,7 @@ import { CommonModule } from '@angular/common';
   templateUrl: './item-infos.html',
   styleUrls: [
     './item-infos.css',
-    '../../css/item-infos-common.css'
+    '../../css/item-infos.css'
   ],
   standalone: true
 })

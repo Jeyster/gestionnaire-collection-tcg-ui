@@ -36,7 +36,8 @@ import { UserItemsInfos } from '../../shared/components/user-items-infos/user-it
   templateUrl: './user-items-page.html',
   styleUrls: [
     './user-items-page.css',
-    '../../shared/css/page.css'
+    '../../shared/css/page.css',
+    '../../shared/css/meta-item-infos.css'
   ],
   standalone: true
 })

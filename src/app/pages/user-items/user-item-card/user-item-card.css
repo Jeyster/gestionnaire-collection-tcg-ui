@@ -1,3 +1,7 @@
+mat-card.owned {
+  border-left: 4px solid var(--color-owned);
+}
+
 mat-card.sold {
   border-left: 4px solid var(--color-sell);
 }
