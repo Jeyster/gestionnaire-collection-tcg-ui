@@ -35,6 +35,9 @@ export class UserItemsInfos {
   @Input()
   soldUserItemsCount: number | null = null;
 
+  @Input()
+  showMyItemsButton!: boolean;
+
   protected readonly UserItemStatus = UserItemStatus;
   protected readonly UserItemStatusConfig = USER_ITEM_STATUS_CONFIG;
 

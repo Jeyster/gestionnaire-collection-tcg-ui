@@ -6,13 +6,13 @@
 }
 
 .item-infos {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 20px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  column-gap: 30px;
 }
 
-.ui-infos, .cm-infos {
-  flex-grow: 1;
+.item-info {
+  display: flex;
 }
+
 

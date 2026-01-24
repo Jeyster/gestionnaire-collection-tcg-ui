@@ -19,6 +19,7 @@ import { ItemInfos } from '../../shared/components/item-infos/item-infos';
 import { USER_ITEM_STATUS_CONFIG } from '../../shared/configs/user-item-status.config';
 import { UserItemStatus } from '../../shared/enums/user-item-status';
 import { ItemCardmarketInfos } from '../../shared/components/item-cardmarket-infos/item-cardmarket-infos';
+import { UserItemsInfos } from '../../shared/components/user-items-infos/user-items-infos';
 
 @Component({
   selector: 'app-user-items-page',
@@ -29,7 +30,8 @@ import { ItemCardmarketInfos } from '../../shared/components/item-cardmarket-inf
     BackButton,
     ItemInfos,
     ItemCardmarketInfos,
-    UserItemCard
+    UserItemCard,
+    UserItemsInfos
   ],
   templateUrl: './user-items-page.html',
   styleUrls: [
@@ -64,6 +66,11 @@ export class UserItemsPage {
       )
     )
   );
+
+  protected userItemsCount$ = this.userItemService.getUserItemsCount(String(this.user.id), String(this.itemId));
+  protected inStockUserItemsCount$ = this.userItemService.getUserItemsInStockCount(String(this.user.id), String(this.itemId));
+  protected soldUserItemsCount$ = this.userItemService.getSoldUserItemsCount(String(this.user.id), String(this.itemId));
+  protected openedUserItemsCount$ = this.userItemService.getOpenedUserItemsCount(String(this.user.id), String(this.itemId));
 
   openCreateDialog() {
     const dialogRef = this.dialog.open(AddUserItemDialog, {

@@ -1,8 +1,10 @@
 .user-items-infos {
   display: flex;
-  align-items: baseline;
+  align-items: center;
   justify-content: space-between;
+  gap: 36px;
 
+  width: 100%;
   padding: 10px 14px;
   margin-bottom: 16px;
   margin-top: -8px;
@@ -17,18 +19,23 @@
 .count-infos {
   display: flex;
   align-items: center;
-  gap: 48px;
+  gap: 36px;
 }
 
 .count-info {
   display: flex;
-  align-items: flex-start;
+  align-items: center;
   gap: 6px;
 }
 
 .count-infos-details {
   display: flex;
   gap: 24px;
+}
+
+.count-infos-details .count-info {
+  display: flex;
+  align-items: flex-start;
 }
 
 .count {
@@ -38,6 +45,11 @@
 
 .count-label {
   color: #475569;
+}
+
+.count-info.purchased {
+  display: flex;
+  gap: 12px;
 }
 
 .count-info.purchased mat-icon {
@@ -83,8 +95,6 @@
   color: var(--color-sell);
 }
 
-
 .user-items-actions {
   display: flex;
-  gap: 2px;
 }
