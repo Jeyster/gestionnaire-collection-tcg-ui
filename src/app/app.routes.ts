@@ -4,23 +4,24 @@ import ItemTypesPage from './pages/item-types/item-types-page';
 import ItemPriceHistoriesPage from './pages/item-price-histories/item-price-histories-page';
 import { UserItemsPage } from './pages/user-items/user-items-page';
 import { ItemSearchPage } from './pages/item-search/item-search-page';
+import { ItemScraperManagerPage } from './pages/item-scraper-manager-page/item-scraper-manager-page';
 
 export const routes: Routes = [
   {
     path: '',
     redirectTo: 'games',
-    pathMatch: 'full',
+    pathMatch: 'full'
   },
   {
     path: 'games',
     children: [
       {
         path: '',
-        component: GamesPage,
+        component: GamesPage
       },
       {
         path: ':gameId/item-types',
-        component: ItemTypesPage,
+        component: ItemTypesPage
       },
     ],
   },
@@ -29,17 +30,21 @@ export const routes: Routes = [
     children: [
       {
         path: '',
-        component: ItemSearchPage,
+        component: ItemSearchPage
       },
       {
         path: ':itemId/price-histories',
-        component: ItemPriceHistoriesPage,
+        component: ItemPriceHistoriesPage
       },
       {
         path: ':itemId/user-items',
-        component: UserItemsPage,
+        component: UserItemsPage
       },
     ],
   },
+  {
+    path: 'item-scraper',
+    component: ItemScraperManagerPage
+  }
 ];
 

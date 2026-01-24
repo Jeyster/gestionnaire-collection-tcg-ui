@@ -5,10 +5,11 @@ import { Locale } from "./locale";
 
 export interface Item {
     id: number,
-    url: string,
     game: Game,
     itemType: ItemType,
-    locale: Locale,
     expansion: Expansion,
+    locale: Locale,
     complement: string
+    url: string,
+    isCmScrapingActive: boolean
 }
