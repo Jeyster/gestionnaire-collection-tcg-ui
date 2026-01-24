@@ -57,6 +57,7 @@ export class UserItemsPage {
 
   protected item$ = this.itemService.getItem(this.itemId);
   protected lastPriceHistory$ = this.itemService.getLastPriceHistory(this.itemId);
+
   private reload$ = new Subject<void>();
   protected userItems$ = this.reload$.pipe(
     startWith(void 0), // 👈 charge au démarrage
@@ -68,11 +69,46 @@ export class UserItemsPage {
     )
   );
 
-  protected userItemsCount$ = this.userItemService.getUserItemsCount(String(this.user.id), String(this.itemId));
-  protected inStockUserItemsCount$ = this.userItemService.getUserItemsInStockCount(String(this.user.id), String(this.itemId));
-  protected soldUserItemsCount$ = this.userItemService.getSoldUserItemsCount(String(this.user.id), String(this.itemId));
-  protected openedUserItemsCount$ = this.userItemService.getOpenedUserItemsCount(String(this.user.id), String(this.itemId));
-
+  protected userItemsCount$ = this.reload$.pipe(
+    startWith(void 0), // 👈 charge au démarrage
+    switchMap(() =>
+      this.userItemService.getUserItemsCount(
+        String(this.user.id),
+        this.itemId
+      )
+    )
+  );
+  
+  protected inStockUserItemsCount$ = this.reload$.pipe(
+    startWith(void 0), // 👈 charge au démarrage
+    switchMap(() =>
+      this.userItemService.getUserItemsInStockCount(
+        String(this.user.id),
+        this.itemId
+      )
+    )
+  );
+  
+  protected soldUserItemsCount$ = this.reload$.pipe(
+    startWith(void 0), // 👈 charge au démarrage
+    switchMap(() =>
+      this.userItemService.getSoldUserItemsCount(
+        String(this.user.id),
+        this.itemId
+      )
+    )
+  );
+  
+  protected openedUserItemsCount$ = this.reload$.pipe(
+    startWith(void 0), // 👈 charge au démarrage
+    switchMap(() =>
+      this.userItemService.getOpenedUserItemsCount(
+        String(this.user.id),
+        this.itemId
+      )
+    )
+  );
+  
   openCreateDialog() {
     const dialogRef = this.dialog.open(AddUserItemDialog, {
       width: '400px',
