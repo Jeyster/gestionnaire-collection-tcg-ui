@@ -44,7 +44,7 @@ export class ItemCard {
   
   ngOnInit() {
     this.userItemsCount$ = this.userItemService.getUserItemsCount(String(this.user.id), String(this.item.id));
-    this.currentUserItemsCount$ = this.userItemService.getCurrentUserItemsCount(String(this.user.id), String(this.item.id));
+    this.currentUserItemsCount$ = this.userItemService.getUserItemsInStockCount(String(this.user.id), String(this.item.id));
     this.lastPriceHistory$ = this.itemService.getLastPriceHistory(String(this.item.id));
   }
 

@@ -49,7 +49,9 @@ export default class ItemPriceHistoriesPage {
   protected priceHistories$ = this.itemService.getPriceHistories(this.itemId);
   protected userItems$ = this.userItemService.getUserItems(String(this.user.id), this.itemId);
   protected userItemsCount$ = this.userItemService.getUserItemsCount(String(this.user.id), String(this.itemId));
-  protected currentUserItemsCount$ = this.userItemService.getCurrentUserItemsCount(String(this.user.id), String(this.itemId));
+  protected inStockUserItemsCount$ = this.userItemService.getUserItemsInStockCount(String(this.user.id), String(this.itemId));
+  protected soldUserItemsCount$ = this.userItemService.getSoldUserItemsCount(String(this.user.id), String(this.itemId));
+  protected openedUserItemsCount$ = this.userItemService.getOpenedUserItemsCount(String(this.user.id), String(this.itemId));
 
   @ViewChild('priceChart', { static: false })
   protected priceChartCanvas!: ElementRef<HTMLCanvasElement>;

@@ -19,4 +19,9 @@ export const USER_ITEM_STATUS_CONFIG: Record<
     color: 'var(--color-open)',
     icon: 'auto_awesome',
   },
+  [UserItemStatus.OWNED]: {
+    label: 'Possédé',
+    color: 'var(--color-owned)',
+    icon: 'badge',
+  }
 };

@@ -25,9 +25,21 @@ export class UserItemService {
     );
   }
 
-  getCurrentUserItemsCount(userId: string, itemId: string) {
+  getUserItemsInStockCount(userId: string, itemId: string) {
     return this.http.get<number>(
-      '/gestionnaire-collection-tcg/v1/user-items/current-count?userId=' + userId + '&itemId=' + itemId
+      '/gestionnaire-collection-tcg/v1/user-items/stock-count?userId=' + userId + '&itemId=' + itemId
+    );
+  }
+
+  getSoldUserItemsCount(userId: string, itemId: string) {
+    return this.http.get<number>(
+      '/gestionnaire-collection-tcg/v1/user-items/sold-count?userId=' + userId + '&itemId=' + itemId
+    );
+  }
+
+  getOpenedUserItemsCount(userId: string, itemId: string) {
+    return this.http.get<number>(
+      '/gestionnaire-collection-tcg/v1/user-items/opened-count?userId=' + userId + '&itemId=' + itemId
     );
   }
 

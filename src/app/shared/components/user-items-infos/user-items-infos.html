@@ -1,22 +1,77 @@
 <div 
-*ngIf="userItemsCount !== null && currentUserItemsCount !== null" 
-class="user-items-info-compact"
+*ngIf="userItemsCount !== null" 
+class="user-items-infos"
 >
-    <!-- Info principale -->
-    <div class="user-items-info">
-        <span class="user-items-count">
-            {{ currentUserItemsCount }}
-        </span>
+    <!-- Infos -->
+    <div class="count-infos">
+        <div class="count-info purchased">
+            <mat-icon>{{ UserItemStatusConfig[UserItemStatus.PURCHASED].icon }}</mat-icon>
+            <span class="count">
+                {{ userItemsCount }}
+            </span>
+    
+            <span class="count-label">
+                @if(userItemsCount > 1) {
+                    exemplaires achetés
+                }
+                @else {
+                    exemplaire acheté
+                }
+            </span>
+        </div>
 
-        <span class="user-items-count-label">
-            @if(currentUserItemsCount > 1) {
-                exemplaires
-            }
-            @else {
-                exemplaire
-            }
-             actuellement dans ma collection (sur {{ userItemsCount }}) 
-        </span>
+        <div class="count-infos-details">
+
+            <div *ngIf="inStockUserItemsCount !== null" class="count-info owned">
+                <mat-icon>{{ UserItemStatusConfig[UserItemStatus.OWNED].icon }}</mat-icon>
+                <span class="count">
+                    {{ inStockUserItemsCount }}
+                </span>
+        
+                <span class="count-label">
+                    @if(inStockUserItemsCount > 1) {
+                        possédés
+                    }
+                    @else {
+                        possédé
+                    }
+                </span>
+            </div>
+
+            <div *ngIf="openedUserItemsCount !== null" class="count-info opened">
+                <mat-icon>{{ UserItemStatusConfig[UserItemStatus.OPENED].icon }}</mat-icon>
+                <span class="count">
+                    {{ openedUserItemsCount }}
+                </span>
+        
+                <span class="count-label">
+                    @if(openedUserItemsCount > 1) {
+                        ouverts
+                    }
+                    @else {
+                        ouvert
+                    }
+                </span>
+            </div>
+        
+            <div *ngIf="soldUserItemsCount !== null" class="count-info sold">
+                <mat-icon>{{ UserItemStatusConfig[UserItemStatus.SOLD].icon }}</mat-icon>
+                <span class="count">
+                    {{ soldUserItemsCount }}
+                </span>
+        
+                <span class="count-label">
+                    @if(soldUserItemsCount > 1) {
+                        vendus
+                    }
+                    @else {
+                        vendu
+                    }
+                </span>
+            </div>
+
+        </div>
+
     </div>
 
     <!-- Actions -->

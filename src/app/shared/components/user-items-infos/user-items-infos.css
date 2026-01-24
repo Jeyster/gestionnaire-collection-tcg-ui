@@ -1,6 +1,6 @@
-.user-items-info-compact {
+.user-items-infos {
   display: flex;
-  align-items: center;
+  align-items: baseline;
   justify-content: space-between;
 
   padding: 10px 14px;
@@ -14,22 +14,75 @@
   box-shadow: inset 0 0 0 1px rgba(0,0,0,0.04);
 }
 
-.user-items-info {
+.count-infos {
   display: flex;
   align-items: center;
-  gap: 6px;
-  font-size: 1.1rem;
+  gap: 48px;
 }
 
-.user-items-count {
+.count-info {
+  display: flex;
+  align-items: flex-start;
+  gap: 6px;
+}
+
+.count-infos-details {
+  display: flex;
+  gap: 24px;
+}
+
+.count {
   font-weight: 600;
   color: #0f172a;
 }
 
-.user-items-count-label {
-  font-size: 0.8rem;
+.count-label {
   color: #475569;
 }
+
+.count-info.purchased mat-icon {
+  font-size: 21px;
+  color: var(--color-purchase);
+}
+
+.count-info.purchased .count {
+  font-size: 0.95rem;
+}
+
+.count-info.purchased .count-label {
+  font-size: 0.85rem;
+}
+
+.count-info.owned .count,
+.count-info.opened .count,
+.count-info.sold .count{
+  font-size: 0.85rem;
+}
+
+.count-info.owned .count-label,
+.count-info.opened .count-label,
+.count-info.sold .count-label{
+  font-size: 0.8rem;
+}
+
+.count-info.owned mat-icon,
+.count-info.sold mat-icon,
+.count-info.opened mat-icon {
+  font-size: 18px;
+}
+
+.count-info.owned mat-icon {
+  color: var(--color-owned);
+}
+
+.count-info.opened mat-icon {
+  color: var(--color-open);
+}
+
+.count-info.sold mat-icon {
+  color: var(--color-sell);
+}
+
 
 .user-items-actions {
   display: flex;
