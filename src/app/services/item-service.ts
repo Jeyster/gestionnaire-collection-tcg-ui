@@ -4,6 +4,7 @@ import { Item } from '../shared/interfaces/item';
 import { ItemPriceHistory } from '../pages/item-price-histories/item-price-history';
 import { ItemSearchFiltersDto } from '../pages/item-search/item-search-filters/item-search-filters-dto';
 import { Page } from '../shared/interfaces/page';
+import { ToggleCmScraping } from '../pages/item-scraper-manager-page/item-scraper-table/toggle-cm-scraping';
 
 @Injectable({
   providedIn: 'root'
@@ -39,6 +40,13 @@ export class ItemService {
 
   getLastPriceHistory(itemId: string) {
     return this.http.get<ItemPriceHistory>('/gestionnaire-collection-tcg/v1/items/' + itemId + '/last-price-history');
+  }
+
+  toggleScraping(itemId: string, toggleCmScraping: ToggleCmScraping) {
+    return this.http.put(
+      '/gestionnaire-collection-tcg/v1/items/' + itemId, 
+      toggleCmScraping
+    );
   }
 
 }

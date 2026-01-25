@@ -29,7 +29,7 @@ export class ItemScraperTable {
   pageChange = new EventEmitter<PageEvent>();
 
   @Output()
-  toggleScraping = new EventEmitter<Item>();
+  toggleScraping = new EventEmitter<{ itemId: number; value: boolean }>();
 
   displayedColumns = [
     'game',
@@ -39,4 +39,12 @@ export class ItemScraperTable {
     'complement',
     'scraping'
   ];
+
+  protected onToggleScraping(item: Item, checked: boolean) {
+    this.toggleScraping.emit({
+      itemId: item.id,
+      value: checked
+    });
+  }
+
 }

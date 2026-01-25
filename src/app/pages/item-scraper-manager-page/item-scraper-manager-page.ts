@@ -6,12 +6,13 @@ import { MatTooltip } from '@angular/material/tooltip';
 import { ItemSearchFilters } from '../item-search/item-search-filters/item-search-filters';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ItemService } from '../../services/item-service';
-import { map, switchMap } from 'rxjs';
+import { BehaviorSubject, combineLatest, map, switchMap } from 'rxjs';
 import { ItemSearchFiltersDto } from '../item-search/item-search-filters/item-search-filters-dto';
 import { PageEvent } from '@angular/material/paginator';
 import { Item } from '../../shared/interfaces/item';
 import { ItemScraperTable } from './item-scraper-table/item-scraper-table';
 import { BackButton } from '../../shared/components/back-button/back-button';
+import { ToggleCmScraping } from './item-scraper-table/toggle-cm-scraping';
 
 @Component({
   selector: 'app-item-scraper-manager-page',
@@ -48,8 +49,15 @@ export class ItemScraperManagerPage {
     }))
   );
 
-  protected itemsPage$ = this.filters$.pipe(
-    switchMap(filters => this.itemService.searchItems(filters))
+  private refresh$ = new BehaviorSubject<void>(undefined);
+
+  protected itemsPage$ = combineLatest([
+    this.filters$,
+    this.refresh$
+  ]).pipe(
+    switchMap(([filters]) =>
+      this.itemService.searchItems(filters)
+    )
   );
 
   private updateQueryParams(filters: Partial<ItemSearchFiltersDto>) {
@@ -74,12 +82,14 @@ export class ItemScraperManagerPage {
     });
   }
 
-  protected onToggleScraping(item: Item) {
-/*    this.itemService.toggleScraping(item.id, !item.isCmScrapingActive)
-      .subscribe(() => {
-        item.isCmScrapingActive = !item.isCmScrapingActive;
-      });*/
-  }
+  protected onToggleScraping(event: { itemId: number; value: boolean }) {
+    const payload: ToggleCmScraping = {
+      isCmScrapingActive: event.value
+    };
 
+    this.itemService.toggleScraping(String(event.itemId), payload).subscribe(() => {
+      this.refresh$.next();
+    });
+  }
 
 }
