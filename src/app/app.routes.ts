@@ -4,7 +4,7 @@ import ItemTypesPage from './pages/item-types/item-types-page';
 import ItemPriceHistoriesPage from './pages/item-price-histories/item-price-histories-page';
 import { UserItemsPage } from './pages/user-items/user-items-page';
 import { ItemSearchPage } from './pages/item-search/item-search-page';
-import { ItemScraperManagerPage } from './pages/item-scraper-manager-page/item-scraper-manager-page';
+import { ItemScraperPage } from './pages/item-scraper-page/item-scraper-page';
 
 export const routes: Routes = [
   {
@@ -44,7 +44,7 @@ export const routes: Routes = [
   },
   {
     path: 'item-scraper',
-    component: ItemScraperManagerPage
+    component: ItemScraperPage
   }
 ];
 

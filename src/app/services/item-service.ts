@@ -4,7 +4,8 @@ import { Item } from '../shared/interfaces/item';
 import { ItemPriceHistory } from '../pages/item-price-histories/item-price-history';
 import { ItemSearchFiltersDto } from '../pages/item-search/item-search-filters/item-search-filters-dto';
 import { Page } from '../shared/interfaces/page';
-import { ToggleCmScraping } from '../pages/item-scraper-manager-page/item-scraper-table/toggle-cm-scraping';
+import { ToggleCmScraping } from '../pages/item-scraper-page/item-scraper-table/toggle-cm-scraping';
+import { BulkToggleCmScrapingDto } from '../pages/item-scraper-page/item-scraper-table/bulk-toggle-cm-scraping';
 
 @Injectable({
   providedIn: 'root'
@@ -46,6 +47,13 @@ export class ItemService {
     return this.http.put(
       '/gestionnaire-collection-tcg/v1/items/' + itemId, 
       toggleCmScraping
+    );
+  }
+
+  bulkToggleScraping(bulkToggleCmScrapingDto: BulkToggleCmScrapingDto) {
+    return this.http.put(
+      '/gestionnaire-collection-tcg/v1/items/toggle-scraping', 
+      bulkToggleCmScrapingDto
     );
   }
 

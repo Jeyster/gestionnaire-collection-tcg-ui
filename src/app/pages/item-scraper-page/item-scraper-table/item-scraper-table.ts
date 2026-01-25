@@ -5,6 +5,7 @@ import { MatPaginator, PageEvent } from '@angular/material/paginator';
 import { MatTableModule } from '@angular/material/table';
 import { Page } from '../../../shared/interfaces/page';
 import { Item } from '../../../shared/interfaces/item';
+import { BulkToggleCmScrapingDto } from './bulk-toggle-cm-scraping';
 
 @Component({
   selector: 'app-item-scraper-table',
@@ -31,6 +32,9 @@ export class ItemScraperTable {
   @Output()
   toggleScraping = new EventEmitter<{ itemId: number; value: boolean }>();
 
+  @Output()
+  toggleAllScraping = new EventEmitter<BulkToggleCmScrapingDto>();
+
   displayedColumns = [
     'game',
     'type',
@@ -45,6 +49,25 @@ export class ItemScraperTable {
       itemId: item.id,
       value: checked
     });
+  }
+
+  get allChecked(): boolean {
+    return this.itemsPage.content.every(i => i.isCmScrapingActive);
+  }
+
+  get someChecked(): boolean {
+    const activeCount = this.itemsPage.content.filter(i => i.isCmScrapingActive).length;
+    return activeCount > 0 && activeCount < this.itemsPage.content.length;
+  }
+
+  protected toggleAllOnPage(checked: boolean) {
+    const payload: BulkToggleCmScrapingDto = {
+      isCmScrapingActive: checked,
+      itemIds: this.itemsPage.content
+                .filter(i => i.isCmScrapingActive !== checked)
+                .flatMap(i => i.id)
+    };
+    this.toggleAllScraping.emit(payload);
   }
 
 }

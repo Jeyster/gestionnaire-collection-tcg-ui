@@ -6,16 +6,16 @@ import { MatTooltip } from '@angular/material/tooltip';
 import { ItemSearchFilters } from '../item-search/item-search-filters/item-search-filters';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ItemService } from '../../services/item-service';
-import { BehaviorSubject, combineLatest, map, switchMap } from 'rxjs';
+import { BehaviorSubject, combineLatest, debounceTime, map, switchMap } from 'rxjs';
 import { ItemSearchFiltersDto } from '../item-search/item-search-filters/item-search-filters-dto';
 import { PageEvent } from '@angular/material/paginator';
-import { Item } from '../../shared/interfaces/item';
 import { ItemScraperTable } from './item-scraper-table/item-scraper-table';
 import { BackButton } from '../../shared/components/back-button/back-button';
 import { ToggleCmScraping } from './item-scraper-table/toggle-cm-scraping';
+import { BulkToggleCmScrapingDto } from './item-scraper-table/bulk-toggle-cm-scraping';
 
 @Component({
-  selector: 'app-item-scraper-manager-page',
+  selector: 'app-item-scraper-page',
   standalone: true,
   imports: [
     CommonModule,
@@ -26,13 +26,13 @@ import { ToggleCmScraping } from './item-scraper-table/toggle-cm-scraping';
     ItemSearchFilters,
     ItemScraperTable
   ],
-  templateUrl: './item-scraper-manager-page.html',
+  templateUrl: './item-scraper-page.html',
   styleUrls: [
-    './item-scraper-manager-page.css',
+    './item-scraper-page.css',
     '../../shared/css/page.css'
   ]
 })
-export class ItemScraperManagerPage {
+export class ItemScraperPage {
 
   private route = inject(ActivatedRoute);
   private router = inject(Router);
@@ -45,7 +45,7 @@ export class ItemScraperManagerPage {
       localeId: params['localeId'] ? +params['localeId'] : null,
       expansionId: params['expansionId'] ? +params['expansionId'] : null,
       pageIndex: params['pageIndex'] ? +params['pageIndex'] : 0,
-      pageSize: params['pageSize'] ? +params['pageSize'] : 12
+      pageSize: params['pageSize'] ? +params['pageSize'] : 20
     }))
   );
 
@@ -88,6 +88,12 @@ export class ItemScraperManagerPage {
     };
 
     this.itemService.toggleScraping(String(event.itemId), payload).subscribe(() => {
+      this.refresh$.next();
+    });
+  }
+
+  protected onToggleAllScraping(payload: BulkToggleCmScrapingDto) {
+    this.itemService.bulkToggleScraping(payload).subscribe(() => {
       this.refresh$.next();
     });
   }
