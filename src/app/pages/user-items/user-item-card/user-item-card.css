@@ -30,7 +30,6 @@ mat-card-actions.actions button {
   line-height: 1;
 }
 
-/* Icône bien centrée */
 .icon-action mat-icon {
   color: var(--color-icon-basic);
   font-size: 20px;
