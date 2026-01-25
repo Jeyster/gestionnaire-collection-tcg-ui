@@ -27,7 +27,8 @@ import { BackButton } from '../../shared/components/back-button/back-button';
   ],
   templateUrl: './item-scraper-manager-page.html',
   styleUrls: [
-    './item-scraper-manager-page.css'
+    './item-scraper-manager-page.css',
+    '../../shared/css/page.css'
   ]
 })
 export class ItemScraperManagerPage {

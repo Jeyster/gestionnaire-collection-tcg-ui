@@ -1,5 +1,5 @@
 <div class="page-header">
-  <div class="page-title">Gestion des items (scraping)</div>
+  <div class="page-title">Scraping des items</div>
   <span class="flex-spacer"></span>
   <app-back-button />
 </div>
@@ -7,20 +7,20 @@
 <!-- Toolbar admin -->
 <div class="admin-toolbar">
   <button
+    mat-stroked-button
+    disabled
+    matTooltip="Ajout d’item (P2)">
+    <mat-icon>add</mat-icon>
+    Ajouter un item
+  </button>
+
+  <button
     mat-raised-button
     color="primary"
     disabled
     matTooltip="Scraping (à venir)">
     <mat-icon>sync</mat-icon>
     Lancer le scraping
-  </button>
-
-  <button
-    mat-stroked-button
-    disabled
-    matTooltip="Ajout d’item (P2)">
-    <mat-icon>add</mat-icon>
-    Ajouter un item
   </button>
 </div>
 
