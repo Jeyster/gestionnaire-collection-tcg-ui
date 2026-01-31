@@ -17,4 +17,11 @@ export class GameService {
     return this.http.get<Game>('/gestionnaire-collection-tcg/v1/games/' + id);
   }
 
+  createGame(game: Game) {
+    return this.http.post(
+      '/gestionnaire-collection-tcg/v1/games',
+      game
+    );
+  }
+
 }

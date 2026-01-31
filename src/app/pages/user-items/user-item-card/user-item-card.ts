@@ -4,7 +4,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { CommonModule } from '@angular/common';
 import { MatDialog } from '@angular/material/dialog';
-import { ConfirmDialog } from '../../../shared/components/confirm-dialog/confirm-dialog';
+import { ConfirmDialog } from '../../../shared/components/dialogs/confirm-dialog/confirm-dialog';
 import { SellUserItemDialog } from '../dialogs/sell-user-item-dialog/sell-user-item-dialog';
 import { OpenUserItemDialog } from '../dialogs/open-user-item-dialog/open-user-item-dialog';
 import { AddUserItem } from '../dialogs/add-user-item-dialog/add-user-item';

@@ -13,6 +13,8 @@ import { ItemScraperTable } from './item-scraper-table/item-scraper-table';
 import { BackButton } from '../../shared/components/back-button/back-button';
 import { ToggleCmScraping } from './item-scraper-table/toggle-cm-scraping';
 import { BulkToggleCmScrapingDto } from './item-scraper-table/bulk-toggle-cm-scraping';
+import { MatDialog } from '@angular/material/dialog';
+import { GameService } from '../../services/game-service';
 
 @Component({
   selector: 'app-item-scraper-page',
@@ -37,6 +39,8 @@ export class ItemScraperPage {
   private route = inject(ActivatedRoute);
   private router = inject(Router);
   private itemService = inject(ItemService);
+  private gameService = inject(GameService);
+  private dialog = inject(MatDialog);
 
   protected filters$ = this.route.queryParams.pipe(
     map(params => ({
@@ -98,4 +102,22 @@ export class ItemScraperPage {
     });
   }
 
+  protected openCreateDialog() {
+/*    const dialogRef = this.dialog.open(AddUserItemDialog, {
+      width: '400px',
+      data: {
+        userId: this.user.id,
+        itemId: Number(this.itemId)
+      }
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      if (!result) return;
+
+      this.gameService.createGame(result).subscribe(() => {
+        this.refresh$.next(); // 🔥 RAFRAÎCHISSEMENT GARANTI
+      });
+    });
+    */
+  }
 }

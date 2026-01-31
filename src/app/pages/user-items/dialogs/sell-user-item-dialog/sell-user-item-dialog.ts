@@ -1,7 +1,7 @@
 import { Component, inject, Inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
-import { MatDialogRef, MAT_DIALOG_DATA, MatDialogActions, MatDialogContent } from '@angular/material/dialog';
+import { MatDialogRef, MAT_DIALOG_DATA, MatDialogActions, MatDialogContent, MatDialogTitle } from '@angular/material/dialog';
 import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
@@ -26,6 +26,7 @@ import { UserItemStatus } from '../../../../shared/enums/user-item-status';
     MatInputModule,
     MatDatepickerModule,
     MatNativeDateModule,
+    MatDialogTitle,
     MatDialogActions,
     MatDialogContent,
     MatIconModule,

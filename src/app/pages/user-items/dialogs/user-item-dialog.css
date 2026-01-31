@@ -1,23 +1,10 @@
-/* ===== Dialog container ===== */
-.mat-dialog-container {
-  background: var(--color-card-bg);
-  color: var(--color-text-main);
-  border-radius: 16px;
-}
+ .dialog-title {
+   display: flex;
+   align-items: center;
+ }
 
-/* ===== Header ===== */
-.dialog-header {
-  padding: 6px 20px 8px;
-}
-
-.dialog-title {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
 
 .dialog-title h2 {
-  margin-top: 15px;
   font-weight: 600;
   font-size: 1.25rem;
 }
@@ -32,7 +19,6 @@
 
 /* ===== Form ===== */
 .dialog-form {
-  padding: 8px 24px;
   display: flex;
   flex-direction: column;
   gap: 0px;
@@ -42,11 +28,4 @@
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 12px;
-}
-
-/* ===== Actions ===== */
-.dialog-actions {
-  padding: 0px 24px 16px;
-  display: flex;
-  justify-content: space-between;
 }
