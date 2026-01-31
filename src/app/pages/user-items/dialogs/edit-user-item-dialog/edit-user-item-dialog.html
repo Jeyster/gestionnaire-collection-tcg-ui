@@ -1,14 +1,14 @@
-<div class="dialog-header">
+<app-business-object-dialog-shell
+  [form]="form"
+  [submit]="submit.bind(this)"
+  [cancel]="cancel.bind(this)">
 
-  <div class="dialog-title">
+  
+  <div dialog-title class="dialog-title">
     <h2 mat-dialog-title>Modifier cet item</h2>
   </div>
-
-</div>
-
-<form [formGroup]="form" (ngSubmit)="submit()">
-
-  <mat-dialog-content class="dialog-form">
+  
+  <div class="dialog-form" [formGroup]="form">
 
     <div class="purchased form-group-title">      
       <mat-icon>{{ UserItemStatusConfig[UserItemStatus.PURCHASED].icon }}</mat-icon>
@@ -88,18 +88,6 @@
       </ng-container>
     }
 
-  </mat-dialog-content>
+  </div>
 
-  <mat-dialog-actions class="dialog-actions">
-    <button mat-button type="button" (click)="cancel()">
-      Annuler
-    </button>
-
-    <button mat-flat-button color="primary" type="submit">
-      <mat-icon>save</mat-icon>
-      Enregistrer
-    </button>
-  </mat-dialog-actions>
-
-</form>
-
+</app-business-object-dialog-shell>

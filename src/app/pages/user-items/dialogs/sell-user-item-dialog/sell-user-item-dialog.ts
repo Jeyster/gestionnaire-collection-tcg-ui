@@ -1,8 +1,7 @@
-import { Component, inject, Inject } from '@angular/core';
+import { Component, Inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
-import { MatDialogRef, MAT_DIALOG_DATA, MatDialogActions, MatDialogContent, MatDialogTitle } from '@angular/material/dialog';
-import { MatButtonModule } from '@angular/material/button';
+import { ReactiveFormsModule, Validators } from '@angular/forms';
+import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatDatepickerModule } from '@angular/material/datepicker';
@@ -11,9 +10,10 @@ import { UserItem } from '../../../../shared/interfaces/user-item';
 import { SellUserItem } from './sell-user-item';
 import { MatIconModule } from '@angular/material/icon';
 import { PurchaseEvent } from '../../events/purchase-event/purchase-event';
-import { StringUtil } from '../../../../services/string-util';
 import { USER_ITEM_STATUS_CONFIG } from '../../../../shared/configs/user-item-status.config';
 import { UserItemStatus } from '../../../../shared/enums/user-item-status';
+import { BusinessObjectDialogShell } from '../../../../shared/components/dialogs/business-object-dialog-shell/business-object-dialog-shell';
+import { AbstractBusinessObjectDialog } from '../../../../shared/components/dialogs/abstract-business-object-dialog';
 
 @Component({
   selector: 'app-sell-user-item-dialog',
@@ -21,58 +21,48 @@ import { UserItemStatus } from '../../../../shared/enums/user-item-status';
   imports: [
     CommonModule,
     ReactiveFormsModule,
-    MatButtonModule,
     MatFormFieldModule,
     MatInputModule,
     MatDatepickerModule,
     MatNativeDateModule,
-    MatDialogTitle,
-    MatDialogActions,
-    MatDialogContent,
     MatIconModule,
+    BusinessObjectDialogShell,
     PurchaseEvent
   ],
   templateUrl: './sell-user-item-dialog.html',
   styleUrls: [
     './sell-user-item-dialog.css',
-    '../user-item-dialog.css'
+    '../../../../shared/components/dialogs/business-object-dialog-shell/business-object-dialog-shell.css'
   ]
 })
-export class SellUserItemDialog {
+export class SellUserItemDialog extends AbstractBusinessObjectDialog<SellUserItem> {
 
   protected readonly UserItemStatus = UserItemStatus;
   protected readonly UserItemStatusConfig = USER_ITEM_STATUS_CONFIG;
 
-  private fb = inject(FormBuilder);
-  private dialogRef = inject(MatDialogRef<SellUserItemDialog>);
-  private stringUtil = inject(StringUtil);
-
-  protected form = this.fb.group({
-    sellingPrice: [null, [Validators.required, Validators.min(0)]],
-    sellingDate: [null, Validators.required],
-    sellingComment: [null]
-  }); 
   
   constructor(
     @Inject(MAT_DIALOG_DATA)
     public data: { userItem: UserItem}
-  ) {}
+  ) {
+    super();
+    
+    this.form = this.fb.group({
+      sellingPrice: [null, [Validators.required, Validators.min(0)]],
+      sellingDate: [null, Validators.required],
+      sellingComment: [null]
+    }); 
 
-  submit() {
-    if (this.form.invalid) return;
+  }
 
+  protected buildPayload(): SellUserItem {
     const value = this.form.value;
 
-    const payload: SellUserItem = {
+    return {
       sellingPrice: value.sellingPrice!,
       sellingDate: this.stringUtil.toLocalISOString(value.sellingDate!), // ✅ ISO
       sellingComment: value.sellingComment ?? ''
     };
-
-    this.dialogRef.close(payload);
   }
 
-  cancel() {
-    this.dialogRef.close();
-  }
 }

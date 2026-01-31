@@ -1,9 +1,8 @@
 import { Component, Inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule, Validators } from '@angular/forms';
-import { MAT_DIALOG_DATA, MatDialogTitle } from '@angular/material/dialog';
-import { MatButtonModule } from '@angular/material/button';
-import { MatFormFieldModule, MatLabel } from '@angular/material/form-field';
+import { MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
@@ -25,13 +24,12 @@ import { BusinessObjectDialogShell } from '../../../../shared/components/dialogs
     MatDatepickerModule,
     MatNativeDateModule,
     MatIconModule,
-    MatDialogTitle,
     BusinessObjectDialogShell
   ],
   templateUrl: './add-user-item-dialog.html',
   styleUrls: [
     './add-user-item-dialog.css',
-    '../user-item-dialog.css'
+    '../../../../shared/components/dialogs/business-object-dialog-shell/business-object-dialog-shell.css'
   ]
 })
 export class AddUserItemDialog extends AbstractBusinessObjectDialog<AddUserItem> {
