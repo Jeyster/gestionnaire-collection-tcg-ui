@@ -15,6 +15,7 @@ import { ToggleCmScraping } from './item-scraper-table/toggle-cm-scraping';
 import { BulkToggleCmScrapingDto } from './item-scraper-table/bulk-toggle-cm-scraping';
 import { MatDialog } from '@angular/material/dialog';
 import { GameService } from '../../services/game-service';
+import { AddGameDialog } from './dialogs/add-game-dialog/add-game-dialog';
 
 @Component({
   selector: 'app-item-scraper-page',
@@ -53,7 +54,7 @@ export class ItemScraperPage {
     }))
   );
 
-  private refresh$ = new BehaviorSubject<void>(undefined);
+  protected refresh$ = new BehaviorSubject<void>(undefined);
 
   protected itemsPage$ = combineLatest([
     this.filters$,
@@ -103,12 +104,8 @@ export class ItemScraperPage {
   }
 
   protected openCreateDialog() {
-/*    const dialogRef = this.dialog.open(AddUserItemDialog, {
-      width: '400px',
-      data: {
-        userId: this.user.id,
-        itemId: Number(this.itemId)
-      }
+    const dialogRef = this.dialog.open(AddGameDialog, {
+      width: '400px'
     });
 
     dialogRef.afterClosed().subscribe(result => {
@@ -118,6 +115,5 @@ export class ItemScraperPage {
         this.refresh$.next(); // 🔥 RAFRAÎCHISSEMENT GARANTI
       });
     });
-    */
   }
 }

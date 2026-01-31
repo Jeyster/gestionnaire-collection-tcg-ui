@@ -6,20 +6,24 @@
 
 <!-- Toolbar admin -->
 <div class="admin-toolbar">
-  <button
-    mat-stroked-button
-    disabled
-    matTooltip="Ajout d’item (P2)">
-    <mat-icon>add</mat-icon>
-    Ajouter un item
-  </button>
+  <div class="add-buttons">
 
-  <button
-    mat-raised-button 
-    (click)="openCreateDialog()">
-    <mat-icon>add</mat-icon>
-    Ajouter un jeu
-  </button>
+    <button
+      mat-stroked-button
+      disabled
+      matTooltip="Ajout d’item (P2)">
+      <mat-icon>add</mat-icon>
+      Ajouter un item
+    </button>
+  
+    <button
+      mat-raised-button 
+      (click)="openCreateDialog()">
+      <mat-icon>add</mat-icon>
+      Ajouter un jeu
+    </button>
+
+  </div>
 
   <button
     mat-raised-button
@@ -35,6 +39,7 @@
 <div *ngIf="filters$ | async as filters">
   <app-item-search-filters
     [filters]="filters"
+    [parentRefresh$]="refresh$"
     (searchFilters)="onSearch($event)" />
 </div>
 

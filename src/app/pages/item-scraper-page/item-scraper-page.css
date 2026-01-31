@@ -4,3 +4,9 @@
   gap: 12px;
   margin-bottom: 12px;
 }
+
+.add-buttons {
+  display: flex;
+  justify-content: flex-start;
+  gap: 12px;
+}
