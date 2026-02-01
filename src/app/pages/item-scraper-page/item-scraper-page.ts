@@ -7,7 +7,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { ItemSearchFilters } from '../item-search/item-search-filters/item-search-filters';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ItemService } from '../../services/item-service';
-import { BehaviorSubject, catchError, combineLatest, debounceTime, EMPTY, map, switchMap } from 'rxjs';
+import { BehaviorSubject, catchError, combineLatest, EMPTY, map, switchMap } from 'rxjs';
 import { ItemSearchFiltersDto } from '../item-search/item-search-filters/item-search-filters-dto';
 import { PageEvent } from '@angular/material/paginator';
 import { ItemScraperTable } from './item-scraper-table/item-scraper-table';
@@ -23,6 +23,7 @@ import { LocaleService } from '../../services/locale-service';
 import { AddLocaleDialog } from './dialogs/add-locale-dialog/add-locale-dialog';
 import { AddExpansionDialog } from './dialogs/add-expansion-dialog/add-expansion-dialog';
 import { ExpansionService } from '../../services/expansion-service';
+import { AddItemDialog } from './dialogs/add-item-dialog/add-item-dialog';
 
 @Component({
   selector: 'app-item-scraper-page',
@@ -111,6 +112,62 @@ export class ItemScraperPage {
   protected onToggleAllScraping(payload: BulkToggleCmScrapingDto) {
     this.itemService.bulkToggleScraping(payload).subscribe(() => {
       this.refresh$.next();
+    });
+  }
+
+  protected addItemDialog() {
+    const dialogRef = this.dialog.open(AddItemDialog, {
+      width: '400px'
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      if (!result) return;
+
+      this.itemService.createItem(result).pipe(
+        catchError(err => {
+          // 🟥 Cas erreur métier (409 ou 404)
+          if ((err.status === 409 || err.status === 404) && err.error?.detail) {
+            this.snackBar.open(
+              err.error.detail,
+              'Fermer',
+              {
+                panelClass: ['snackbar-error'],
+                horizontalPosition: 'center',
+                verticalPosition: 'top',
+                duration: 10000
+              }
+            );
+            return EMPTY;
+          }
+
+          // 🟥 Cas erreur inconnue
+          this.snackBar.open(
+            'Une erreur est survenue lors de la création de l\'item.',
+            'Fermer', 
+            {
+              panelClass: ['snackbar-error'],
+              horizontalPosition: 'center',
+              verticalPosition: 'top',
+              duration: 10000
+            }
+          );
+          return EMPTY;
+        })
+      ).subscribe((createdItem) => {
+        // 🟩 Succès
+        this.snackBar.open(
+          `Item ${createdItem.game.name} / ${createdItem.itemType.name} / ${createdItem.locale.name} / ${createdItem.expansion.name} créé avec succès`,
+          'OK',
+          {
+            panelClass: ['snackbar-success'],
+            horizontalPosition: 'center',
+            verticalPosition: 'top',
+            duration: 6000
+          }
+        );
+
+        this.refresh$.next();
+      });
     });
   }
 

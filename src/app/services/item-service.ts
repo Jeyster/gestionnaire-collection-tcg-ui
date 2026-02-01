@@ -6,6 +6,7 @@ import { ItemSearchFiltersDto } from '../pages/item-search/item-search-filters/i
 import { Page } from '../shared/interfaces/page';
 import { ToggleCmScraping } from '../pages/item-scraper-page/item-scraper-table/toggle-cm-scraping';
 import { BulkToggleCmScrapingDto } from '../pages/item-scraper-page/item-scraper-table/bulk-toggle-cm-scraping';
+import { CreateItemDto } from '../pages/item-scraper-page/dialogs/add-item-dialog/create-item-dto';
 
 @Injectable({
   providedIn: 'root'
@@ -54,6 +55,13 @@ export class ItemService {
     return this.http.put(
       '/gestionnaire-collection-tcg/v1/items/toggle-scraping', 
       bulkToggleCmScrapingDto
+    );
+  }
+
+  createItem(createItemDto: CreateItemDto) {
+    return this.http.post<Item>(
+      '/gestionnaire-collection-tcg/v1/items',
+      createItemDto
     );
   }
 

@@ -8,7 +8,7 @@ import { MatNativeDateModule, MatOption } from '@angular/material/core';
 import { MatIconModule } from '@angular/material/icon';
 import { AbstractBusinessObjectDialog } from '../../../../shared/components/dialogs/abstract-business-object-dialog';
 import { BusinessObjectDialogShell } from '../../../../shared/components/dialogs/business-object-dialog-shell/business-object-dialog-shell';
-import { CreateExpansion } from './create-expansion';
+import { CreateExpansionDto } from './create-expansion-dto';
 import { GameService } from '../../../../services/game-service';
 import { MatSelect } from '@angular/material/select';
 
@@ -34,7 +34,7 @@ import { MatSelect } from '@angular/material/select';
     '../../../../shared/components/dialogs/business-object-dialog-shell/business-object-dialog-shell.css'
   ]
 })
-export class AddExpansionDialog extends AbstractBusinessObjectDialog<CreateExpansion> {
+export class AddExpansionDialog extends AbstractBusinessObjectDialog<CreateExpansionDto> {
 
   private gameService = inject(GameService);
 
@@ -49,7 +49,7 @@ export class AddExpansionDialog extends AbstractBusinessObjectDialog<CreateExpan
     });
   }
 
-  protected buildPayload(): CreateExpansion {
+  protected buildPayload(): CreateExpansionDto {
     const value = this.form.value;
 
     return {

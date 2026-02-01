@@ -1,1 +1,77 @@
-<p>add-item-dialog works!</p>
+<app-business-object-dialog-shell
+  [form]="form"
+  [submit]="submit.bind(this)"
+  [cancel]="cancel.bind(this)">
+
+  
+  <div dialog-title class="dialog-title">
+    <h2 mat-dialog-title>Ajouter un item</h2>
+  </div>
+  
+  <div class="dialog-form" [formGroup]="form">
+
+    <div class="form-row">
+        
+        <mat-form-field appearance="outline">
+          <mat-label>Jeu</mat-label>
+          <mat-select formControlName="gameId">
+            <mat-option [value]="null">Tous</mat-option>
+            <mat-option *ngFor="let game of games$ | async" [value]="game.id">
+              {{ game.name }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+    
+        <mat-form-field appearance="outline">
+          <mat-label>Extension</mat-label>
+          <mat-select formControlName="expansionId">
+            <mat-option [value]="null">Toutes</mat-option>
+            <mat-option *ngFor="let exp of expansions$ | async" [value]="exp.id">
+              {{ exp.name }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+
+    </div>
+
+    <div class="form-row">
+
+        <mat-form-field appearance="outline">
+        <mat-label>Type d’item</mat-label>
+        <mat-select formControlName="itemTypeId">
+            <mat-option [value]="null">Tous</mat-option>
+            <mat-option *ngFor="let type of itemTypes$ | async" [value]="type.id">
+            {{ type.name }}
+            </mat-option>
+        </mat-select>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+        <mat-label>Langue</mat-label>
+        <mat-select formControlName="localeId">
+            <mat-option [value]="null">Toutes</mat-option>
+            <mat-option *ngFor="let locale of locales$ | async" [value]="locale.id">
+            {{ locale.name }}
+            </mat-option>
+        </mat-select>
+        </mat-form-field>
+
+    </div>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Complément</mat-label>
+      <input matInput formControlName="complement"/>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>URL</mat-label>
+      <input matInput formControlName="url"/>
+    </mat-form-field>
+
+    <mat-checkbox color="primary" formControlName="isCmScrapingActive">
+        CM Scraping
+    </mat-checkbox>
+
+  </div>
+
+</app-business-object-dialog-shell>

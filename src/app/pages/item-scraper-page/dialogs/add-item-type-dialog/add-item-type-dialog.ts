@@ -8,7 +8,6 @@ import { MatNativeDateModule } from '@angular/material/core';
 import { MatIconModule } from '@angular/material/icon';
 import { AbstractBusinessObjectDialog } from '../../../../shared/components/dialogs/abstract-business-object-dialog';
 import { BusinessObjectDialogShell } from '../../../../shared/components/dialogs/business-object-dialog-shell/business-object-dialog-shell';
-import { Game } from '../../../../shared/interfaces/game';
 import { ItemType } from '../../../../shared/interfaces/item-type';
 
 @Component({
