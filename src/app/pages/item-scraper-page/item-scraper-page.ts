@@ -17,6 +17,12 @@ import { BulkToggleCmScrapingDto } from './item-scraper-table/bulk-toggle-cm-scr
 import { MatDialog } from '@angular/material/dialog';
 import { GameService } from '../../services/game-service';
 import { AddGameDialog } from './dialogs/add-game-dialog/add-game-dialog';
+import { AddItemTypeDialog } from './dialogs/add-item-type-dialog/add-item-type-dialog';
+import { ItemTypeService } from '../../services/item-type-service';
+import { LocaleService } from '../../services/locale-service';
+import { AddLocaleDialog } from './dialogs/add-locale-dialog/add-locale-dialog';
+import { AddExpansionDialog } from './dialogs/add-expansion-dialog/add-expansion-dialog';
+import { ExpansionService } from '../../services/expansion-service';
 
 @Component({
   selector: 'app-item-scraper-page',
@@ -42,6 +48,9 @@ export class ItemScraperPage {
   private router = inject(Router);
   private itemService = inject(ItemService);
   private gameService = inject(GameService);
+  private expansionService = inject(ExpansionService);
+  private itemTypeService = inject(ItemTypeService);
+  private localeService = inject(LocaleService);
   private dialog = inject(MatDialog);
   private snackBar = inject(MatSnackBar);
 
@@ -147,6 +156,174 @@ export class ItemScraperPage {
         // 🟩 Succès
         this.snackBar.open(
           `Jeu "${createdGame.name}" créé avec succès`,
+          'OK',
+          {
+            panelClass: ['snackbar-success'],
+            horizontalPosition: 'center',
+            verticalPosition: 'top',
+            duration: 6000
+          }
+        );
+
+        this.refresh$.next();
+      });
+    });
+  }
+
+  protected addExpansionDialog() {
+    const dialogRef = this.dialog.open(AddExpansionDialog, {
+      width: '400px'
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      if (!result) return;
+
+      this.expansionService.createExpansion(result).pipe(
+        catchError(err => {
+          // 🟥 Cas erreur métier (409 ou 404)
+          if ((err.status === 409 || err.status === 404) && err.error?.detail) {
+            this.snackBar.open(
+              err.error.detail,
+              'Fermer',
+              {
+                panelClass: ['snackbar-error'],
+                horizontalPosition: 'center',
+                verticalPosition: 'top',
+                duration: 10000
+              }
+            );
+            return EMPTY;
+          }
+
+          // 🟥 Cas erreur inconnue
+          this.snackBar.open(
+            'Une erreur est survenue lors de la création de l\'extension.',
+            'Fermer', 
+            {
+              panelClass: ['snackbar-error'],
+              horizontalPosition: 'center',
+              verticalPosition: 'top',
+              duration: 10000
+            }
+          );
+          return EMPTY;
+        })
+      ).subscribe((createdExpansion) => {
+        // 🟩 Succès
+        this.snackBar.open(
+          `Extension "${createdExpansion.name}" du jeu "${createdExpansion.game.name}" créé avec succès`,
+          'OK',
+          {
+            panelClass: ['snackbar-success'],
+            horizontalPosition: 'center',
+            verticalPosition: 'top',
+            duration: 6000
+          }
+        );
+
+        this.refresh$.next();
+      });
+    });
+  }
+
+  protected addItemTypeDialog() {
+    const dialogRef = this.dialog.open(AddItemTypeDialog, {
+      width: '400px'
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      if (!result) return;
+
+      this.itemTypeService.createItemType(result).pipe(
+        catchError(err => {
+          // 🟥 Cas erreur métier (409)
+          if (err.status === 409 && err.error?.detail) {
+            this.snackBar.open(
+              err.error.detail,
+              'Fermer',
+              {
+                panelClass: ['snackbar-error'],
+                horizontalPosition: 'center',
+                verticalPosition: 'top',
+                duration: 10000
+              }
+            );
+            return EMPTY;
+          }
+
+          // 🟥 Cas erreur inconnue
+          this.snackBar.open(
+            'Une erreur est survenue lors de la création du type d\'item.',
+            'Fermer', 
+            {
+              panelClass: ['snackbar-error'],
+              horizontalPosition: 'center',
+              verticalPosition: 'top',
+              duration: 10000
+            }
+          );
+          return EMPTY;
+        })
+      ).subscribe((createdItemType) => {
+        // 🟩 Succès
+        this.snackBar.open(
+          `Type d'item "${createdItemType.name}" créé avec succès`,
+          'OK',
+          {
+            panelClass: ['snackbar-success'],
+            horizontalPosition: 'center',
+            verticalPosition: 'top',
+            duration: 6000
+          }
+        );
+
+        this.refresh$.next();
+      });
+    });
+  }
+
+  protected addLocaleDialog() {
+    const dialogRef = this.dialog.open(AddLocaleDialog, {
+      width: '400px'
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      if (!result) return;
+
+      this.localeService.createLocale(result).pipe(
+        catchError(err => {
+          // 🟥 Cas erreur métier (409)
+          if (err.status === 409 && err.error?.detail) {
+            this.snackBar.open(
+              err.error.detail,
+              'Fermer',
+              {
+                panelClass: ['snackbar-error'],
+                horizontalPosition: 'center',
+                verticalPosition: 'top',
+                duration: 10000
+              }
+            );
+            return EMPTY;
+          }
+
+          // 🟥 Cas erreur inconnue
+          this.snackBar.open(
+            'Une erreur est survenue lors de la création du langage.',
+            'Fermer', 
+            {
+              panelClass: ['snackbar-error'],
+              horizontalPosition: 'center',
+              verticalPosition: 'top',
+              duration: 10000
+            }
+          );
+          return EMPTY;
+        })
+      ).subscribe((createdItemType) => {
+        // 🟩 Succès
+        this.snackBar.open(
+          `Langage "${createdItemType.name}" créé avec succès`,
           'OK',
           {
             panelClass: ['snackbar-success'],

@@ -1,0 +1,30 @@
+<app-business-object-dialog-shell
+  [form]="form"
+  [submit]="submit.bind(this)"
+  [cancel]="cancel.bind(this)">
+
+  
+  <div dialog-title class="dialog-title">
+    <h2 mat-dialog-title>Ajouter une extension</h2>
+  </div>
+  
+  <div class="dialog-form" [formGroup]="form">
+
+    <mat-form-field appearance="outline">
+      <mat-label>Jeu</mat-label>
+      <mat-select formControlName="gameId">
+        <mat-option [value]="null">Tous</mat-option>
+        <mat-option *ngFor="let game of games$ | async" [value]="game.id">
+          {{ game.name }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Nom de l'extension</mat-label>
+      <input matInput formControlName="expansionName">
+    </mat-form-field>
+
+  </div>
+
+</app-business-object-dialog-shell>

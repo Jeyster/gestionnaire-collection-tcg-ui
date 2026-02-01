@@ -21,4 +21,11 @@ export class ItemTypeService {
     return this.http.get<ItemType[]>('/gestionnaire-collection-tcg/v1/games/' + gameId + '/item-types');
   }
 
+  createItemType(itemType: ItemType) {
+    return this.http.post<ItemType>(
+      '/gestionnaire-collection-tcg/v1/item-types',
+      itemType
+    );
+  }
+
 }

@@ -13,4 +13,11 @@ export class LocaleService {
     return this.http.get<Locale[]>('/gestionnaire-collection-tcg/v1/locales');
   }
 
+  createLocale(locale: Locale) {
+    return this.http.post<Locale>(
+      '/gestionnaire-collection-tcg/v1/locales',
+      locale
+    );
+  }
+
 }

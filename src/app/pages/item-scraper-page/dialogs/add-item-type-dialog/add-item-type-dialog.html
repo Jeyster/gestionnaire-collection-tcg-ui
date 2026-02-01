@@ -1,0 +1,20 @@
+<app-business-object-dialog-shell
+  [form]="form"
+  [submit]="submit.bind(this)"
+  [cancel]="cancel.bind(this)">
+
+  
+  <div dialog-title class="dialog-title">
+    <h2 mat-dialog-title>Ajouter un type d'item</h2>
+  </div>
+  
+  <div class="dialog-form" [formGroup]="form">
+
+    <mat-form-field appearance="outline">
+      <mat-label>Nom du type d'item</mat-label>
+      <input matInput formControlName="name">
+    </mat-form-field>
+
+  </div>
+
+</app-business-object-dialog-shell>

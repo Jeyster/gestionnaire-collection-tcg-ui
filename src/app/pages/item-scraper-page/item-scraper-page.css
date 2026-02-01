@@ -1,7 +1,7 @@
 .admin-toolbar {
   display: flex;
   justify-content: space-between;
-  gap: 12px;
+  gap: 36px;
   margin-bottom: 12px;
 }
 
