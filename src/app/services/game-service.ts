@@ -18,7 +18,7 @@ export class GameService {
   }
 
   createGame(game: Game) {
-    return this.http.post(
+    return this.http.post<Game>(
       '/gestionnaire-collection-tcg/v1/games',
       game
     );

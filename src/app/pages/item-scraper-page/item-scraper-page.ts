@@ -3,10 +3,11 @@ import { Component, inject } from '@angular/core';
 import { MatButton } from '@angular/material/button';
 import { MatIcon } from '@angular/material/icon';
 import { MatTooltip } from '@angular/material/tooltip';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { ItemSearchFilters } from '../item-search/item-search-filters/item-search-filters';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ItemService } from '../../services/item-service';
-import { BehaviorSubject, combineLatest, debounceTime, map, switchMap } from 'rxjs';
+import { BehaviorSubject, catchError, combineLatest, debounceTime, EMPTY, map, switchMap } from 'rxjs';
 import { ItemSearchFiltersDto } from '../item-search/item-search-filters/item-search-filters-dto';
 import { PageEvent } from '@angular/material/paginator';
 import { ItemScraperTable } from './item-scraper-table/item-scraper-table';
@@ -42,6 +43,7 @@ export class ItemScraperPage {
   private itemService = inject(ItemService);
   private gameService = inject(GameService);
   private dialog = inject(MatDialog);
+  private snackBar = inject(MatSnackBar);
 
   protected filters$ = this.route.queryParams.pipe(
     map(params => ({
@@ -103,7 +105,7 @@ export class ItemScraperPage {
     });
   }
 
-  protected openCreateDialog() {
+  protected addGameDialog() {
     const dialogRef = this.dialog.open(AddGameDialog, {
       width: '400px'
     });
@@ -111,9 +113,52 @@ export class ItemScraperPage {
     dialogRef.afterClosed().subscribe(result => {
       if (!result) return;
 
-      this.gameService.createGame(result).subscribe(() => {
-        this.refresh$.next(); // 🔥 RAFRAÎCHISSEMENT GARANTI
+      this.gameService.createGame(result).pipe(
+        catchError(err => {
+          // 🟥 Cas erreur métier (409)
+          if (err.status === 409 && err.error?.detail) {
+            this.snackBar.open(
+              err.error.detail,
+              'Fermer',
+              {
+                panelClass: ['snackbar-error'],
+                horizontalPosition: 'center',
+                verticalPosition: 'top',
+                duration: 10000
+              }
+            );
+            return EMPTY;
+          }
+
+          // 🟥 Cas erreur inconnue
+          this.snackBar.open(
+            'Une erreur est survenue lors de la création du jeu.',
+            'Fermer', 
+            {
+              panelClass: ['snackbar-error'],
+              horizontalPosition: 'center',
+              verticalPosition: 'top',
+              duration: 10000
+            }
+          );
+          return EMPTY;
+        })
+      ).subscribe((createdGame) => {
+        // 🟩 Succès
+        this.snackBar.open(
+          `Jeu "${createdGame.name}" créé avec succès`,
+          'OK',
+          {
+            panelClass: ['snackbar-success'],
+            horizontalPosition: 'center',
+            verticalPosition: 'top',
+            duration: 6000
+          }
+        );
+
+        this.refresh$.next();
       });
     });
   }
+
 }

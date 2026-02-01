@@ -28,15 +28,21 @@ import { BehaviorSubject, Observable, Subject, switchMap, takeUntil } from "rxjs
   templateUrl: './item-search-filters.html',
   styleUrls: ['./item-search-filters.css']
 })
-export class ItemSearchFilters implements OnInit, OnDestroy {
+export class ItemSearchFilters implements OnDestroy {
 
   @Input({ required: true })
   set filters(value: ItemSearchFiltersDto) {
     this.form.patchValue(value);
   }
 
-  @Input({ required: true }) 
-  parentRefresh$!: Observable<void>;
+  @Input()
+  set parentRefresh$(value: Observable<void> | undefined) {
+    if (!value) return;
+
+    value
+      .pipe(takeUntil(this.destroy$))
+      .subscribe(() => this.refresh$.next());
+  }
 
   @Output()
   searchFilters = new EventEmitter<ItemSearchFiltersDto>();
@@ -72,14 +78,6 @@ export class ItemSearchFilters implements OnInit, OnDestroy {
   protected expansions$ = this.refresh$.pipe(
     switchMap(() => this.expansionService.getExpansions())
   );
-
-  ngOnInit() {
-    this.parentRefresh$
-      .pipe(takeUntil(this.destroy$))
-      .subscribe(() => {
-        this.refresh$.next();
-      });
-  }
 
   ngOnDestroy() {
     this.destroy$.next();
