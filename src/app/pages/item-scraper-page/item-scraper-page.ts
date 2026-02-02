@@ -1,8 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { Component, inject } from '@angular/core';
-import { MatButton } from '@angular/material/button';
+import { MatButton, MatIconButton } from '@angular/material/button';
 import { MatIcon } from '@angular/material/icon';
-import { MatTooltip } from '@angular/material/tooltip';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { ItemSearchFilters } from '../item-search/item-search-filters/item-search-filters';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -24,6 +23,9 @@ import { AddLocaleDialog } from './dialogs/add-locale-dialog/add-locale-dialog';
 import { AddExpansionDialog } from './dialogs/add-expansion-dialog/add-expansion-dialog';
 import { ExpansionService } from '../../services/expansion-service';
 import { AddItemDialog } from './dialogs/add-item-dialog/add-item-dialog';
+import { ScrapingService } from '../../services/scraping-service';
+import { OpenLogsDialog } from './dialogs/open-logs-dialog/open-logs-dialog';
+import { MatTooltip } from '@angular/material/tooltip';
 
 @Component({
   selector: 'app-item-scraper-page',
@@ -31,8 +33,9 @@ import { AddItemDialog } from './dialogs/add-item-dialog/add-item-dialog';
   imports: [
     CommonModule,
     MatButton,
-    MatTooltip,
     MatIcon,
+    MatIconButton,
+    MatTooltip,
     BackButton,
     ItemSearchFilters,
     ItemScraperTable
@@ -52,6 +55,7 @@ export class ItemScraperPage {
   private expansionService = inject(ExpansionService);
   private itemTypeService = inject(ItemTypeService);
   private localeService = inject(LocaleService);
+  private scrapingService = inject(ScrapingService);
   private dialog = inject(MatDialog);
   private snackBar = inject(MatSnackBar);
 
@@ -67,6 +71,7 @@ export class ItemScraperPage {
   );
 
   protected refresh$ = new BehaviorSubject<void>(undefined);
+  protected scrapingRunning$ = this.scrapingService.status$;
 
   protected itemsPage$ = combineLatest([
     this.filters$,
@@ -392,6 +397,17 @@ export class ItemScraperPage {
 
         this.refresh$.next();
       });
+    });
+  }
+
+  protected startScraping() {
+    this.scrapingService.start();
+    this.openLogsDialog();
+  }
+
+  protected openLogsDialog() {
+    const dialogRef = this.dialog.open(OpenLogsDialog, {
+      width: '800px'
     });
   }
 

@@ -8,5 +8,13 @@
 .add-buttons {
   display: flex;
   justify-content: flex-start;
+  align-items: center;
   gap: 12px;
+}
+
+/* Boutons icône compacts */
+.icon-action {
+  min-width: 36px;
+  padding: 4px 6px;
+  line-height: 1;
 }

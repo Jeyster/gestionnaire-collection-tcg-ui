@@ -41,14 +41,27 @@
 
   </div>
 
-  <button
-    mat-raised-button
-    color="primary"
-    disabled
-    matTooltip="Scraping (à venir)">
-    <mat-icon>sync</mat-icon>
-    Lancer le scraping
-  </button>
+  <div class="add-buttons">
+
+    <button
+      mat-icon-button
+      matTooltip="Voir les logs"
+      class="icon-action"
+      (click)="openLogsDialog()">
+      <mat-icon>terminal</mat-icon>
+    </button>
+
+    <button
+      mat-raised-button
+      color="primary"
+      (click)="startScraping()"
+      [disabled]="scrapingRunning$ | async">
+      <mat-icon>sync</mat-icon>
+      Lancer le scraping
+    </button>
+
+  </div>
+
 </div>
 
 <!-- Filtres -->

@@ -1,0 +1,41 @@
+.dialog {
+    display: flex;
+    flex-direction: column;
+}
+
+.logs {
+    margin: 0px 12px;
+  background-color: #0b0f14; /* noir profond */
+  color: #e5e7eb;            /* gris clair lisible */
+  font-family: 'JetBrains Mono', 'Fira Code', Consolas, monospace;
+  font-size: 13px;
+  line-height: 1.45;
+
+  padding: 16px;
+  max-height: 60vh;
+  overflow-y: auto;
+
+  border-radius: 4px;
+}
+
+/* Chaque ligne */
+.logs pre {
+  margin: 0;
+/*  white-space: pre-wrap;*/     /* wrap si ligne trop longue */
+  word-break: break-word;
+}
+
+.logs::-webkit-scrollbar {
+  width: 8px;
+}
+
+.logs::-webkit-scrollbar-thumb {
+  background: #374151;
+  border-radius: 4px;
+}
+
+.dialog-one-action {
+  padding: 16px 24px 16px;
+  display: flex;
+  justify-content: flex-end;
+}

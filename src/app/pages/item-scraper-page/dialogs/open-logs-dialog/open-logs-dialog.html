@@ -1,0 +1,19 @@
+<div class="dialog">
+  
+  <div class="dialog-header">
+    <div class="dialog-title">
+      <h2 mat-dialog-title>Logs Scraping CardMarket</h2>
+    </div>
+  </div>
+  
+  <mat-dialog-content class="logs">
+    <pre *ngFor="let line of logs$ | async">{{ line }}</pre>
+  </mat-dialog-content>
+  
+  <mat-dialog-actions class="dialog-one-action">
+    <button mat-button type="button" (click)="close()">
+      Fermer
+    </button>
+  </mat-dialog-actions>
+
+</div>
