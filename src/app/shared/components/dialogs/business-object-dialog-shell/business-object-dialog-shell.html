@@ -1,3 +1,9 @@
+<!-- 
+ Common shell of almost all dialogs of the application.
+ <ng-content> displays the content of HTML code that is inside <app-business-object-dialog-shell>.
+ dialog-title and dialog-context are specified piece of code identified by these attributes. 
+-->
+
 <div class="dialog-header">
   <ng-content select="[dialog-title]"></ng-content>
   <ng-content select="[dialog-context]"></ng-content>

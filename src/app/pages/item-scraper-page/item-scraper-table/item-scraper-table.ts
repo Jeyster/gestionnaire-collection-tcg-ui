@@ -51,15 +51,6 @@ export class ItemScraperTable {
     });
   }
 
-  get allChecked(): boolean {
-    return this.itemsPage.content.every(i => i.isCmScrapingActive);
-  }
-
-  get someChecked(): boolean {
-    const activeCount = this.itemsPage.content.filter(i => i.isCmScrapingActive).length;
-    return activeCount > 0 && activeCount < this.itemsPage.content.length;
-  }
-
   protected toggleAllOnPage(checked: boolean) {
     const payload: BulkToggleCmScrapingDto = {
       isCmScrapingActive: checked,
@@ -68,6 +59,21 @@ export class ItemScraperTable {
                 .flatMap(i => i.id)
     };
     this.toggleAllScraping.emit(payload);
+  }
+
+  /**
+   * Used to decorate mat-checkbox of "CM scraping" column header
+   */
+  get allChecked(): boolean {
+    return this.itemsPage.content.every(i => i.isCmScrapingActive);
+  }
+
+  /**
+   * Used to decorate mat-checkbox of "CM scraping" column header
+   */
+  get someChecked(): boolean {
+    const activeCount = this.itemsPage.content.filter(i => i.isCmScrapingActive).length;
+    return activeCount > 0 && activeCount < this.itemsPage.content.length;
   }
 
 }

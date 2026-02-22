@@ -59,8 +59,10 @@ export class UserItemsPage {
   protected lastPriceHistory$ = this.itemService.getLastPriceHistory(this.itemId);
 
   private reload$ = new Subject<void>();
+
+  // Observables loaded on init and on reload refresh (next())
   protected userItems$ = this.reload$.pipe(
-    startWith(void 0), // 👈 charge au démarrage
+    startWith(void 0), // init loading
     switchMap(() =>
       this.userItemService.getUserItems(
         String(this.user.id),
@@ -70,7 +72,7 @@ export class UserItemsPage {
   );
 
   protected userItemsCount$ = this.reload$.pipe(
-    startWith(void 0), // 👈 charge au démarrage
+    startWith(void 0), // init loading
     switchMap(() =>
       this.userItemService.getUserItemsCount(
         String(this.user.id),
@@ -80,7 +82,7 @@ export class UserItemsPage {
   );
   
   protected inStockUserItemsCount$ = this.reload$.pipe(
-    startWith(void 0), // 👈 charge au démarrage
+    startWith(void 0), // init loading
     switchMap(() =>
       this.userItemService.getUserItemsInStockCount(
         String(this.user.id),
@@ -90,7 +92,7 @@ export class UserItemsPage {
   );
   
   protected soldUserItemsCount$ = this.reload$.pipe(
-    startWith(void 0), // 👈 charge au démarrage
+    startWith(void 0), // init loading
     switchMap(() =>
       this.userItemService.getSoldUserItemsCount(
         String(this.user.id),
@@ -100,7 +102,7 @@ export class UserItemsPage {
   );
   
   protected openedUserItemsCount$ = this.reload$.pipe(
-    startWith(void 0), // 👈 charge au démarrage
+    startWith(void 0), // init loading
     switchMap(() =>
       this.userItemService.getOpenedUserItemsCount(
         String(this.user.id),
@@ -109,6 +111,10 @@ export class UserItemsPage {
     )
   );
   
+  /**
+   * Open AddUserItemDialog.
+   * Persists data and refresh observables when successfully closed.
+   */
   openCreateDialog() {
     const dialogRef = this.dialog.open(AddUserItemDialog, {
       width: '400px',
@@ -127,30 +133,63 @@ export class UserItemsPage {
     });
   }
 
+  /**
+   * Modification of UserItem identified by userItemId thanks to editUserItem payload.
+   * Refresh observables after modifications are persisted.
+   * 
+   * @param userItemId 
+   * @param editUserItem 
+   */
   onEdit(userItemId: number, editUserItem: EditUserItem) {
     this.userItemService.editUserItem(String(userItemId), editUserItem).subscribe(() => {
       this.reload$.next();
     });
   }
 
+  /**
+   * Sell the UserItem identified by userItemId thanks to sellUserItem payload.
+   * Refresh observables after modifications are persisted.
+   * 
+   * @param userItemId 
+   * @param sellUserItem 
+   */
   onSell(userItemId: number, sellUserItem: SellUserItem) {
     this.userItemService.sellUserItem(String(userItemId), sellUserItem).subscribe(() => {
       this.reload$.next();
     });
   }
 
+  /**
+   * Open the UserItem identified by userItemId thanks to openUserItem payload.
+   * Refresh observables after modifications are persisted.
+   * 
+   * @param userItemId 
+   * @param openUserItem 
+   */
   onOpen(userItemId: number, openUserItem: OpenUserItem) {
     this.userItemService.openUserItem(String(userItemId), openUserItem).subscribe(() => {
       this.reload$.next();
     });
   }
 
+  /**
+   * Duplicate a UserItem thanks to addUserItem payload.
+   * Refresh observables after data are persisted.
+   * 
+   * @param addUserItem 
+   */
   onDuplicate(addUserItem: AddUserItem) {
     this.userItemService.addUserItem(addUserItem).subscribe(() => {
       this.reload$.next();
     });
   }
 
+  /**
+   * Delete the UserItem identified by userItemId.
+   * Refresh observables after deletion is persisted.
+   * 
+   * @param userItemId 
+   */
   onDelete(userItemId: number) {
     this.userItemService.deleteUserItem(String(userItemId)).subscribe(() => {
       this.reload$.next();

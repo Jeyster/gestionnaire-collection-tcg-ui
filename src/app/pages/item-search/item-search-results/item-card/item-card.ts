@@ -42,6 +42,10 @@ export class ItemCard {
   protected currentUserItemsCount$!: Observable<number>;
   protected lastPriceHistory$!: Observable<ItemPriceHistory>;
   
+  /**
+   * ngOnInit because component must be created to have its item input
+   * and then be able to use it.
+   */
   ngOnInit() {
     this.userItemsCount$ = this.userItemService.getUserItemsCount(String(this.user.id), String(this.item.id));
     this.currentUserItemsCount$ = this.userItemService.getUserItemsInStockCount(String(this.user.id), String(this.item.id));

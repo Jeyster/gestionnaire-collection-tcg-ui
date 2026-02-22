@@ -30,6 +30,9 @@ export class ItemSearchPage {
   private router = inject(Router);
   private itemService = inject(ItemService);
 
+  /**
+   * Initialize filters with query parameters or default values
+   */
   protected filters$ = this.route.queryParams.pipe(
     map(params => ({
       gameId: params['gameId'] ? +params['gameId'] : null,
@@ -41,6 +44,9 @@ export class ItemSearchPage {
     }))
   );
 
+  /**
+   * Load items page when filters is modified
+   */
   protected itemsPage$ = this.filters$.pipe(
     switchMap(filters => this.itemService.searchItems(filters))
   );

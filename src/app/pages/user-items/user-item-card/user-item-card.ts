@@ -17,6 +17,11 @@ import { OpenEvent } from '../events/open-event/open-event';
 import { UserItemStatus } from '../../../shared/enums/user-item-status';
 import { USER_ITEM_STATUS_CONFIG } from '../../../shared/configs/user-item-status.config';
 
+/**
+ * Card that represents a UserItem given as Input.
+ * Edit, Sell and Open buttons trigger the opening of related dialog
+ * and then emit an event to parent when dialog form is submited.
+ */
 @Component({
   selector: 'app-user-item-card',
   imports: [

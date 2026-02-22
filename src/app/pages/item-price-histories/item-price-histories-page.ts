@@ -169,6 +169,7 @@ export default class ItemPriceHistoriesPage {
     });
   }
 
+  /* Couleurs aléatoires pour les userItems */
   private randomColor(seed: number) {
     const colors = [
       '#16a34a', '#dc2626', '#9333ea',

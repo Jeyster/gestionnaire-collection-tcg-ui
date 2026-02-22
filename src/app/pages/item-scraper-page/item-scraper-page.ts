@@ -59,6 +59,9 @@ export class ItemScraperPage {
   private dialog = inject(MatDialog);
   private snackBar = inject(MatSnackBar);
 
+  /**
+   * Initialize filters with query parameters or default values
+   */
   protected filters$ = this.route.queryParams.pipe(
     map(params => ({
       gameId: params['gameId'] ? +params['gameId'] : null,
@@ -73,6 +76,9 @@ export class ItemScraperPage {
   protected refresh$ = new BehaviorSubject<void>(undefined);
   protected scrapingRunning$ = this.scrapingService.status$;
 
+  /**
+   * Load items when filters or refresh (after creating a new item) are modified
+   */
   protected itemsPage$ = combineLatest([
     this.filters$,
     this.refresh$

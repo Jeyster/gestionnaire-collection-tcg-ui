@@ -30,11 +30,17 @@ import { BehaviorSubject, Observable, Subject, switchMap, takeUntil } from "rxjs
 })
 export class ItemSearchFilters implements OnDestroy {
 
+  /**
+   * Form update when filters from parent component is updated
+   */
   @Input({ required: true })
   set filters(value: ItemSearchFiltersDto) {
     this.form.patchValue(value);
   }
 
+  /**
+   * Component refresh when parent component command it
+   */
   @Input()
   set parentRefresh$(value: Observable<void> | undefined) {
     if (!value) return;
@@ -63,6 +69,9 @@ export class ItemSearchFilters implements OnDestroy {
   };
   protected form = this.fb.group<ItemSearchFiltersDto>(this.initForm); 
 
+  /**
+   * Drop-down lists refresh when parent component command it
+   */
   protected games$ = this.refresh$.pipe(
     switchMap(() => this.gameService.getGames())
   );
