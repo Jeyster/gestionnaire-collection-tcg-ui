@@ -6,7 +6,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { ItemSearchFilters } from '../item-search/item-search-filters/item-search-filters';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ItemService } from '../../services/item-service';
-import { BehaviorSubject, catchError, combineLatest, EMPTY, map, switchMap } from 'rxjs';
+import { BehaviorSubject, catchError, combineLatest, EMPTY, map, switchMap, takeUntil } from 'rxjs';
 import { ItemSearchFiltersDto } from '../item-search/item-search-filters/item-search-filters-dto';
 import { PageEvent } from '@angular/material/paginator';
 import { ItemScraperTable } from './item-scraper-table/item-scraper-table';
@@ -411,10 +411,19 @@ export class ItemScraperPage {
     this.openLogsDialog();
   }
 
+  /**
+   * OpenLogsDialog has an Output stopScraping.
+   * Subscription on the stopScraping emition.
+   */
   protected openLogsDialog() {
     const dialogRef = this.dialog.open(OpenLogsDialog, {
       width: '800px'
     });
+
+    dialogRef.componentInstance.stopScraping
+      .subscribe(() => {
+        this.scrapingService.stop();
+      });
   }
 
 }

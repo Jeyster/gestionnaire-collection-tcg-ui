@@ -1,4 +1,4 @@
-import { Component, inject, OnDestroy } from '@angular/core';
+import { Component, EventEmitter, inject, OnDestroy, Output } from '@angular/core';
 import { MatDialogActions, MatDialogContent, MatDialogRef, MatDialogTitle } from '@angular/material/dialog';
 import { ScrapingService } from '../../../../services/scraping-service';
 import { Subject, switchMap, timer } from 'rxjs';
@@ -21,22 +21,23 @@ import { MatButton } from '@angular/material/button';
     '../../../../shared/components/dialogs/business-object-dialog-shell/business-object-dialog-shell.css'
   ]
 })
-export class OpenLogsDialog implements OnDestroy {
+export class OpenLogsDialog {
+
+  @Output() stopScraping = new EventEmitter<void>();
 
   private scrapingService = inject(ScrapingService);
   private dialogRef = inject(MatDialogRef<OpenLogsDialog>);
-  private destroy$ = new Subject<void>();
 
   logs$ = timer(0, 1000).pipe(
     switchMap(() => this.scrapingService.getLogs())
   );
 
-  ngOnDestroy() {
-    this.destroy$.next();
-    this.destroy$.complete();
-  }
-
   protected close() {
     this.dialogRef.close();
   }
+
+  protected stop() {
+    this.stopScraping.emit();
+  }
+
 }

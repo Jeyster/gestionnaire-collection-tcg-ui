@@ -14,15 +14,22 @@ export class ScrapingService {
     start() {
         this.http.post('/gestionnaire-collection-tcg/v1/scraping/start', {})
             .subscribe(() => {
-            this.running$.next(true);
-            this.pollStatus();
+                this.running$.next(true);
+                this.pollStatus();
+            });
+    }
+
+    stop() {
+        this.http.post('/gestionnaire-collection-tcg/v1/scraping/stop', {})
+            .subscribe(() => {
+                this.running$.next(false);
             });
     }
 
     pollStatus() {
         timer(0, 2000).pipe(
             switchMap(() =>
-            this.http.get<boolean>('/gestionnaire-collection-tcg/v1/scraping/status')
+                this.http.get<boolean>('/gestionnaire-collection-tcg/v1/scraping/status')
             )
         ).subscribe(running => {
             this.running$.next(running);
